@@ -158,3 +158,10 @@ Una idea merece prototipo si cumple al menos cinco condiciones:
 - Funciona sin Internet.
 - Posee un modo de respaldo si falla cámara, sensor o visor.
 - Puede terminarse con el tiempo y equipo disponibles.
+
+## Planificación nueva: estación LTI y ejecución futura con Codex
+
+- [Estación LTI con esfera — observaciones del video, factibilidad, propuestas de juego y compuertas de validación](09-lti-esfera-interactiva.md).
+- [Protocolo para definir, evaluar y documentar proyectos antes de entregar tareas a Codex](10-guia-de-planificacion-y-ejecucion-codex.md).
+
+La estación LTI es **exploratoria** y no reemplaza ni modifica las ocho ideas de Informática e IA. La esfera del video aparenta ser reflectante; **su capacidad para reproducir contenido digital no está comprobada**. Antes de desarrollar una integración, deberá identificarse el equipo y aprobarse una prueba técnica. Las fichas y tareas de Codex son planificación, no software implementado.
