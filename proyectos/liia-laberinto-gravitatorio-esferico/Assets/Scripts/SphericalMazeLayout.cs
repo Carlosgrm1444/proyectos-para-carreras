@@ -116,7 +116,7 @@ namespace LIIA.SphereMaze
                 Mathf.Cos(latitude) * Mathf.Sin(longitude),
                 Mathf.Sin(latitude),
                 Mathf.Cos(latitude) * Mathf.Cos(longitude)).normalized;
-            return transform.position + normal * (radius + radialOffset);
+            return transform.position + transform.TransformDirection(normal) * (radius + radialOffset);
         }
 
         public Vector3 SurfaceNormal(float gridX, float gridY) =>

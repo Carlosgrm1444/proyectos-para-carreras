@@ -67,7 +67,7 @@ namespace LIIA.SphereMaze.Editor
             flow.RestartAttempt();
             Require(flow.State == GameState.Playing && flow.Lives == 3 && flow.Score == 0,
                 "Un intento nuevo debe iniciar con tres vidas y cero puntos.");
-            Require(Mathf.Abs(Vector3.Distance(ball.transform.position, layout.transform.position) - 5.36f) < .001f,
+            Require(Mathf.Abs(Vector3.Distance(ball.transform.position, layout.transform.position) - 5.46f) < .001f,
                 "La bola debe mantenerse sobre la superficie de la esfera.");
 
             var starCell = new Vector2Int(2, 1);

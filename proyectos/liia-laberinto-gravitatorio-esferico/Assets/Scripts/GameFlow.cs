@@ -22,11 +22,14 @@ namespace LIIA.SphereMaze
         public int StarsCollected { get; private set; }
         public int TotalStars { get; private set; }
         public int LastTimeBonus { get; private set; }
+        public bool NewRecord { get; private set; }
         public int BestScore => PlayerPrefs.GetInt($"LIIA_BEST_SCORE_{LevelIndex}", 0);
         public float BestTime => PlayerPrefs.GetFloat($"LIIA_BEST_TIME_{LevelIndex}", 0f);
         public string StatusMessage { get; private set; }
         public bool HasStatusMessage => !string.IsNullOrEmpty(StatusMessage) && Time.unscaledTime < statusMessageUntil;
         public string LevelName { get; private set; }
+        public string LevelDescription { get; private set; }
+        public float ParTimeSeconds => parTimeSeconds;
         public int LevelIndex { get; private set; }
 
         private readonly HashSet<Vector2Int> collectedStars = new HashSet<Vector2Int>();
@@ -42,6 +45,7 @@ namespace LIIA.SphereMaze
             ball = player;
             startingLives = lives;
             LevelName = level.DisplayName;
+            LevelDescription = level.Description;
             LevelIndex = MazeLevelCatalog.SelectedIndex;
             parTimeSeconds = level.ParTimeSeconds;
             TotalStars = totalStars > 0 ? totalStars : level.ExpectedStars;
@@ -69,11 +73,18 @@ namespace LIIA.SphereMaze
                 return;
             }
 
+            if (State == GameState.Paused)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape)) TogglePause();
+                return;
+            }
+
             if (State == GameState.Playing)
             {
                 ElapsedTime += Time.deltaTime;
                 if (Input.anyKey) lastInputAt = Time.unscaledTime;
-                if (Input.GetKeyDown(KeyCode.R)) RestartAttempt();
+                if (Input.GetKeyDown(KeyCode.Escape)) TogglePause();
+                else if (Input.GetKeyDown(KeyCode.R)) RestartAttempt();
                 else if (Time.unscaledTime - lastInputAt > inactivityTimeoutSeconds) EnterAttractMode();
             }
             else if (State == GameState.Won)
@@ -92,13 +103,16 @@ namespace LIIA.SphereMaze
             Score += goalPoints;
             LastTimeBonus = Mathf.RoundToInt(maxSpeedBonus * Mathf.Clamp01(1f - ElapsedTime / parTimeSeconds));
             Score += LastTimeBonus;
+            NewRecord = Score > BestScore || (Score == BestScore && (BestTime <= 0f || ElapsedTime < BestTime));
             State = GameState.Won;
             stateChangedAt = Time.unscaledTime;
             LIIAAudioFeedback.Instance?.Play(GameAudioCue.Goal);
+            LIIAVisualFeedback.Instance?.PlayGoal(ball.transform.position);
             SaveRecord();
         }
 
         public bool IsStarCollected(Vector2Int cell) => collectedStars.Contains(cell);
+        public bool IsCheckpointActive(Vector2Int cell) => hasCheckpoint && activeCheckpoint == cell;
 
         public void CollectStar(Vector2Int cell)
         {
@@ -120,16 +134,16 @@ namespace LIIA.SphereMaze
 
         public void PlayerHitTrap()
         {
-            if (State != GameState.Playing) return;
+            if (State != GameState.Playing || ball.IsRespawning) return;
             Lives--;
             ShowStatus("TRAMPA: PIERDES UNA VIDA");
             LIIAAudioFeedback.Instance?.Play(GameAudioCue.Trap);
             if (Lives <= 0)
             {
-                RestartAttempt();
+                ball.PlayFallAndRespawn(ball.StartCell, RestartAttempt);
                 return;
             }
-            ball.RespawnAt(hasCheckpoint ? activeCheckpoint : ball.StartCell);
+            ball.PlayFallAndRespawn(hasCheckpoint ? activeCheckpoint : ball.StartCell);
         }
 
         public void RestartAttempt()
@@ -143,6 +157,7 @@ namespace LIIA.SphereMaze
             Score = 0;
             StarsCollected = 0;
             LastTimeBonus = 0;
+            NewRecord = false;
             ElapsedTime = 0f;
             State = GameState.Playing;
             collectedStars.Clear();
@@ -161,10 +176,12 @@ namespace LIIA.SphereMaze
             Score = 0;
             StarsCollected = 0;
             LastTimeBonus = 0;
+            NewRecord = false;
             ElapsedTime = 0f;
             collectedStars.Clear();
             hasCheckpoint = false;
             State = GameState.Attract;
+            Time.timeScale = 1f;
             stateChangedAt = Time.unscaledTime;
             lastInputAt = Time.unscaledTime;
             if (ball != null) ball.RespawnStart();
@@ -180,6 +197,21 @@ namespace LIIA.SphereMaze
                    Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
         }
 
+        private void TogglePause()
+        {
+            if (State == GameState.Playing)
+            {
+                State = GameState.Paused;
+                Time.timeScale = 0f;
+            }
+            else if (State == GameState.Paused)
+            {
+                State = GameState.Playing;
+                Time.timeScale = 1f;
+                lastInputAt = Time.unscaledTime;
+            }
+        }
+
         private static void ChangeLevel(int levelIndex)
         {
             MazeLevelCatalog.Select(levelIndex);
@@ -193,7 +225,7 @@ namespace LIIA.SphereMaze
 
         private void SaveRecord()
         {
-            if (Score > BestScore || (Score == BestScore && (BestTime <= 0f || ElapsedTime < BestTime)))
+            if (NewRecord)
             {
                 PlayerPrefs.SetInt($"LIIA_BEST_SCORE_{LevelIndex}", Score);
                 PlayerPrefs.SetFloat($"LIIA_BEST_TIME_{LevelIndex}", ElapsedTime);
@@ -208,5 +240,5 @@ namespace LIIA.SphereMaze
         }
     }
 
-    public enum GameState { Attract, Playing, Won }
+    public enum GameState { Attract, Playing, Paused, Won }
 }

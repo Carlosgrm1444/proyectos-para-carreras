@@ -13,9 +13,11 @@ Si la escena no construye el nivel automáticamente, seleccionar `LIIAPrototype`
 
 ## Controles
 
-- Flechas o WASD: mover la bola por el laberinto.
-- Combinar dos direcciones para avanzar en diagonal donde el mapa lo permita.
+- Flechas o WASD: inclinar la esfera virtual. La gravedad, fricción e inercia hacen rodar la bola; la entrada no mueve directamente su posición.
+- Combinar dos direcciones inclina la esfera en diagonal.
 - `R`: reiniciar el intento.
+- `C`: recentrar la orientación de la cámara.
+- `Esc`: pausar o continuar la partida.
 - En pantalla inicial: `1` a `5` cambia el nivel; Enter, Espacio o una dirección inicia la partida.
 - En victoria: `R` repite; Enter, Espacio o `N` avanza al siguiente nivel.
 - `M`: activar o silenciar los efectos de sonido.
@@ -26,13 +28,15 @@ La entrada actual es teclado. No existe todavía comunicación con ESP32 ni inte
 
 - Los cinco PNG de `Assets/Resources/Maps/` son la fuente de verdad de los niveles.
 - Los píxeles oscuros son muros; blanco es piso; verde es inicio; rojo es meta; amarillo es estrella; azul es checkpoint y morado es trampa.
-- El nivel transforma los muros del PNG en un único mesh curvo extruido, con `MeshCollider` estático.
+- El nivel transforma las celdas transitables del PNG en caminos elevados curvos, con piso marfil, laterales azul petróleo, bordes dorados y `MeshCollider` estático.
 - La bola se mueve por celdas transitables y se posiciona matemáticamente sobre la superficie: no puede caer ni despegarse.
-- La cámara permanece sobre la bola siguiendo el arco exterior de la esfera; el planeta no rota durante la partida.
+- Los controles inclinan la esfera hasta 12° y la bola acelera como consecuencia de esa inclinación.
+- La cámara amortigua posición, orientación y distancia al seguir el arco exterior; ofrece vista general en portada y recentrado manual.
 - La primera y la última columna del PNG son vecinas: la bola cruza la parte posterior del planeta sin corte ni teletransporte visible.
 - Estrellas de puntuación, checkpoint, trampa, tres vidas, cronómetro, récord local y pantalla de victoria.
 - Modo de atracción para museo: pantalla inicial, instrucciones, selección de nivel y regreso automático tras la victoria.
-- Efectos sonoros procedurales originales para inicio, estrella, checkpoint, trampa y meta.
+- HUD adaptable a 1920×1080 y 1280×720, minimapa funcional, pausa y resultados con récord.
+- Efectos visuales económicos y sonidos procedurales originales para rodamiento, impacto, inicio, estrella, checkpoint, trampa y meta.
 
 ## Niveles finales
 
@@ -52,11 +56,12 @@ La proyección evita únicamente los polos exactos, donde una cuadrícula rectan
 - `Assets/Editor/CreateLIIAMazePng.cs`: genera y valida los PNG desde matrices legibles.
 - `MazeLevelCatalog.cs`: catálogo y selección de niveles.
 - `SphericalMazeLayout.cs`: interpreta el PNG y lo proyecta sobre la esfera.
-- `SphericalMazeMeshBuilder.cs`: construye el piso y los muros extruidos combinados.
-- `MazeBallController.cs`: movimiento y colisión determinista de la bola.
-- `BallFollowCamera.cs`: cámara cenital local, sin atravesar el planeta.
+- `SphericalMazeMeshBuilder.cs`: construye caminos elevados, laterales y bordes luminosos combinados.
+- `MazeBallController.cs`: inclinación, gravedad, inercia, rodamiento y colisión determinista de la bola.
+- `BallFollowCamera.cs`: cámara cenital local suavizada, vista general y recentrado sin atravesar el planeta.
 - `GameFlow.cs`: vidas, estados, puntuación, reinicio y récord.
-- `LIIAHUD.cs`: HUD de prueba sin assets externos.
+- `LIIAHUD.cs` y `LIIAMiniMap.cs`: interfaz espacial adaptable y minimapa basado en el estado real.
+- `LIIAGeometryFactory.cs`: planeta low-poly, estrellas, trampas, anillos, bandera y fondo estelar procedurales.
 
 ## Editar o generar un mapa
 
