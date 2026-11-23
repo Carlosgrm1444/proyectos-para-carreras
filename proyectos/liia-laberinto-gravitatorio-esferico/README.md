@@ -57,3 +57,7 @@ No se deben presentar como probadas las integraciones de ESP32, VR, proyección 
 ## Generar build de exposición
 
 En Unity, usar **LIIA → Build → Linux x86_64** o **Windows x86_64**. Los resultados se generan en `Builds/`, carpeta ignorada por Git. El build de Linux es el que se valida en este equipo; el de Windows requiere que el módulo de plataforma esté instalado en Unity antes de usarlo.
+
+## Verificar mecánicas
+
+En Unity, ejecutar **LIIA → Verificar mecánicas en batch**. El verificador revisa los tres PNG de nivel y el loop central de estrella, checkpoint, trampa y reinicio por tres vidas. También puede ejecutarse desde línea de comandos con el método `LIIA.SphereMaze.Editor.VerifyLIIAMechanics.Run`.

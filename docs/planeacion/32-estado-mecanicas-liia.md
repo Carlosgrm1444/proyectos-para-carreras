@@ -51,3 +51,7 @@ Para considerar esta etapa terminada sólo falta una prueba manual breve en el b
 
 No se añadirá hardware, ESP32, VR/AR ni pantalla/proyección de esfera a esta entrega de mecánicas.
 
+## Evidencia automatizada
+
+El verificador de proyecto **LIIA → Verificar mecánicas en batch** se ejecutó correctamente el 23 de noviembre de 2026. Comprueba los tres PNG, la unicidad de la estrella, retorno a checkpoint tras trampa y reinicio total al agotar las tres vidas.
+
