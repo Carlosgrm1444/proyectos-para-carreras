@@ -152,7 +152,7 @@ El juego debe mostrar que la IA aprende patrones y puede equivocarse. No debe us
 
 La esfera mostrada en el video de referencia está reservada como **posible soporte central de una experiencia de Informática e Inteligencia Artificial**, sin suponer que pueda proyectar o reproducir gráficos. La compatibilidad técnica sigue pendiente de validar.
 
-La [ficha de la esfera](09-liia-esfera-interactiva.md) contempla opciones como **Red planetaria**, **Nube en equilibrio**, **Entrena al planeta**, **Pulso IoT** y defensa de sistemas. *Red planetaria* es la primera opción recomendada para comparar prototipos; **aún no hay minijuego elegido**, ni programación autorizada. La estación no constituye otra carrera.
+La estación esférica tiene como **concepto seleccionado** [Laberinto gravitatorio esférico](15-liia-laberinto-gravitatorio-esferico.md): controlador electrónico de cuatro botones para inclinar virtualmente una esfera 3D, bolita con físicas que recorre caminos sobre la superficie exterior, estrellas coleccionables, meta y récord por puntuación. No pretende representar directamente una materia de LIIA, sino mostrar programación, electrónica y física simulada. [Ficha técnica general de la esfera](09-liia-esfera-interactiva.md) con alternativas anteriores y límites de factibilidad. **No está programado** y no se ha confirmado la esfera física como pantalla.
 
 ## Preguntas para docentes
 
