@@ -1,6 +1,6 @@
 # LIIA — Laberinto gravitatorio esférico (diseño de juego v0.2)
 
-> **Estado:** concepto jugable seleccionado en la fase de diseño; **todavía no implementado** y pendiente de validar el sistema de visualización de la esfera física.
+> **Estado:** vertical slice de teclado implementada y verificada en software. ESP32 y la visualización sobre la esfera física continúan pendientes de una etapa posterior.
 > **Carrera:** Licenciatura en Informática e Inteligencia Artificial (LIIA), no LTI.
 > **Tecnología diferencial:** controlador físico de 4 botones hecho con electrónica, que manipula una esfera 3D con físicas.
 > **Referencia:** [estación esférica y limitaciones técnicas](09-liia-esfera-interactiva.md).
@@ -100,11 +100,11 @@ Se muestra récord del laberinto y opción de reintentar
 9. Si falla la conexión de botones, hay una prueba de diagnóstico y entrada de teclado de respaldo.
 10. No se afirma que la esfera física sirva como pantalla hasta contar con evidencia experimental.
 
-## Pendientes
+## Pendientes de la etapa física
 
-- Confirmar puntos exactos por estrella y bono por tiempo.
-- Número de niveles y selección aleatoria o fija de laberintos.
-- Geometría, escala, interfaz de cámara y dimensiones del controlador.
-- Datos reales de la esfera física y prueba de visualización.
+- Calibrar puntos exactos por estrella y bono por tiempo con visitantes reales.
+- Evaluar selección fija o aleatoria después de medir los tres niveles actuales.
+- Definir geometría, escala y dimensiones del controlador físico.
+- Obtener datos reales de la esfera física y hacer una prueba de visualización.
 
 **Decisión registrada:** LIIA queda con el concepto **Laberinto gravitatorio esférico**, caminos sobre superficie exterior, controlador de cuatro botones, estrellas coleccionables y puntuación con récord. **Cada caída consume una de tres vidas y devuelve al último checkpoint; al perder la última vida se reinicia el laberinto completo.**

@@ -1,8 +1,7 @@
 # Memoria de trabajo
 
-- Estado actual: vertical slice de monitor implementada como proyecto Unity generado por código; falta validar en el editor.
-- La esfera física aparente es reflectante y no está confirmada como pantalla.
-- Confirmado: tres vidas, cuatro direcciones, estrellas, checkpoints y récord de puntuación; el tiempo desempata.
-- La escena se genera con primitivas en `LIIAPrototypeBootstrap`; no hay arte final ni hardware integrado.
-- Unity 2022.3.62f3 importó el proyecto y compiló los scripts en batchmode con salida 0; falta una prueba visual de Play.
-- Unity quedó abierto con el proyecto en la interfaz gráfica; el primer Play detectó y ya corrigió el acceso a `GUI.skin` desde `Awake` en `LIIAHUD`.
+- Estado actual: vertical slice de monitor con mecánicas completas de software. El mapa se genera en tiempo de ejecución mediante `LIIAPrototypeBootstrap` a partir de PNGs.
+- La esfera física aparente es reflectante y no está confirmada como pantalla; integración física y ESP32 están expresamente diferidas.
+- Confirmado: movimiento cinemático anclado a la esfera, tres vidas, cuatro direcciones de teclado, estrellas, checkpoints, trampas, meta, récord de puntuación y desempate por tiempo.
+- La escena se probó visualmente en Play durante la iteración de movimiento y cámara. El verificador batch comprueba mapas, ciclo de juego, puntuación y récord; el build Linux se construyó y pasó una prueba de humo.
+- No hay arte final ni hardware integrado. Antes del montaje sólo queda una prueba de presentación con monitor y audio.

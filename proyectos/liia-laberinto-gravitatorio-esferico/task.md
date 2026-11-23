@@ -1,14 +1,21 @@
-# Tareas
+# Estado de trabajo
 
-- [x] Crear la base de la vertical slice: escena generada, esfera, sendero exterior de dos regiones, bolita física, muros, hueco, estrella, checkpoint, meta, vidas y reinicio.
-- [x] Implementar `ISphereTiltInput` con teclado; controlar inclinación, nunca movimiento directo de la bolita.
-- [x] Implementar la restricción radial inicial y amortiguación de la bolita; validar estabilidad en Unity antes de ajustar balance.
-- [ ] Preparar interfaz de ESP32 serial sólo como integración opcional y documentar pruebas reales.
+## Alcance de la entrega actual
 
-## Pendientes de verificación
+- [x] Juego de teclado: bola restringida a la superficie, laberintos PNG, movimiento con inercia, colisión, cámara local y giro visual.
+- [x] Loop arcade: tres niveles, estrellas, checkpoint, trampas, tres vidas, reinicio, meta, puntuación, bono de rapidez y récord por nivel.
+- [x] Presentación de software: pantalla inicial, selector de nivel, HUD, minimapa, formas además de color, efectos sonoros originales y retorno al modo de atracción.
+- [x] Verificación automática de mapas, vidas, checkpoint, puntuación, victoria y récord; build Linux construido y probado en modo de humo.
 
-- [x] Abrir el proyecto en Unity 2022.3.62f3 y resolver paquetes/compilar scripts en batchmode (`UNITY_EXIT=0`).
-- [x] Abrir el proyecto en la interfaz gráfica; Unity cargó la escena y se corrigió el primer error del HUD detectado en Play.
-- [ ] Ejecutar Play y observar visualmente el recorrido completo con teclado.
-- [ ] Probar recorrido por las dos regiones, caída, checkpoint, meta y récord.
-- [ ] Ajustar parámetros de física tras observar el primer playtest.
+## Evidencia manual disponible
+
+- [x] La escena se abrió en Unity y se iteraron movimiento, cámara, peso percibido y orientación a partir de pruebas de Play con teclado.
+- [x] Se comprobó visualmente la recogida de estrella, checkpoint, trampa y llegada a meta durante la iteración.
+- [ ] Antes de un montaje público: pasada final con monitor y audio para apreciar legibilidad a distancia, minimapa y sonidos. No bloquea el cierre de mecánicas de software.
+
+## Diferido explícitamente
+
+- [ ] ESP32, botones físicos y diagnóstico de conexión.
+- [ ] Integración con pantallas, proyección o esfera física.
+
+Estos dos últimos grupos se abordarán en una etapa posterior: no forman parte de la entrega actual de mecánicas.
