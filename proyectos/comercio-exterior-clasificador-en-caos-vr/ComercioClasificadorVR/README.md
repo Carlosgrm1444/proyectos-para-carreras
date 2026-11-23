@@ -21,4 +21,4 @@ Ya están instalados OpenXR 1.19.0, XR Interaction Toolkit 3.7.0, Pipeline 1.0.1
 
 ## Próximo hito
 
-Configurar el perfil de interacción Meta/Quest dentro de OpenXR, crear el rig XR y validar locomoción continua con el visor conectado. Los bloqueos o verificaciones de hardware están en `FALTANTES.md`.
+Configurar el perfil de interacción Meta/Quest dentro de OpenXR, añadir locomoción continua y giro por intervalos, y validar el rig con el visor conectado. El XR Origin base ya está en `Assets/Scenes/Comercio.unity`. Los bloqueos o verificaciones de hardware están en `FALTANTES.md`.

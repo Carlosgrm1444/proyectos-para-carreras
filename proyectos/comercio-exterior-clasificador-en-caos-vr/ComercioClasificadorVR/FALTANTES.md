@@ -16,6 +16,8 @@ Este documento registra únicamente elementos que no pueden cerrarse de forma fi
 - [ ] Verificar que Meta/Oculus sea el runtime OpenXR activo dentro de Unity.
 - [ ] Crear y probar el perfil de interacción de los controladores del visor.
 - [x] Crear las escenas `Bootstrap.unity` y `Comercio.unity`.
+- [x] Crear un XR Origin base con cámara, offset y seguimiento de pose en `Comercio.unity`.
+- [ ] Añadir y probar locomoción continua, giro por intervalos y recentrado con los controles reales.
 
 ## Base creada en la Fase 1
 
@@ -25,6 +27,7 @@ Este documento registra únicamente elementos que no pueden cerrarse de forma fi
 - [x] Estados base de sesión: inicio, tutorial, juego, pausa, resultados y derrota.
 - [x] Configuración editable de cola, integridad, daño, repulsión y puntuación.
 - [x] Escenas base creadas con cámara y luz de plantilla.
+- [x] Escena `Comercio.unity` preparada con `XR Origin`, `Camera Offset` y `Main Camera`.
 
 ## Pendientes de contenido
 
@@ -34,7 +37,7 @@ Este documento registra únicamente elementos que no pueden cerrarse de forma fi
 
 ## Verificación pendiente
 
-La compilación de scripts terminó sin errores. Unity conserva un aviso/error de importación de un shader interno de Probe Volume de URP (`TraceVirtualOffset.urtshader`); no bloquea la compilación, pero debe revisarse antes de la primera build. 
+La compilación de scripts terminó sin errores. Unity conserva un aviso/error de importación de un shader interno de Probe Volume de URP (`TraceVirtualOffset.urtshader`); no bloquea la compilación, pero debe revisarse antes de la primera build. También debe comprobarse que el perfil OpenXR activo dentro de Unity coincida con Meta Quest; Windows ya detecta el runtime de Meta.
 
 ## Criterio para cerrar este documento
 
