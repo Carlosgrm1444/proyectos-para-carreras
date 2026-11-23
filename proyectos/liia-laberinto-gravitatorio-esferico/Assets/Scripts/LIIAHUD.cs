@@ -17,7 +17,7 @@ namespace LIIA.SphereMaze
             if (GameFlow.Instance == null) return;
             var flow = GameFlow.Instance;
             GUI.Label(new Rect(24, 18, 600, 40), "LIIA · LABERINTO GRAVITATORIO", title);
-            GUI.Label(new Rect(24, 58, 600, 30), $"Flechas: inclinar esfera   |   R: reiniciar", body);
+            GUI.Label(new Rect(24, 58, 600, 30), $"Flechas: mover bola   |   R: reiniciar", body);
             GUI.Label(new Rect(24, 92, 500, 30), $"Vidas: {flow.Lives}   Estrellas: {flow.StarsCollected}   Puntos: {flow.Score}", body);
             GUI.Label(new Rect(24, 126, 500, 30), $"Tiempo: {flow.ElapsedTime:0.0}s   Récord: {flow.BestScore}", body);
             if (flow.State == GameState.Won)
