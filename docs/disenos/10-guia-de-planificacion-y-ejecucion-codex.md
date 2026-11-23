@@ -136,3 +136,4 @@ El resultado orienta la selección, **no** sustituye la validación docente ni u
 - Los desarrollos de Codex se realizan en ramas y PRs separados; ningún merge automático por una decisión documental.
 - El propietario del proyecto decide prioridades; docentes validan la exactitud del proceso; un responsable técnico verifica factibilidad y pruebas.
 - No se afirma que la documentación sea un prototipo o que una integración haya sido probada cuando no lo está.
+

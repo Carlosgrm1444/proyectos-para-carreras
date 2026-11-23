@@ -39,3 +39,4 @@ La partición que contiene el proyecto dispone de **40 GB libres de 342 GB** (88
 ## Alcance de este registro
 
 Este archivo describe el equipo desde el que se está documentando y desarrollando. No sustituye las especificaciones de la computadora de exhibición, de visores VR, cámaras, proyectores, microcontroladores o periféricos que se elijan para cada minijuego.
+

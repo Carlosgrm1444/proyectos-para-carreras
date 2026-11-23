@@ -32,3 +32,4 @@ Cada carpeta en `proyectos/` contiene los archivos operativos de `agent-init`:
 Lee primero la [arquitectura arcade de museo](docs/arquitectura/00-arquitectura-y-criterios-de-museo.md) y el [sprint de siete prototipos](docs/planeacion/21-sprint-48h-siete-videojuegos.md). El código aún no está iniciado: los proyectos deben crear una vertical slice funcional antes de arte final o integraciones físicas complejas.
 
 Las integraciones VR, AR, cámara, proyección y electrónica sólo cuentan como implementadas cuando se prueban con el hardware real. Los modos de teclado, ratón y monitor son respaldos imprescindibles, no sustitutos de esa validación.
+

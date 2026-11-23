@@ -92,3 +92,4 @@ Debe existir una forma de detectar cuándo una pieza está colocada de manera es
 - Definir modelo de visor, volumen de la caja y duración objetivo.
 
 **Decisión clave:** *Carga equilibrada* será **VR con vista superior de grúa y solamente apilamiento**, no VR desde dentro del remolque ni juego combinado con conducción.
+

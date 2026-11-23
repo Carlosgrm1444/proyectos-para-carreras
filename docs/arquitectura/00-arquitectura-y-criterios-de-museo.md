@@ -205,3 +205,4 @@ La mejor estrategia es crear el núcleo común, probar varias ideas en gris y es
 - [MediaPipe Vision](https://ai.google.dev/edge/api/mediapipe/python/mp/tasks/vision)
 - [OpenCV ArUco](https://docs.opencv.org/4.11.0/d1/dcb/tutorial_aruco_faq.html)
 - [PlatformIO con Arduino y ESP32](https://docs.platformio.org/en/stable/frameworks/arduino.html)
+

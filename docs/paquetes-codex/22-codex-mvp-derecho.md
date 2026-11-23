@@ -44,3 +44,4 @@ Vida jugador 5; Centro 10; impacto −1; NPC salvado +10; NPC perdido −5; olea
 5. Todos los parámetros de balance se exponen como editables. Los valores de ejemplo son **provisionales**, no decisiones confirmadas del responsable.
 6. Probar en editor y build sólo cuando estén disponibles. Registrar qué se probó realmente y qué hardware está pendiente. Modo teclado/ratón es respaldo, no prueba de AR/VR/cámara.
 7. Guardar archivos fuente, escenas, `.meta`, `Packages`, `ProjectSettings`, instrucciones de arranque, controles y checklist; ignorar `Library`, `Temp`, logs y builds. Crear PR, sin merge automático.
+

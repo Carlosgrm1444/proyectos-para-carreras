@@ -144,3 +144,4 @@ La carrera integra administración estratégica, operaciones, recursos humanos, 
 - ¿Qué indicador debe tener mayor peso: productividad, calidad, finanzas o bienestar?
 - ¿Qué crisis realista puede simplificarse sin deformar la profesión?
 
+

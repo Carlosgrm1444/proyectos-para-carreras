@@ -147,3 +147,4 @@ La experiencia no debe diagnosticar, medir personalidad ni inferir emociones por
 - ¿Qué retos son apropiados para público infantil y adulto?
 - ¿Cómo presentar el proceso sin que parezca una evaluación psicológica?
 
+

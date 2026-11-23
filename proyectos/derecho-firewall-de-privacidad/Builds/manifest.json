@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-11-23",
+  "engine": "Unity 6000.6.10f1",
+  "artifacts": [
+    {
+      "name": "DerechoFirewall-Windows-x64.zip",
+      "bytes": 40874299,
+      "sha256": "1ABAC315383D77ADDFF53E9F7A44B2244954318BB0377907BCE3819A34C48F1E"
+    },
+    {
+      "name": "DerechoFirewall-WebGL.zip",
+      "bytes": 8138777,
+      "sha256": "3AA985C825D90A3D03438516F7A81FB61981E80C5BE22749971D319FE91E08CB"
+    }
+    ,{
+      "name": "DerechoFirewall-Linux-x64.zip",
+      "bytes": 37296679,
+      "sha256": "94FDDFCF7997AE9F11D05EEA44BCEB6EC7F294DB90B256F1AD517F3ABF87FD45"
+    }
+  ]
+}

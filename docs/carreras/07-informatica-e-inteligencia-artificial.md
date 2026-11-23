@@ -161,3 +161,4 @@ La estación esférica tiene como **concepto seleccionado** [Laberinto gravitato
 - ¿Qué error de datos comprendería mejor el público?
 - ¿Qué partes deben ser físicamente reales y cuáles pueden ser simuladas?
 
+

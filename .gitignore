@@ -4,6 +4,11 @@
 **/[Oo]bj/
 **/[Bb]uild/
 **/[Bb]uilds/
+!proyectos/**/Builds/
+proyectos/**/Builds/*
+!proyectos/**/Builds/Packages/
+proyectos/**/Builds/Packages/*
+!proyectos/**/Builds/Packages/*.zip
 **/[Ll]ogs/
 **/[Uu]ser[Ss]ettings/
 **/[Mm]emoryCaptures/
@@ -32,3 +37,4 @@ Thumbs.db
 *.pem
 capturas-personales/
 videos-usuarios/
+

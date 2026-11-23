@@ -20,3 +20,4 @@ No mezcles escenas, dependencias, assets o decisiones de un juego con otro. Cada
 - Los juegos con cámara deben procesar sin almacenar imágenes o video. Psicología no es una prueba clínica.
 - Las categorías de Comercio Exterior son didácticas mientras no las valide un docente; el juego de Derecho no brinda asesoría jurídica.
 - Usar ramas por trabajo y PR/revisión antes de fusionar cambios de implementación a `main`.
+

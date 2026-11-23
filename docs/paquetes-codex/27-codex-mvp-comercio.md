@@ -46,3 +46,4 @@ Recepción máxima 5 piezas, una nueva pieza cada 20 s con intervalo decreciente
 - Implementa entrada de teclado/ratón para pruebas cuando falle hardware. El fallback NO demuestra integración real de XR, MediaPipe, AR o esfera.
 - Guarda récord local, documenta plataforma, versión de Unity, controles, procedimiento de arranque, pruebas ejecutadas y pendientes en README de la escena. No se suben cachés `Library`, `Temp`, builds ni datos personales.
 - Commit, push y PR; no merge a `main` sin revisión. Nunca afirmar haber ejecutado lo que sólo se escribió.
+

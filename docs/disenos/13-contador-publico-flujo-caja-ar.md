@@ -83,3 +83,4 @@ Estos comportamientos son **propuestas**, no enemigos aprobados. No se habilitan
 - Regla de colisión con enemigos y condiciones exactas de derrota.
 - Número de niveles/mapas y metas financieras específicas.
 - Si todas las piezas caben en una sola hoja o requieren soportes auxiliares para buena detección.
+
