@@ -55,6 +55,8 @@ namespace LIIA.SphereMaze
             var flow = NewObject("GameFlow").AddComponent<GameFlow>();
             flow.Configure(ball);
             NewObject("HUD").AddComponent<LIIAHUD>();
+            var diagnostics = NewObject("Diagnostics").AddComponent<LIIADevDiagnostics>();
+            diagnostics.Configure(ball, layout);
             CreateMarker("Start", layout.StartCell, layout, new Color(.12f, .95f, .4f));
             CreateMarker("Goal", layout.GoalCell, layout, new Color(.98f, .18f, .32f));
             CreateCamera(ballObject.transform, root.transform);

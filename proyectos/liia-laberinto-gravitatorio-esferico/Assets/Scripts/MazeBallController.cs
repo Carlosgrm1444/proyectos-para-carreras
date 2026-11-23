@@ -19,6 +19,8 @@ namespace LIIA.SphereMaze
         private Vector2 velocity;
 
         public Vector2 GridPosition => position;
+        public Vector2 Velocity => velocity;
+        public float Speed => velocity.magnitude;
 
         public void Configure(SphericalMazeLayout maze, MonoBehaviour inputSource, Transform visual)
         {
