@@ -9,6 +9,7 @@ namespace LIIA.SphereMaze
         [SerializeField] private float surfaceRadius = 5.22f;
         [SerializeField] private float acceleration = 7f;
         [SerializeField] private float damping = 0.18f;
+        [SerializeField] private float surfaceGrip = 12f;
         [SerializeField] private float radialCorrection = 35f;
         [SerializeField] private float fallThreshold = 6.1f;
 
@@ -44,6 +45,14 @@ namespace LIIA.SphereMaze
             var tangentialGravity = Vector3.ProjectOnPlane(gravity, normal);
             body.AddForce(tangentialGravity * acceleration, ForceMode.Acceleration);
             body.AddForce(-body.velocity * damping, ForceMode.Acceleration);
+
+            var tiltController = sphereRoot.GetComponent<SphereTiltController>();
+            if (tiltController != null)
+            {
+                var surfaceVelocity = Vector3.Cross(tiltController.AngularVelocity, offset);
+                var relativeVelocity = surfaceVelocity - body.velocity;
+                body.AddForce(Vector3.ProjectOnPlane(relativeVelocity, normal) * surfaceGrip, ForceMode.Acceleration);
+            }
 
             var radialError = surfaceRadius - offset.magnitude;
             body.AddForce(normal * radialError * radialCorrection, ForceMode.Acceleration);

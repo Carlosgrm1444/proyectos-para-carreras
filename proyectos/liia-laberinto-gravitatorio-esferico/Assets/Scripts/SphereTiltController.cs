@@ -5,20 +5,16 @@ namespace LIIA.SphereMaze
     public sealed class SphereTiltController : MonoBehaviour
     {
         [SerializeField] private MonoBehaviour inputSource;
-        [SerializeField] private float maxTiltDegrees = 20f;
-        [SerializeField] private float tiltResponse = 7f;
-        [SerializeField] private float returnSpeed = 5f;
+        [SerializeField] private float rotationSpeed = 70f;
 
         private ISphereTiltInput input;
-        private Quaternion baseRotation;
-
         public Vector2 CurrentTilt { get; private set; }
+        public Vector3 AngularVelocity { get; private set; }
 
         public void ConfigureInput(MonoBehaviour source) => inputSource = source;
 
         private void Awake()
         {
-            baseRotation = transform.localRotation;
             input = inputSource as ISphereTiltInput;
             if (input == null)
             {
@@ -31,10 +27,17 @@ namespace LIIA.SphereMaze
 
         private void Update()
         {
-            var target = input == null ? Vector2.zero : input.ReadTilt();
-            CurrentTilt = Vector2.Lerp(CurrentTilt, target, (target == Vector2.zero ? returnSpeed : tiltResponse) * Time.deltaTime);
-            var tilt = Quaternion.Euler(-CurrentTilt.y * maxTiltDegrees, 0f, CurrentTilt.x * maxTiltDegrees);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, baseRotation * tilt, 12f * Time.deltaTime);
+            CurrentTilt = input == null ? Vector2.zero : input.ReadTilt();
+            var axis = new Vector3(-CurrentTilt.y, 0f, CurrentTilt.x);
+            if (axis.sqrMagnitude < 0.0001f)
+            {
+                AngularVelocity = Vector3.zero;
+                return;
+            }
+
+            axis.Normalize();
+            AngularVelocity = axis * rotationSpeed * Mathf.Deg2Rad;
+            transform.Rotate(axis, rotationSpeed * Time.deltaTime, Space.World);
         }
     }
 }

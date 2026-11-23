@@ -89,6 +89,21 @@ namespace LIIA.SphereMaze
             track.transform.rotation = Quaternion.LookRotation(tangent.normalized, normal);
             track.transform.localScale = new Vector3(0.72f, 0.16f, 1.15f);
             SetColor(track, new Color(0.18f, 0.65f, 0.85f));
+
+            var right = track.transform.right;
+            CreateRail(root, track.transform.position + right * 0.48f + normal * 0.25f, track.transform.rotation);
+            CreateRail(root, track.transform.position - right * 0.48f + normal * 0.25f, track.transform.rotation);
+        }
+
+        private void CreateRail(Transform root, Vector3 position, Quaternion rotation)
+        {
+            var rail = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            rail.name = "TrackRail";
+            rail.transform.SetParent(root, false);
+            rail.transform.position = position;
+            rail.transform.rotation = rotation;
+            rail.transform.localScale = new Vector3(0.12f, 0.45f, 1.15f);
+            SetColor(rail, new Color(0.08f, 0.35f, 0.5f));
         }
 
         private void CreateCheckpoint(Transform root, float longitude)
