@@ -7,6 +7,7 @@
 
 ## Pendientes de verificación
 
-- [ ] Abrir y ejecutar `Assets/Scenes/LIIA.unity` en Unity 2022.3 LTS.
+- [x] Abrir el proyecto en Unity 2022.3.62f3 y resolver paquetes/compilar scripts en batchmode (`UNITY_EXIT=0`).
+- [ ] Ejecutar Play y observar visualmente `Assets/Scenes/LIIA.unity`.
 - [ ] Probar recorrido por las dos regiones, caída, checkpoint, meta y récord.
 - [ ] Ajustar parámetros de física tras observar el primer playtest.

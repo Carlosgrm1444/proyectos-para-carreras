@@ -1,10 +1,10 @@
 # LIIA — Laberinto gravitatorio esférico
 
-Vertical slice inicial para **Unity 2022.3 LTS**. El prototipo se genera al iniciar `Assets/Scenes/LIIA.unity`, usando primitivas para validar primero el control y las físicas.
+Vertical slice inicial para **Unity 2022.3.62f3 LTS**. El prototipo se genera al iniciar `Assets/Scenes/LIIA.unity`, usando primitivas para validar primero el control y las físicas.
 
 ## Cómo abrirlo
 
-1. Instalar Unity 2022.3 LTS con soporte de escritorio para la plataforma elegida.
+1. Instalar/abrir Unity 2022.3.62f3 con soporte de escritorio para la plataforma elegida.
 2. Abrir esta carpeta como proyecto Unity.
 3. Abrir `Assets/Scenes/LIIA.unity`.
 4. Pulsar Play.
@@ -40,6 +40,6 @@ La entrada actual es teclado. No existe todavía comunicación con ESP32 ni inte
 
 ## Estado de verificación
 
-La máquina de desarrollo no tiene Unity 2022.3 disponible en el `PATH`, por lo que todavía no se ha ejecutado el editor, la escena ni una compilación. El siguiente paso es abrir el proyecto en Unity, corregir cualquier diferencia de API/importación y registrar aquí la evidencia de ejecución.
+El editor está instalado en el segundo SSD, fuera del repositorio: `/media/carlos-rodriguez/nvme0n1p1/repos/personal/Unity/Hub/Editor/2022.3.62f3/Editor/Unity`. La importación y compilación batch ya terminaron con salida 0; todavía falta observar la escena en Play.
 
 No se deben presentar como probadas las integraciones de ESP32, VR, proyección o esfera física.
