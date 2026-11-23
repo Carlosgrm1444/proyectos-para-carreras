@@ -27,10 +27,16 @@ $destination = Join-Path $cloneRoot "proyectos\derecho-firewall-de-privacidad"
 New-Item -ItemType Directory -Force -Path $destination | Out-Null
 
 robocopy $projectRoot $cloneRoot /E /XD .git Library Logs Temp UserSettings Builds /XF *.zip *.exe *.dll *.pdb | Out-Null
-robocopy $source (Join-Path $destination "Builds\Packages") /E /XF *.exe *.dll *.pdb | Out-Null
+$packages = Join-Path $source "Builds\Packages"
+$packageDestination = Join-Path $destination "Builds\Packages"
+if (Test-Path $packages) {
+    New-Item -ItemType Directory -Force -Path $packageDestination | Out-Null
+    robocopy $packages $packageDestination /E /XF *.exe *.dll *.pdb | Out-Null
+}
 
 & $git -C $cloneRoot lfs track "proyectos/**/Builds/Packages/*.zip"
 & $git -C $cloneRoot add -A
+& $git -C $cloneRoot add -f "proyectos/derecho-firewall-de-privacidad/Builds/Packages/*.zip"
 if (-not (& $git -C $cloneRoot diff --cached --quiet)) {
     & $git -C $cloneRoot commit -m "feat: complete controller-only gameplay and exportables"
 }
