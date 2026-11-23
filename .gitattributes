@@ -1,0 +1,2 @@
+proyectos/**/Builds/Packages/*.zip filter=lfs diff=lfs merge=lfs -text
+
