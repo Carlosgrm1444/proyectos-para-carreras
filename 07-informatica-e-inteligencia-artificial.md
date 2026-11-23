@@ -148,6 +148,12 @@ El juego debe mostrar que la IA aprende patrones y puede equivocarse. No debe us
 - **Nube en equilibrio + Fábrica de agentes:** operar una plataforma automatizada.
 - **Planta IoT + Autotransporte:** monitorear una flotilla o cadena de frío.
 
+## Estación esférica (propuesta exploratoria de LIIA)
+
+La esfera mostrada en el video de referencia está reservada como **posible soporte central de una experiencia de Informática e Inteligencia Artificial**, sin suponer que pueda proyectar o reproducir gráficos. La compatibilidad técnica sigue pendiente de validar.
+
+La [ficha de la esfera](09-liia-esfera-interactiva.md) contempla opciones como **Red planetaria**, **Nube en equilibrio**, **Entrena al planeta**, **Pulso IoT** y defensa de sistemas. *Red planetaria* es la primera opción recomendada para comparar prototipos; **aún no hay minijuego elegido**, ni programación autorizada. La estación no constituye otra carrera.
+
 ## Preguntas para docentes
 
 - ¿Qué debe representar primero la nueva carrera: IA, programación, datos, nube o ciberseguridad?
