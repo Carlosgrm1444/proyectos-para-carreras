@@ -2,7 +2,7 @@
 
 ## Enfoque del proyecto
 
-Este espacio no define todavía un videojuego final por carrera. Reúne **procesos reales que pueden transformarse en varios minijuegos arcade**, con la filosofía de Math Party y `ProyectVR`:
+Este espacio reúne las ideas originales y las **fichas de diseño de siete videojuegos seleccionados, uno por carrera**, con la filosofía de Math Party y `ProyectVR`. **Son proyectos planificados, todavía no juegos programados:**
 
 - Partidas cortas y fáciles de entender.
 - Un personaje, vehículo, herramienta o espacio que se controla directamente.
@@ -26,6 +26,24 @@ Este espacio no define todavía un videojuego final por carrera. Reúne **proces
 | [Informática e Inteligencia Artificial](07-informatica-e-inteligencia-artificial.md) | 8 | Datos, modelos, programación, redes, nube, ciberseguridad, agentes e IoT |
 
 Comercio Exterior y Aduanas queda fuera del alcance. Su documento anterior se conserva únicamente como referencia histórica en [08-comercio-exterior-y-aduanas.md](08-comercio-exterior-y-aduanas.md).
+
+## Videojuegos seleccionados — catálogo para desarrollo
+
+Los siete conceptos ya están definidos a nivel de diseño y pueden utilizarse para preparar tareas de Codex; **aún faltan validaciones técnicas y balance**. Las reglas de cada ficha prevalecen sobre los ejemplos genéricos de puntuación y rondas de este README.
+
+| Carrera | Videojuego seleccionado | Tecnología/interacción | Mecánica y condición de partida |
+|---|---|---|---|
+| [Administración](01-administracion.md) | [Almacén al límite](11-administracion-almacen-al-limite-hibrido.md) | Videomapping, cámara y cuatro anaqueles físicos reubicables | Pedidos, PEPS/UEPS, demanda cambiante; termina al saturarse el atraso |
+| [Autotransporte de Carga](02-autotransporte-de-carga.md) | [Carga equilibrada VR](17-autotransporte-carga-equilibrada-grua-vr.md) | VR con grúa cenital y cajas virtuales con físicas | Apilar dentro de un tráiler; **3 rondas, 3 vidas**, reinicio desde la ronda 1 al agotarlas |
+| [Comercio Exterior](03-comercio-exterior.md) | [Clasificador en caos](12-comercio-exterior-clasificador-en-caos-vr.md) | VR en primera persona con joystick | Inspeccionar y clasificar en 3 opciones, entregar sin feedback previo, defender la carga; derrota por acumulación |
+| [Contador Público](04-contador-publico.md) | [Flujo de caja superviviente](13-contador-publico-flujo-caja-ar.md) | AR con target central, cruz de movimiento y marcador giratorio | Controlar válvulas, huir de enemigos, cumplir pagos; récord por **menor tiempo** |
+| [Derecho](05-derecho.md) | [Firewall de privacidad](14-derecho-firewall-de-privacidad.md) | Arcade isométrico con mando | Defender solicitudes legítimas y Centro de Datos; supervivencia infinita, derrota si cae jugador o centro |
+| [Psicología](06-psicologia.md) | [Atención bajo ataque](16-psicologia-atencion-bajo-ataque-mediapipe.md) | MediaPipe y cámara corporal | Tocar estímulos correctos, errores restan vida, combos curan; récord por puntos |
+| [LIIA — Informática e IA](07-informatica-e-inteligencia-artificial.md) | [Laberinto gravitatorio esférico](15-liia-laberinto-gravitatorio-esferico.md) | 4 botones electrónicos y física 3D en esfera virtual | Rodar bolita por caminos exteriores y recoger estrellas; **3 vidas**, checkpoints y récord por puntos |
+
+**LIIA:** la esfera física vista en el video todavía no está verificada como pantalla/proyección. Prototipar en un monitor y validar el hardware antes de planificar la integración.
+
+**Organización de trabajo:** [Arquitectura compartida](00-arquitectura-y-criterios-de-museo.md) y [guía de documentación/Codex](10-guia-de-planificacion-y-ejecucion-codex.md). Los archivos 11–17 son las fichas de los siete videojuegos.
 
 ## Sistema arcade compartido
 
