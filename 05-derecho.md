@@ -82,14 +82,17 @@ Los casos deben ser ficticios, familiares y revisados por docentes. El juego no 
 - **Tecnología posible:** micrófono opcional y fichas de argumento.
 - **Cuidado:** una IA no debe decidir quién tiene razón; la evaluación debe usar reglas transparentes.
 
-### 6. Firewall de privacidad
+### 6. Firewall de privacidad — concepto seleccionado para diseño
 
-- **Proceso:** protección de datos y consentimiento.
-- **Gameplay:** defender una red clasificando solicitudes de acceso, permisos y fugas mientras aumenta el tráfico.
-- **Puntos:** datos protegidos, solicitudes legítimas atendidas y falsos bloqueos evitados.
-- **Dificultad:** permisos encadenados, terceros, datos sensibles y ataques simulados.
-- **Modos:** tower defense individual o responsable jurídico y técnico cooperando.
-- **Tecnología posible:** pantalla táctil, red visual y luces físicas.
+- **Proceso:** protección jurídica de datos personales, consentimiento y ejercicio de derechos ARCO; combate y personajes como metáforas, no como procedimientos jurídicos literales.
+- **Gameplay:** arcade **infinito** con cámara isométrica, estética de aventura tipo Tunic y control tradicional. Un guardián protege el Centro de Datos y escolta solicitudes legítimas representadas por personas. Enemigos de varios tipos intentan eliminarlas, atacar al guardián o llegar al centro.
+- **Armas:** espada «Firewall» (cuerpo a cuerpo), arco «ARCO» (distancia; alude a Acceso, Rectificación, Cancelación y Oposición) y escudo de consentimiento (bloqueo y contraataque). Ciertos enemigos requieren un arma o secuencia concreta.
+- **Enemigos:** distintos patrones y analogías legales: acceso indebido, divulgación, obstrucción de derechos y tratamientos irregulares. Los que pueden atacar centro/jugador priorizan al más próximo y responden al golpe recibido del jugador.
+- **Puntuación:** + por solicitud legítima que llega, − por solicitud legítima eliminada; récord por **mayor puntuación** en una partida sin final predeterminado.
+- **Vidas y derrota:** jugador y centro tienen vidas separadas. **Se acaba si cualquiera de las dos llega a cero**; ataques enemigos y solicitudes maliciosas pueden dañar al centro.
+- **Rachas y powerups:** las rachas **aumentan la probabilidad** de apariciones, pero ya existen drops aleatorios sin racha. Pueden mejorar velocidad, ataque/defensa o **recuperar vida de jugador y centro a la vez**.
+- **Escenario y dificultad:** muros, pasillos, obstáculos y oleadas progresivamente más exigentes.
+- **Tecnología elegida:** **videojuego tradicional Unity + mando**, sin obligar AR/VR. Ficha ampliada: [Firewall de privacidad — diseño arcade infinito](14-derecho-firewall-de-privacidad.md).
 
 ### 7. Taller de propiedad intelectual
 
