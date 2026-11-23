@@ -1,4 +1,6 @@
-# Sprint 48 h — primeros prototipos funcionales: Derecho y Administración
+# Sprint anterior (SUPERADO) — primeros prototipos de Derecho y Administración
+
+> **AVISO:** este plan de DOS juegos está reemplazado por el plan vigente de [SIETE juegos en 48 horas](21-sprint-48h-siete-videojuegos.md) y sus paquetes [22–28](AGENTS.md). No usar este archivo como encargo principal de Codex; se conserva sólo como referencia.
 
 > **Estado:** plan de prototipo acordado como prioridad; no implica que ya exista código ni que el hardware esté validado.
 > **Fuentes de requisitos vigentes:** [Derecho](14-derecho-firewall-de-privacidad.md), [Administración](11-administracion-almacen-al-limite-hibrido.md).
