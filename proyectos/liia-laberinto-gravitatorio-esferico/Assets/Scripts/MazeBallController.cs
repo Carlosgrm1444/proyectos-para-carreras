@@ -32,6 +32,7 @@ namespace LIIA.SphereMaze
         public Vector2 TiltDegrees => tiltDegrees;
         public bool IsRespawning => isRespawning;
         public Vector2Int StartCell => Vector2Int.RoundToInt(startPosition);
+        public SphericalMazeLayout Layout => layout;
 
         public void Configure(SphericalMazeLayout maze, MonoBehaviour inputSource, Transform visual)
         {

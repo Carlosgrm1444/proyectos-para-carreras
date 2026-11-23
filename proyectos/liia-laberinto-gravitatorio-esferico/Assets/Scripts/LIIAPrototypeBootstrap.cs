@@ -51,7 +51,10 @@ namespace LIIA.SphereMaze
                 level.WrapHorizontally);
             SphericalMazeMeshBuilder.Build(layout, root.transform);
 
-            var input = root.AddComponent<KeyboardSphereTiltInput>();
+            var keyboardInput = root.AddComponent<KeyboardSphereTiltInput>();
+            var esp32Input = root.AddComponent<Esp32UsbBridgeTiltInput>();
+            var input = root.AddComponent<SphereTiltInputRouter>();
+            input.Configure(keyboardInput, esp32Input);
             var ballObject = new GameObject("Ball_ConstrainedToMap");
             ballObject.name = "Ball_ConstrainedToMap";
             var ballVisual = new GameObject("BallVisual_Rolling");
@@ -71,7 +74,7 @@ namespace LIIA.SphereMaze
             flow.Configure(ball, level, 3, layout.StarCells.Count);
             NewObject("HUD").AddComponent<LIIAHUD>();
             var diagnostics = NewObject("Diagnostics").AddComponent<LIIADevDiagnostics>();
-            diagnostics.Configure(ball, layout);
+            diagnostics.Configure(ball, layout, input);
             var miniMap = NewObject("MiniMap").AddComponent<LIIAMiniMap>();
             miniMap.Configure(ball, layout);
             CreateStartMarker(layout.StartCell, layout);

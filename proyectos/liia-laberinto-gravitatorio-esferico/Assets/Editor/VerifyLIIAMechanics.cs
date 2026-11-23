@@ -11,7 +11,8 @@ namespace LIIA.SphereMaze.Editor
         {
             VerifyMaps();
             VerifyGameplayLoop();
-            Debug.Log("VERIFICACIÓN LIIA APROBADA: cinco niveles 360°, costura, ciclo de juego, puntuación y récord correctos.");
+            VerifyEsp32Protocol();
+            Debug.Log("VERIFICACIÓN LIIA APROBADA: cinco niveles 360°, costura, ciclo de juego, puntuación, récord y protocolo ESP32 correctos.");
         }
 
         private static void VerifyMaps()
@@ -136,6 +137,18 @@ namespace LIIA.SphereMaze.Editor
             map.SetPixel(4, 1, new Color(.95f, .15f, .28f));
             map.Apply();
             return map;
+        }
+
+        private static void VerifyEsp32Protocol()
+        {
+            Require(Esp32UsbBridgeTiltInput.TryParsePacket("BTN,42,1,0,0,1", out var sequence, out var direction),
+                "Un paquete ESP32 válido debe poder leerse.");
+            Require(sequence == 42 && Vector2.Distance(direction, new Vector2(1f, 1f).normalized) < .0001f,
+                "El paquete ESP32 debe preservar secuencia y diagonal.");
+            Require(!Esp32UsbBridgeTiltInput.TryParsePacket("BTN,1,2,0,0,0", out _, out _),
+                "El protocolo ESP32 debe rechazar estados de botón inválidos.");
+            Require(!Esp32UsbBridgeTiltInput.TryParsePacket("BTN,1,0,0,0", out _, out _),
+                "El protocolo ESP32 debe rechazar paquetes incompletos.");
         }
 
         private static void Require(bool condition, string message)

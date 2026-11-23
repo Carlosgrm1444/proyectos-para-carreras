@@ -122,6 +122,18 @@ namespace LIIA.SphereMaze
         public Vector3 SurfaceNormal(float gridX, float gridY) =>
             (SurfacePoint(gridX, gridY) - transform.position).normalized;
 
+        /// <summary>Dirección visible que representa aumentar X en el PNG.</summary>
+        public Vector3 SurfaceTangentX(float gridX, float gridY)
+        {
+            return (SurfacePoint(gridX + .05f, gridY) - SurfacePoint(gridX - .05f, gridY)).normalized;
+        }
+
+        /// <summary>Dirección visible que representa aumentar Y en el PNG.</summary>
+        public Vector3 SurfaceTangentY(float gridX, float gridY)
+        {
+            return (SurfacePoint(gridX, gridY + .05f) - SurfacePoint(gridX, gridY - .05f)).normalized;
+        }
+
         private int WrapColumn(int column)
         {
             column %= Width;

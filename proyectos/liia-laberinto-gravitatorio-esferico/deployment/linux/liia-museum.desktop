@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=LIIA Laberinto Gravitatorio
+Exec=/opt/liia/deployment/linux/run-liia.sh
+Terminal=false
+X-GNOME-Autostart-enabled=true
