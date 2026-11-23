@@ -72,6 +72,7 @@ namespace LIIA.SphereMaze
             Score += Mathf.Clamp(maxSpeedBonus - Mathf.RoundToInt(ElapsedTime), 0, maxSpeedBonus);
             State = GameState.Won;
             stateChangedAt = Time.unscaledTime;
+            LIIAAudioFeedback.Instance?.Play(GameAudioCue.Goal);
             SaveRecord();
         }
 
@@ -83,6 +84,7 @@ namespace LIIA.SphereMaze
             StarsCollected++;
             Score += starPoints;
             ShowStatus($"ESTRELLA +{starPoints}");
+            LIIAAudioFeedback.Instance?.Play(GameAudioCue.Star);
         }
 
         public void SetCheckpoint(Vector2Int cell)
@@ -91,6 +93,7 @@ namespace LIIA.SphereMaze
             activeCheckpoint = cell;
             hasCheckpoint = true;
             ShowStatus("CHECKPOINT ACTIVADO");
+            LIIAAudioFeedback.Instance?.Play(GameAudioCue.Checkpoint);
         }
 
         public void PlayerHitTrap()
@@ -98,6 +101,7 @@ namespace LIIA.SphereMaze
             if (State != GameState.Playing) return;
             Lives--;
             ShowStatus("TRAMPA: PIERDES UNA VIDA");
+            LIIAAudioFeedback.Instance?.Play(GameAudioCue.Trap);
             if (Lives <= 0)
             {
                 RestartAttempt();
@@ -124,6 +128,7 @@ namespace LIIA.SphereMaze
             State = GameState.Playing;
             stateChangedAt = Time.unscaledTime;
             ShowStatus("¡A JUGAR!");
+            LIIAAudioFeedback.Instance?.Play(GameAudioCue.Start);
         }
 
         private void EnterAttractMode()

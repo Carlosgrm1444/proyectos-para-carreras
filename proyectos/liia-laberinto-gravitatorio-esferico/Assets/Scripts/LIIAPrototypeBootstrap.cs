@@ -47,6 +47,7 @@ namespace LIIA.SphereMaze
             SphericalMazeMeshBuilder.Build(layout, root.transform);
 
             var input = root.AddComponent<KeyboardSphereTiltInput>();
+            NewObject("Audio").AddComponent<LIIAAudioFeedback>();
             var ballObject = new GameObject("Ball_ConstrainedToMap");
             ballObject.name = "Ball_ConstrainedToMap";
             var ballVisual = GameObject.CreatePrimitive(PrimitiveType.Sphere);
