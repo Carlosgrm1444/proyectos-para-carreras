@@ -127,4 +127,3 @@ La única tarea pendiente de esta fase requiere acceso al equipo de exhibición.
 ## Siguiente paso
 
 Iniciar la Fase 1: crear la base Unity, configurar OpenXR/XR Interaction Toolkit, preparar escenas `Bootstrap` y `Comercio`, y establecer la arquitectura de datos y estados de partida.
-

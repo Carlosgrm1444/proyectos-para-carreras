@@ -1,6 +1,8 @@
 param(
     [string]$RepositoryUrl = "https://github.com/Carlosgrm1444/proyectos-para-carreras.git",
-    [string]$Branch = "codex/distribucion-multiplataforma"
+    [string]$Branch = "codex/distribucion-multiplataforma",
+    [string]$ProjectRelativePath = "proyectos\derecho-firewall-de-privacidad",
+    [string]$CommitMessage = "chore: publish project updates"
 )
 
 $ErrorActionPreference = "Stop"
@@ -22,8 +24,8 @@ if (Test-Path $tempRoot) { Remove-Item -LiteralPath $tempRoot -Recurse -Force }
 New-Item -ItemType Directory -Force -Path $tempRoot | Out-Null
 & $git clone --branch $Branch --single-branch $RepositoryUrl $cloneRoot
 
-$source = Join-Path $projectRoot "proyectos\derecho-firewall-de-privacidad"
-$destination = Join-Path $cloneRoot "proyectos\derecho-firewall-de-privacidad"
+$source = Join-Path $projectRoot $ProjectRelativePath
+$destination = Join-Path $cloneRoot $ProjectRelativePath
 New-Item -ItemType Directory -Force -Path $destination | Out-Null
 
 robocopy $projectRoot $cloneRoot /E /XD .git Library Logs Temp UserSettings Builds /XF *.zip *.exe *.dll *.pdb | Out-Null
@@ -44,9 +46,9 @@ if (Test-Path $manifest) {
 & $git -C $cloneRoot config user.name "Codex"
 & $git -C $cloneRoot config user.email "codex@users.noreply.github.com"
 & $git -C $cloneRoot add -A
-& $git -C $cloneRoot add -f "proyectos/derecho-firewall-de-privacidad/Builds/Packages/*.zip"
+& $git -C $cloneRoot add -f (($ProjectRelativePath -replace '\\','/') + "/Builds/Packages/*.zip")
 if (-not (& $git -C $cloneRoot diff --cached --quiet)) {
-    & $git -C $cloneRoot commit -m "feat: complete controller-only gameplay and exportables"
+    & $git -C $cloneRoot commit -m $CommitMessage
 }
 & $git -C $cloneRoot push origin $Branch
 Write-Host "Publicación completada en $RepositoryUrl/tree/$Branch"

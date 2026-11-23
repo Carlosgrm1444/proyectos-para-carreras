@@ -561,4 +561,3 @@ El proyecto se considera listo cuando:
 ## 10. Primer trabajo recomendado
 
 Comenzar únicamente con la **Fase 0**. Una vez cerrados visor, plataforma, controles y catálogo inicial, crear el proyecto base de la Fase 1 y no avanzar al arte hasta que la vertical slice de la Fase 3 esté aprobada.
-

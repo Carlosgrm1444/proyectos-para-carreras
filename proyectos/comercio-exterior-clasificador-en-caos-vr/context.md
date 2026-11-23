@@ -8,4 +8,3 @@ Planeación de ejecución: [Plan maestro por fases](PLAN-POR-FASES.md).
 
 Estado actual: Fase 0 desarrollada en [FASE-0-DECISIONES.md](FASE-0-DECISIONES.md). La configuración de software está lista; falta registrar el visor y el área física antes de las pruebas VR de la Fase 2.
 
-

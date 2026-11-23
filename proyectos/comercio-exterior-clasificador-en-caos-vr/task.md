@@ -16,4 +16,3 @@ Ejecutar en orden conforme al [plan maestro por fases](PLAN-POR-FASES.md).
 - [ ] Fase 11: generar build PC-VR y documentación de operación.
 - [ ] Fase 12: preparar PR, versión 1.0 y backlog posterior.
 
-
