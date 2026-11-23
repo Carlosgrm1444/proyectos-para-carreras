@@ -41,12 +41,16 @@ namespace LIIA.SphereMaze
             SphericalMazeMeshBuilder.Build(layout, root.transform);
 
             var input = root.AddComponent<KeyboardSphereTiltInput>();
-            var ballObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            var ballObject = new GameObject("Ball_ConstrainedToMap");
             ballObject.name = "Ball_ConstrainedToMap";
-            ballObject.transform.localScale = Vector3.one * .44f;
-            SetColor(ballObject, new Color(1f, .73f, .08f));
+            var ballVisual = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            ballVisual.name = "BallVisual_Rolling";
+            ballVisual.transform.SetParent(ballObject.transform, false);
+            ballVisual.transform.localScale = Vector3.one * .44f;
+            Destroy(ballVisual.GetComponent<Collider>());
+            SetColor(ballVisual, new Color(1f, .73f, .08f));
             var ball = ballObject.AddComponent<MazeBallController>();
-            ball.Configure(layout, input);
+            ball.Configure(layout, input, ballVisual.transform);
 
             var flow = NewObject("GameFlow").AddComponent<GameFlow>();
             flow.Configure(ball);

@@ -4,34 +4,49 @@ namespace LIIA.SphereMaze
 {
     public sealed class MazeBallController : MonoBehaviour
     {
-        [SerializeField] private float speedCellsPerSecond = 4.2f;
+        [SerializeField] private float accelerationCellsPerSecond = 18f;
+        [SerializeField] private float maxSpeedCellsPerSecond = 3.7f;
+        [SerializeField] private float rollingResistance = 5.5f;
         [SerializeField] private float radiusInCells = .27f;
         [SerializeField] private float ballSurfaceOffset = .28f;
+        [SerializeField] private float visualRadius = .22f;
 
         private SphericalMazeLayout layout;
         private ISphereTiltInput input;
+        private Transform ballVisual;
         private Vector2 position;
         private Vector2 startPosition;
+        private Vector2 velocity;
 
         public Vector2 GridPosition => position;
 
-        public void Configure(SphericalMazeLayout maze, MonoBehaviour inputSource)
+        public void Configure(SphericalMazeLayout maze, MonoBehaviour inputSource, Transform visual)
         {
             layout = maze;
             input = inputSource as ISphereTiltInput;
+            ballVisual = visual;
             startPosition = layout.StartCell;
             position = startPosition;
-            SnapToSurface();
+            SnapToSurface(position);
         }
 
         private void Update()
         {
             if (layout == null || GameFlow.Instance == null || GameFlow.Instance.State != GameState.Playing) return;
             var direction = input == null ? Vector2.zero : input.ReadTilt();
-            var amount = direction * speedCellsPerSecond * Time.deltaTime;
-            TryMove(new Vector2(amount.x, 0f));
-            TryMove(new Vector2(0f, amount.y));
-            SnapToSurface();
+            if (direction.sqrMagnitude > .001f)
+            {
+                var targetVelocity = direction * maxSpeedCellsPerSecond;
+                velocity = Vector2.MoveTowards(velocity, targetVelocity, accelerationCellsPerSecond * Time.deltaTime);
+            }
+            else
+            {
+                velocity = Vector2.MoveTowards(velocity, Vector2.zero, rollingResistance * Time.deltaTime);
+            }
+
+            var previousPosition = position;
+            MoveWithCollision(velocity * Time.deltaTime);
+            SnapToSurface(previousPosition);
 
             var cell = new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y));
             if (cell == layout.GoalCell && Vector2.Distance(position, layout.GoalCell) < .32f)
@@ -41,20 +56,41 @@ namespace LIIA.SphereMaze
         public void RespawnStart()
         {
             position = startPosition;
-            SnapToSurface();
+            velocity = Vector2.zero;
+            if (ballVisual != null) ballVisual.localRotation = Quaternion.identity;
+            SnapToSurface(position);
         }
 
-        private void TryMove(Vector2 amount)
+        private void MoveWithCollision(Vector2 amount)
         {
             if (amount.sqrMagnitude < .000001f) return;
-            var candidate = position + amount;
-            if (layout.CanOccupy(candidate, radiusInCells)) position = candidate;
+            var steps = Mathf.Max(1, Mathf.CeilToInt(amount.magnitude / .08f));
+            var step = amount / steps;
+            for (var i = 0; i < steps; i++)
+            {
+                var horizontal = position + new Vector2(step.x, 0f);
+                if (layout.CanOccupy(horizontal, radiusInCells)) position = horizontal;
+                else velocity.x = 0f;
+
+                var vertical = position + new Vector2(0f, step.y);
+                if (layout.CanOccupy(vertical, radiusInCells)) position = vertical;
+                else velocity.y = 0f;
+            }
         }
 
-        private void SnapToSurface()
+        private void SnapToSurface(Vector2 previousPosition)
         {
+            var previousWorldPosition = layout.SurfacePoint(previousPosition.x, previousPosition.y, ballSurfaceOffset);
             transform.position = layout.SurfacePoint(position.x, position.y, ballSurfaceOffset);
-            transform.up = layout.SurfaceNormal(position.x, position.y);
+            var normal = layout.SurfaceNormal(position.x, position.y);
+            transform.rotation = Quaternion.FromToRotation(Vector3.up, normal);
+
+            if (ballVisual == null) return;
+            var travelled = Vector3.ProjectOnPlane(transform.position - previousWorldPosition, normal);
+            if (travelled.sqrMagnitude < .000001f) return;
+            var rollingAxis = Vector3.Cross(travelled.normalized, normal);
+            var degrees = travelled.magnitude / visualRadius * Mathf.Rad2Deg;
+            ballVisual.Rotate(rollingAxis, degrees, Space.World);
         }
     }
 }
