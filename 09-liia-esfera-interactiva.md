@@ -1,9 +1,15 @@
 # LIIA — Estación esférica interactiva (concepto y ficha técnica preliminar)
 
-> **Estado:** documentación inicial / investigación de factibilidad. **No aprobado para programación ni instalación.**  
+> **Estado:** videojuego seleccionado en planificación: **Laberinto gravitatorio esférico** con caminos exteriores y controller de 4 botones; factibilidad de visualización aún por validar. **No aprobado para programación ni instalación.**  
 > **Carrera destinataria:** Licenciatura en Informática e Inteligencia Artificial (LIIA). La esfera se integra como posible estación de esta misma carrera, vinculada a `07-informatica-e-inteligencia-artificial.md`; no se contará como carrera adicional.  
 > **Referencia visual:** video `1000455433.mp4`, aportado en la conversación de planificación del 22 de noviembre de 2026. El video **no está incorporado a este repositorio**.  
 > **Decisión inicial del proyecto:** reservar la esfera como posible elemento central de la experiencia de LIIA, **condicionado** a confirmar su tecnología y permisos de uso.
+
+## Concepto seleccionado — Laberinto gravitatorio esférico
+
+**El concepto vigente elegido por el responsable es [Laberinto gravitatorio esférico](15-liia-laberinto-gravitatorio-esferico.md).** El jugador inclina/gira virtualmente la esfera usando cuatro botones electrónicos y debe guiar una bolita con físicas simuladas por caminos sobre la **superficie exterior** del globo. Hay **estrellas coleccionables** para sumar puntos y rutas opcionales más arriesgadas; el récord es por mayor puntuación por laberinto. Su objetivo es una demostración lúdica de electrónica, programación y físicas, **no enseñar directamente una asignatura de LIIA**.
+
+Las opciones anteriores (Red planetaria, Nube en equilibrio, Entrena al planeta, etc.) **se conservan como alternativas descartadas provisionalmente** y antecedentes, no como la opción actual. La superficie de la esfera física aún no está verificada como pantalla/proyección, por lo que el primer prototipo debe funcionar en monitor.
 
 ## 1. Objetivo
 
@@ -190,7 +196,7 @@ No programar un adaptador de hardware hipotético como si tuviera protocolos con
 
 - Identificar la esfera y obtener autorización y especificaciones.
 - Vincular este concepto a la carrera LIIA ya documentada en el catálogo de Informática e Inteligencia Artificial, sin duplicar la carrera.
-- Elegir entre las tres mecánicas con el criterio del banco de minijuegos.
+- Concepto elegido: laberinto gravitatorio esférico. Validar mecánica, caída de bolita, scoring y visualización de la esfera física.
 - Identificar lugar, público, responsable técnico y equipo disponible.
 - Completar [la plantilla de preparación para Codex](10-guia-de-planificacion-y-ejecucion-codex.md).
 
