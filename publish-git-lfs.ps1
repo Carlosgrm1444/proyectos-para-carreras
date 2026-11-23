@@ -46,7 +46,9 @@ if (Test-Path $manifest) {
 & $git -C $cloneRoot config user.name "Codex"
 & $git -C $cloneRoot config user.email "codex@users.noreply.github.com"
 & $git -C $cloneRoot add -A
-& $git -C $cloneRoot add -f (($ProjectRelativePath -replace '\\','/') + "/Builds/Packages/*.zip")
+if (Test-Path $packages) {
+    & $git -C $cloneRoot add -f (($ProjectRelativePath -replace '\\','/') + "/Builds/Packages/*.zip")
+}
 if (-not (& $git -C $cloneRoot diff --cached --quiet)) {
     & $git -C $cloneRoot commit -m $CommitMessage
 }
