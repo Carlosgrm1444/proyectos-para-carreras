@@ -41,7 +41,7 @@ La entrada actual es teclado. No existe todavía comunicación con ESP32 ni inte
 
 ## Editar o generar un mapa
 
-El archivo `laberinto_01.png` puede editarse con un editor de imagen que conserve píxeles sólidos y sus dimensiones. Para volver a generar el mapa de ejemplo desde código, abrir Unity y ejecutar **LIIA → Generar mapa PNG de ejemplo**. Al iniciar el juego, el nivel se reconstruye desde ese PNG.
+El archivo `laberinto_01.png` puede editarse con un editor de imagen que conserve píxeles sólidos y sus dimensiones. Para volver a generar el mapa de ejemplo desde código, abrir Unity y ejecutar **LIIA → Generar mapa PNG de ejemplo**. Para comprobar que tenga un solo inicio, una meta y una ruta válida, ejecutar **LIIA → Validar mapa PNG activo**. Al iniciar el juego, el nivel se reconstruye desde ese PNG y se niega a construir un mapa inválido.
 
 ## Estado de verificación
 

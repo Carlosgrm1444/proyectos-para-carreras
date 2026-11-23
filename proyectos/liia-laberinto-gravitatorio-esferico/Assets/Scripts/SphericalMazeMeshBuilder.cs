@@ -25,7 +25,7 @@ namespace LIIA.SphereMaze
                     layout.SurfacePoint(x + .5f, y + .5f, .01f),
                     layout.SurfacePoint(x - .5f, y + .5f, .01f));
             }
-            CreateMeshObject("MazeFloor", vertices, triangles, parent, new Color(.08f, .58f, .73f));
+            CreateMeshObject("MazeFloor", vertices, triangles, parent, new Color(.06f, .72f, .9f), .18f);
         }
 
         private static void CreateWalls(SphericalMazeLayout layout, Transform parent)
@@ -51,11 +51,11 @@ namespace LIIA.SphereMaze
                 AddQuad(vertices, triangles, a, b, bt, at);
                 AddQuad(vertices, triangles, d, dt, ct, c);
             }
-            var walls = CreateMeshObject("MazeWalls_ExtrudedFromPng", vertices, triangles, parent, new Color(.04f, .15f, .24f));
+            var walls = CreateMeshObject("MazeWalls_ExtrudedFromPng", vertices, triangles, parent, new Color(.035f, .2f, .32f), .04f);
             walls.AddComponent<MeshCollider>().sharedMesh = walls.GetComponent<MeshFilter>().sharedMesh;
         }
 
-        private static GameObject CreateMeshObject(string name, List<Vector3> vertices, List<int> triangles, Transform parent, Color color)
+        private static GameObject CreateMeshObject(string name, List<Vector3> vertices, List<int> triangles, Transform parent, Color color, float emission)
         {
             var result = new GameObject(name);
             result.transform.SetParent(parent, false);
@@ -66,6 +66,11 @@ namespace LIIA.SphereMaze
             mesh.RecalculateBounds();
             result.AddComponent<MeshFilter>().sharedMesh = mesh;
             var material = new Material(Shader.Find("Standard")) { color = color };
+            if (emission > 0f)
+            {
+                material.EnableKeyword("_EMISSION");
+                material.SetColor("_EmissionColor", color * emission);
+            }
             result.AddComponent<MeshRenderer>().sharedMaterial = material;
             return result;
         }

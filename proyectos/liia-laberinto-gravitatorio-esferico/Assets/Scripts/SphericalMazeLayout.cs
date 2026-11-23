@@ -31,7 +31,7 @@ namespace LIIA.SphereMaze
             for (var x = 0; x < Width; x++)
             {
                 var pixel = source.GetPixel(x, y);
-                var tile = Decode(pixel);
+                var tile = DecodeTile(pixel);
                 tiles[x, y] = tile;
                 if (tile == MazeTile.Start) StartCell = new Vector2Int(x, y);
                 if (tile == MazeTile.Goal) GoalCell = new Vector2Int(x, y);
@@ -77,10 +77,12 @@ namespace LIIA.SphereMaze
         public Vector3 SurfaceNormal(float gridX, float gridY) =>
             (SurfacePoint(gridX, gridY) - transform.position).normalized;
 
-        private static MazeTile Decode(Color pixel)
+        public static MazeTile DecodeTile(Color pixel)
         {
             if (pixel.g > 0.65f && pixel.r < 0.45f) return MazeTile.Start;
-            if (pixel.r > 0.7f && pixel.g < 0.45f) return MazeTile.Goal;
+            // El importador puede convertir el PNG a espacio lineal; el rojo
+            // de meta ya no conserva el .95 original al leerlo con GetPixel.
+            if (pixel.r > 0.55f && pixel.g < 0.5f) return MazeTile.Goal;
             return pixel.grayscale > 0.18f ? MazeTile.Floor : MazeTile.Wall;
         }
     }

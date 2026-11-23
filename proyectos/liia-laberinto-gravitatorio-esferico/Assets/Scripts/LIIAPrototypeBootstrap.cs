@@ -27,6 +27,12 @@ namespace LIIA.SphereMaze
                 Debug.LogError("No se encontró Resources/Maps/laberinto_01.png. Ejecuta LIIA > Generar mapa PNG de ejemplo.");
                 return;
             }
+            if (!SphericalMazeValidator.TryValidate(map, out var mapValidation))
+            {
+                Debug.LogError($"Mapa LIIA inválido: {mapValidation}");
+                return;
+            }
+            Debug.Log(mapValidation);
 
             var root = NewObject("PlanetRoot");
             var planet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -34,7 +40,7 @@ namespace LIIA.SphereMaze
             planet.transform.SetParent(root.transform, false);
             planet.transform.localScale = Vector3.one * sphereRadius * 2f;
             Destroy(planet.GetComponent<Collider>());
-            SetColor(planet, new Color(.035f, .1f, .17f));
+            SetColor(planet, new Color(.015f, .045f, .08f));
 
             var layout = root.AddComponent<SphericalMazeLayout>();
             layout.Configure(map, mazeSurfaceRadius);
@@ -89,9 +95,11 @@ namespace LIIA.SphereMaze
             var camera = cameraObject.AddComponent<Camera>();
             camera.tag = "MainCamera";
             var normal = (ball.position - sphereCenter.position).normalized;
-            camera.transform.position = sphereCenter.position + normal * 14f;
+            camera.transform.position = sphereCenter.position + normal * (Vector3.Distance(ball.position, sphereCenter.position) + 4.6f);
             camera.transform.rotation = Quaternion.LookRotation(-normal, Vector3.up);
-            camera.fieldOfView = 48f;
+            camera.fieldOfView = 54f;
+            camera.clearFlags = CameraClearFlags.SolidColor;
+            camera.backgroundColor = new Color(.025f, .055f, .1f);
             cameraObject.AddComponent<BallFollowCamera>().Configure(ball, sphereCenter);
         }
 

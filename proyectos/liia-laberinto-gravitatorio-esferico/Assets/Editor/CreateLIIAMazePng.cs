@@ -48,8 +48,19 @@ namespace LIIA.SphereMaze.Editor
             importer.textureCompression = TextureImporterCompression.Uncompressed;
             importer.isReadable = true;
             importer.wrapMode = TextureWrapMode.Clamp;
+            importer.npotScale = TextureImporterNPOTScale.None;
             importer.SaveAndReimport();
             AssetDatabase.Refresh();
+        }
+
+        [MenuItem("LIIA/Validar mapa PNG activo")]
+        public static void ValidateActiveMap()
+        {
+            var map = AssetDatabase.LoadAssetAtPath<Texture2D>(OutputPath);
+            Debug.Log($"Dimensiones del asset de mapa: {map.width}×{map.height}");
+            if (!SphericalMazeValidator.TryValidate(map, out var message))
+                throw new System.InvalidOperationException(message);
+            Debug.Log(message);
         }
 
         private static Color ColorFor(char tile)

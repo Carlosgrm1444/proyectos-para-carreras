@@ -6,8 +6,8 @@ namespace LIIA.SphereMaze
     {
         [SerializeField] private Transform target;
         [SerializeField] private Transform surfaceCenter;
-        [SerializeField] private float heightAboveSurface = 8.5f;
-        [SerializeField] private float normalSmoothSpeed = 6f;
+        [SerializeField] private float heightAboveSurface = 4.6f;
+        [SerializeField] private float normalSmoothSpeed = 10f;
         [SerializeField] private float rotationSpeed = 12f;
 
         private Vector3 cameraNormal;
