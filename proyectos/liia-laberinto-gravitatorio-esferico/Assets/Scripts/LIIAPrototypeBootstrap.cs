@@ -55,7 +55,7 @@ namespace LIIA.SphereMaze
             CreateCheckpoint(root.transform, 55f);
             CreateStar(root.transform, 115f, 35f);
             CreateGoal(root.transform, 175f, 35f);
-            CreateCamera(ballObject.transform);
+            CreateCamera(ballObject.transform, root.transform);
             CreateLight();
         }
 
@@ -164,15 +164,16 @@ namespace LIIA.SphereMaze
             return result;
         }
 
-        private void CreateCamera(Transform ball)
+        private void CreateCamera(Transform ball, Transform sphereCenter)
         {
             var cameraObject = new GameObject("Main Camera");
             var camera = cameraObject.AddComponent<Camera>();
             camera.tag = "MainCamera";
-            camera.transform.position = ball.position + new Vector3(0f, 9f, -14f);
-            camera.transform.LookAt(ball.position);
-            camera.fieldOfView = 48f;
-            cameraObject.AddComponent<BallFollowCamera>().Configure(ball);
+            var normal = (ball.position - sphereCenter.position).normalized;
+            camera.transform.position = ball.position + normal * 10.5f;
+            camera.transform.rotation = Quaternion.LookRotation(-normal, Vector3.up);
+            camera.fieldOfView = 42f;
+            cameraObject.AddComponent<BallFollowCamera>().Configure(ball, sphereCenter);
         }
 
         private void CreateLight()
