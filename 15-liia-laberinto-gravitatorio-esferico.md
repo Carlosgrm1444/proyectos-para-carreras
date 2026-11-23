@@ -1,4 +1,4 @@
-# LIIA — Laberinto gravitatorio esférico (diseño de juego v0.1)
+# LIIA — Laberinto gravitatorio esférico (diseño de juego v0.2)
 
 > **Estado:** concepto jugable seleccionado en la fase de diseño; **todavía no implementado** y pendiente de validar el sistema de visualización de la esfera física.
 > **Carrera:** Licenciatura en Informática e Inteligencia Artificial (LIIA), no LTI.
@@ -46,7 +46,10 @@ No pretender enseñar directamente un tema del plan de estudios: esta estación 
 - **Victoria:** llegar a la meta del laberinto.
 - **Puntuación:** estrellas recogidas + bonificación por llegar a meta + bono de rapidez (pesos exactos pendientes).
 - **Récord:** mayor puntuación de la partida **por laberinto**; registrar menor tiempo como desempate y métrica secundaria. Asegurar que dos partidas del mismo nivel sean comparables.
-- **Caída/fracaso:** pendiente de decidir si reinicia desde checkpoint, desde el inicio o consume vida; **no se presume una elección aprobada**.
+- **Vidas:** iniciar cada intento con **tres vidas**, tomando como base la opción planteada y aceptada en la conversación; mostrar las vidas restantes.
+- **Caída/fracaso:** cuando la bolita cae del camino o entra en una trampa letal, **pierde una vida y regresa al último checkpoint activado**. Si aún no activó ninguno, regresa al inicio del laberinto.
+- **Agotamiento de vidas:** al perder la última vida, **se reinicia por completo el laberinto** desde el inicio, con vidas restauradas, cronómetro/puntuación del intento reiniciados y coleccionables disponibles nuevamente.
+- **Persistencia dentro del intento:** las estrellas ya recogidas no vuelven a puntuar al reaparecer en un checkpoint, para evitar recolección infinita. Sólo reaparecen al reiniciar por agotamiento de vidas o empezar una partida nueva.
 - **Progresión:** varios laberintos, cada uno más complejo: caminos estrechos, agujeros, bifurcaciones, obstáculos móviles, superficies con fricción distinta y estrellas ubicadas en rutas de más riesgo.
 - **Duración objetivo de exhibición:** probar 90–180 segundos por intento/escenario, ajustable según equilibrio real.
 - **Accesibilidad:** no depender sólo de color, mostrar caminos y estrellas con formas distinguibles; tutorial mínimo de los cuatro botones.
@@ -64,9 +67,13 @@ Bolita rueda por gravedad simulada e inercia
         ↓
 Se pueden recoger estrellas en caminos secundarios
         ↓
-Evitar caídas y obstáculos hasta llegar a meta
+Evitar caídas y obstáculos; una caída resta 1 vida
         ↓
-Puntuación = estrellas + meta + bonus de rapidez
+Si quedan vidas, regresar al último checkpoint sin repetir estrellas
+        ↓
+Si se agotan todas, reiniciar laberinto y restaurar 3 vidas
+        ↓
+Al llegar a la meta, puntuación = estrellas + meta + bonus de rapidez
         ↓
 Se muestra récord del laberinto y opción de reintentar
 ```
@@ -87,16 +94,17 @@ Se muestra récord del laberinto y opción de reintentar
 3. La bolita puede recorrer rutas sobre **varias regiones exteriores** del globo sin atravesarlo ni desprenderse indebidamente.
 4. El jugador puede alcanzar meta de un laberinto corto.
 5. Las estrellas se recogen, suman puntos y no se contabilizan doble.
-6. Se calcula puntuación y se guarda récord local, con tiempo como desempate.
-7. Si falla la conexión de botones, hay una prueba de diagnóstico y entrada de teclado de respaldo.
-8. No se afirma que la esfera física sirva como pantalla hasta contar con evidencia experimental.
+6. Caer resta una vida y devuelve al último checkpoint activado (o al inicio si no existe); al agotar **tres vidas**, reinicia el laberinto completo.
+7. Las estrellas recogidas antes de una caída no se pueden reclamar de nuevo desde el checkpoint, pero reaparecen en la siguiente partida completa.
+8. Se calcula puntuación y se guarda récord local, con tiempo como desempate.
+9. Si falla la conexión de botones, hay una prueba de diagnóstico y entrada de teclado de respaldo.
+10. No se afirma que la esfera física sirva como pantalla hasta contar con evidencia experimental.
 
 ## Pendientes
 
-- Decidir tratamiento de caídas (checkpoint/reinicio/vidas).
 - Confirmar puntos exactos por estrella y bono por tiempo.
 - Número de niveles y selección aleatoria o fija de laberintos.
 - Geometría, escala, interfaz de cámara y dimensiones del controlador.
 - Datos reales de la esfera física y prueba de visualización.
 
-**Decisión registrada:** LIIA queda con el concepto **Laberinto gravitatorio esférico**, caminos sobre superficie exterior, controlador de cuatro botones, estrellas coleccionables y puntuación con récord.
+**Decisión registrada:** LIIA queda con el concepto **Laberinto gravitatorio esférico**, caminos sobre superficie exterior, controlador de cuatro botones, estrellas coleccionables y puntuación con récord. **Cada caída consume una de tres vidas y devuelve al último checkpoint; al perder la última vida se reinicia el laberinto completo.**
