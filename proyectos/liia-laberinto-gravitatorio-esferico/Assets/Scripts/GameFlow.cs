@@ -13,6 +13,7 @@ namespace LIIA.SphereMaze
         [SerializeField] private int starPoints = 100;
         [SerializeField] private int goalPoints = 200;
         [SerializeField] private int maxSpeedBonus = 100;
+        [SerializeField] private float inactivityTimeoutSeconds = 45f;
 
         public int Lives { get; private set; }
         public int Score { get; private set; }
@@ -31,6 +32,7 @@ namespace LIIA.SphereMaze
         private bool hasCheckpoint;
         private float statusMessageUntil;
         private float stateChangedAt;
+        private float lastInputAt;
 
         public void Configure(MazeBallController player, MazeLevelInfo level, int lives = 3)
         {
@@ -63,7 +65,9 @@ namespace LIIA.SphereMaze
             if (State == GameState.Playing)
             {
                 ElapsedTime += Time.deltaTime;
+                if (Input.anyKey) lastInputAt = Time.unscaledTime;
                 if (Input.GetKeyDown(KeyCode.R)) RestartAttempt();
+                else if (Time.unscaledTime - lastInputAt > inactivityTimeoutSeconds) EnterAttractMode();
             }
             else if (State == GameState.Won)
             {
@@ -135,6 +139,7 @@ namespace LIIA.SphereMaze
             ball.RespawnStart();
             State = GameState.Playing;
             stateChangedAt = Time.unscaledTime;
+            lastInputAt = Time.unscaledTime;
             ShowStatus("¡A JUGAR!");
             LIIAAudioFeedback.Instance?.Play(GameAudioCue.Start);
         }
@@ -149,6 +154,7 @@ namespace LIIA.SphereMaze
             hasCheckpoint = false;
             State = GameState.Attract;
             stateChangedAt = Time.unscaledTime;
+            lastInputAt = Time.unscaledTime;
             if (ball != null) ball.RespawnStart();
             StatusMessage = string.Empty;
         }
