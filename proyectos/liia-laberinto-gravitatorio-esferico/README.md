@@ -16,6 +16,8 @@ Si la escena no construye el nivel automáticamente, seleccionar `LIIAPrototype`
 - Flechas o WASD: mover la bola por el laberinto.
 - Combinar dos direcciones para avanzar en diagonal donde el mapa lo permita.
 - `R`: reiniciar el intento.
+- En pantalla inicial: `1`, `2` o `3` cambia el nivel; Enter, Espacio o una dirección inicia la partida.
+- `M`: activar o silenciar los efectos de sonido.
 
 La entrada actual es teclado. No existe todavía comunicación con ESP32 ni integración con la esfera física.
 
@@ -27,11 +29,14 @@ La entrada actual es teclado. No existe todavía comunicación con ESP32 ni inte
 - La bola se mueve por celdas transitables y se posiciona matemáticamente sobre la superficie: no puede caer ni despegarse.
 - La cámara permanece sobre la bola siguiendo el arco exterior de la esfera; el planeta no rota durante la partida.
 - Estrellas de puntuación, checkpoint, trampa, tres vidas, cronómetro, récord local y pantalla de victoria.
+- Modo de atracción para museo: pantalla inicial, instrucciones, selección de nivel y regreso automático tras la victoria.
+- Efectos sonoros procedurales originales para inicio, estrella, checkpoint, trampa y meta.
 
 ## Estructura principal
 
-- `Assets/Resources/Maps/laberinto_01.png`: diseño editable del primer laberinto.
-- `Assets/Editor/CreateLIIAMazePng.cs`: genera el PNG de ejemplo desde una matriz legible.
+- `Assets/Resources/Maps/laberinto_01.png`, `_02.png` y `_03.png`: niveles editables del prototipo.
+- `Assets/Editor/CreateLIIAMazePng.cs`: genera y valida los PNG desde matrices legibles.
+- `MazeLevelCatalog.cs`: catálogo y selección de niveles.
 - `SphericalMazeLayout.cs`: interpreta el PNG y lo proyecta sobre la esfera.
 - `SphericalMazeMeshBuilder.cs`: construye el piso y los muros extruidos combinados.
 - `MazeBallController.cs`: movimiento y colisión determinista de la bola.
@@ -41,7 +46,7 @@ La entrada actual es teclado. No existe todavía comunicación con ESP32 ni inte
 
 ## Editar o generar un mapa
 
-El archivo `laberinto_01.png` puede editarse con un editor de imagen que conserve píxeles sólidos y sus dimensiones. Para volver a generar el mapa de ejemplo desde código, abrir Unity y ejecutar **LIIA → Generar mapa PNG de ejemplo**. Para comprobar que tenga un solo inicio, una meta y una ruta válida, ejecutar **LIIA → Validar mapa PNG activo**. Al iniciar el juego, el nivel se reconstruye desde ese PNG y se niega a construir un mapa inválido.
+Los archivos `laberinto_01.png`, `_02.png` y `_03.png` pueden editarse con un editor de imagen que conserve píxeles sólidos y sus dimensiones. Para volver a generar los ejemplos desde código, abrir Unity y ejecutar **LIIA → Generar mapas PNG de ejemplo**. Para comprobar que cada uno tenga un solo inicio, una meta y una ruta válida, ejecutar **LIIA → Validar mapas PNG activos**. Al iniciar el juego, el nivel se reconstruye desde ese PNG y se niega a construir un mapa inválido.
 
 ## Estado de verificación
 

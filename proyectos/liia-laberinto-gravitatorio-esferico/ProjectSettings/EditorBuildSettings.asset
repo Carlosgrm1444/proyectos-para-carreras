@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LIIA.unity
+    guid: 7d8d6c03f7254c4a8f12b8c1a5706d93
   m_configObjects: {}

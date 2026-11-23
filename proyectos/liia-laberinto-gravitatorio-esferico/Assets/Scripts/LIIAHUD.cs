@@ -19,15 +19,16 @@ namespace LIIA.SphereMaze
             GUI.Label(new Rect(24, 18, 600, 40), "LIIA · LABERINTO GRAVITATORIO", title);
             var audioState = LIIAAudioFeedback.Instance != null && LIIAAudioFeedback.Instance.Muted ? "apagado" : "encendido";
             GUI.Label(new Rect(24, 58, 700, 30), $"Flechas: mover bola   |   R: reiniciar   |   M: audio {audioState}", body);
-            GUI.Label(new Rect(24, 92, 500, 30), $"Vidas: {flow.Lives}   Estrellas: {flow.StarsCollected}   Puntos: {flow.Score}", body);
+            GUI.Label(new Rect(24, 92, 700, 30), $"Nivel {flow.LevelIndex + 1}: {flow.LevelName}   |   Vidas: {flow.Lives}   Estrellas: {flow.StarsCollected}   Puntos: {flow.Score}", body);
             GUI.Label(new Rect(24, 126, 500, 30), $"Tiempo: {flow.ElapsedTime:0.0}s   Récord: {flow.BestScore}", body);
             GUI.Label(new Rect(24, 160, 900, 26), "Amarillo: estrella (+100)   Azul: checkpoint   Morado: trampa", body);
             if (flow.State == GameState.Attract)
             {
-                GUI.Box(new Rect(Screen.width / 2f - 245, Screen.height / 2f - 108, 490, 216), "LIIA · LABERINTO GRAVITATORIO");
+                GUI.Box(new Rect(Screen.width / 2f - 245, Screen.height / 2f - 128, 490, 256), "LIIA · LABERINTO GRAVITATORIO");
                 GUI.Label(new Rect(Screen.width / 2f - 210, Screen.height / 2f - 50, 420, 30), "Llega a la meta, toma riesgos y supera el récord.", body);
                 GUI.Label(new Rect(Screen.width / 2f - 210, Screen.height / 2f - 4, 420, 30), "PULSA ENTER, ESPACIO O UNA FLECHA PARA JUGAR", body);
-                GUI.Label(new Rect(Screen.width / 2f - 210, Screen.height / 2f + 44, 420, 30), $"RÉCORD ACTUAL: {flow.BestScore}", body);
+                GUI.Label(new Rect(Screen.width / 2f - 210, Screen.height / 2f + 36, 420, 30), "1: inicio   2: circuito orbital   3: desafío de datos", body);
+                GUI.Label(new Rect(Screen.width / 2f - 210, Screen.height / 2f + 78, 420, 30), $"RÉCORD ACTUAL: {flow.BestScore}", body);
             }
             if (flow.HasStatusMessage && flow.State == GameState.Playing)
             {

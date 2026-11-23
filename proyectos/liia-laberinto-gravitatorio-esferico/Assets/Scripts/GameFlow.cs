@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LIIA.SphereMaze
 {
@@ -22,6 +23,8 @@ namespace LIIA.SphereMaze
         public float BestTime => PlayerPrefs.GetFloat("LIIA_BEST_TIME", 0f);
         public string StatusMessage { get; private set; }
         public bool HasStatusMessage => !string.IsNullOrEmpty(StatusMessage) && Time.unscaledTime < statusMessageUntil;
+        public string LevelName { get; private set; }
+        public int LevelIndex { get; private set; }
 
         private readonly HashSet<Vector2Int> collectedStars = new HashSet<Vector2Int>();
         private Vector2Int activeCheckpoint;
@@ -29,10 +32,12 @@ namespace LIIA.SphereMaze
         private float statusMessageUntil;
         private float stateChangedAt;
 
-        public void Configure(MazeBallController player, int lives = 3)
+        public void Configure(MazeBallController player, MazeLevelInfo level, int lives = 3)
         {
             ball = player;
             startingLives = lives;
+            LevelName = level.DisplayName;
+            LevelIndex = MazeLevelCatalog.SelectedIndex;
             EnterAttractMode();
         }
 
@@ -48,6 +53,9 @@ namespace LIIA.SphereMaze
         {
             if (State == GameState.Attract)
             {
+                if (Input.GetKeyDown(KeyCode.Alpha1)) { ChangeLevel(0); return; }
+                if (Input.GetKeyDown(KeyCode.Alpha2)) { ChangeLevel(1); return; }
+                if (Input.GetKeyDown(KeyCode.Alpha3)) { ChangeLevel(2); return; }
                 if (StartInputPressed()) StartAttempt();
                 return;
             }
@@ -152,6 +160,17 @@ namespace LIIA.SphereMaze
                    Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) ||
                    Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
                    Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
+        }
+
+        private static void ChangeLevel(int levelIndex)
+        {
+            MazeLevelCatalog.Select(levelIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        private void OnDestroy()
+        {
+            if (Instance == this) Instance = null;
         }
 
         private void SaveRecord()

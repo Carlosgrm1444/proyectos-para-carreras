@@ -72,5 +72,10 @@ namespace LIIA.SphereMaze
             clip.SetData(data, 0);
             return clip;
         }
+
+        private void OnDestroy()
+        {
+            if (Instance == this) Instance = null;
+        }
     }
 }

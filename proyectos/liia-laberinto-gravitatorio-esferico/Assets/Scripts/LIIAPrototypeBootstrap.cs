@@ -21,10 +21,11 @@ namespace LIIA.SphereMaze
         {
             if (GameFlow.Instance != null) return;
 
-            var map = Resources.Load<Texture2D>("Maps/laberinto_01");
+            var level = MazeLevelCatalog.Selected;
+            var map = Resources.Load<Texture2D>($"Maps/{level.ResourceName}");
             if (map == null)
             {
-                Debug.LogError("No se encontró Resources/Maps/laberinto_01.png. Ejecuta LIIA > Generar mapa PNG de ejemplo.");
+                Debug.LogError($"No se encontró Resources/Maps/{level.ResourceName}.png. Ejecuta LIIA > Generar mapas PNG de ejemplo.");
                 return;
             }
             if (!SphericalMazeValidator.TryValidate(map, out var mapValidation))
@@ -60,7 +61,7 @@ namespace LIIA.SphereMaze
             ball.Configure(layout, input, ballVisual.transform);
 
             var flow = NewObject("GameFlow").AddComponent<GameFlow>();
-            flow.Configure(ball);
+            flow.Configure(ball, level);
             NewObject("HUD").AddComponent<LIIAHUD>();
             var diagnostics = NewObject("Diagnostics").AddComponent<LIIADevDiagnostics>();
             diagnostics.Configure(ball, layout);
