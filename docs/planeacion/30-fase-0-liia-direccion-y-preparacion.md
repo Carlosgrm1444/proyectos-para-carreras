@@ -90,6 +90,7 @@ Los últimos cuatro puntos no impiden continuar con Fase 1; sí son necesarios a
 | D-05 | El teclado es el control de respaldo permanente. | Aprobada | Permite diagnosticar el juego aun si falla la electrónica. |
 | D-06 | El monitor es la salida garantizada. | Aprobada | La capacidad visual de la esfera física no está comprobada. |
 | D-07 | ESP32 por USB/HID o serial se elegirá después de inventario. | Pendiente | Depende del modelo y sistema operativo disponibles. |
+| D-08 | La entrega actual termina al cerrar las mecánicas del juego; ESP32 y pantallas se abordan después. | Aprobada | Mantener el alcance jugable verificable antes de integrar hardware. |
 
 ## 6. Riesgos inmediatos y respuesta
 

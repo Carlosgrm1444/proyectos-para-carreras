@@ -65,6 +65,8 @@ namespace LIIA.SphereMaze
             NewObject("HUD").AddComponent<LIIAHUD>();
             var diagnostics = NewObject("Diagnostics").AddComponent<LIIADevDiagnostics>();
             diagnostics.Configure(ball, layout);
+            var miniMap = NewObject("MiniMap").AddComponent<LIIAMiniMap>();
+            miniMap.Configure(ball, layout);
             CreateMarker("Start", layout.StartCell, layout, new Color(.12f, .95f, .4f));
             CreateMarker("Goal", layout.GoalCell, layout, new Color(.98f, .18f, .32f));
             foreach (var cell in layout.StarCells)

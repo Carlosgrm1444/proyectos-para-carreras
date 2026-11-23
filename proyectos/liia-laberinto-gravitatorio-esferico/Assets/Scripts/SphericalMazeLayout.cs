@@ -17,6 +17,7 @@ namespace LIIA.SphereMaze
         public int Width { get; private set; }
         public int Height { get; private set; }
         public float Radius => radius;
+        public Texture2D SourceTexture => source;
         public Vector2Int StartCell { get; private set; }
         public Vector2Int GoalCell { get; private set; }
         public List<Vector2Int> StarCells { get; } = new List<Vector2Int>();
