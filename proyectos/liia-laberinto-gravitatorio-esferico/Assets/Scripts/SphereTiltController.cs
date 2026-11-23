@@ -11,7 +11,11 @@ namespace LIIA.SphereMaze
         public Vector2 CurrentTilt { get; private set; }
         public Vector3 AngularVelocity { get; private set; }
 
-        public void ConfigureInput(MonoBehaviour source) => inputSource = source;
+        public void ConfigureInput(MonoBehaviour source)
+        {
+            inputSource = source;
+            input = source as ISphereTiltInput;
+        }
 
         private void Awake()
         {
@@ -27,6 +31,11 @@ namespace LIIA.SphereMaze
 
         private void Update()
         {
+            if (input == null)
+            {
+                input = inputSource as ISphereTiltInput;
+            }
+
             CurrentTilt = input == null ? Vector2.zero : input.ReadTilt();
             var axis = new Vector3(-CurrentTilt.y, 0f, CurrentTilt.x);
             if (axis.sqrMagnitude < 0.0001f)
