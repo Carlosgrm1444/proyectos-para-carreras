@@ -1,4 +1,4 @@
-# Comercio Exterior — Clasificador en caos VR (diseño de experiencia v0.1)
+# Comercio Exterior — Clasificador en caos VR (diseño de experiencia v0.2)
 
 > **Estado:** mecánica VR principal elegida conceptualmente; pendiente de balance, validación docente, dispositivo y pruebas de confort. Documento de planificación, no código.  
 > **Fuente:** ajustes acordados en la conversación de diseño del 22 de noviembre de 2026.  
@@ -21,8 +21,8 @@ La selección se inspira en material, función y presentación de las mercancía
 | Selección | Se elige una opción mediante botones/puntero del mando, **sin mostrar si es correcta** |
 | Entrega | Tras seleccionar, recorrer físicamente **dentro del mundo virtual** un tramo del almacén hasta una banda, puerta, compuerta o receptáculo correspondiente a la categoría |
 | Resultado | **Evaluar y comunicar acierto/error únicamente al depositar/entregar**, nunca al seleccionar |
-| Dificultad | Más mercancías, decisiones difíciles, mayor presión de tiempo y obstáculos progresivos por oleadas/rondas |
-| Objetivo | Clasificar correctamente el mayor número de mercancías, conseguir puntuación y superar récord |
+| Dificultad | **Las mercancías llegan con frecuencia progresivamente mayor**, aumentando la cola; los enemigos aparecen en el trayecto y pueden dañar la carga |
+| Objetivo | Clasificar correctamente el mayor número de mercancías, combatir/evitar enemigos simples, proteger su integridad, conseguir puntuación y superar récord |
 | Fuera de alcance principal | Reconocimiento de voz, identificación física RFID/NFC, mesa con props, videomapping y teletransporte |
 
 Nota: «recorrer parte del almacén» significa desplazamiento con joystick dentro del entorno virtual; no requerir caminar físicamente por una zona extensa del museo.
@@ -72,18 +72,31 @@ No usar el ejemplo como clasificación aduanera oficial; es una categoría educa
 - Se puede rectificar la opción antes de entregar (propuesta para evitar errores de pulsación; por validar).
 - Indicar al jugador una orientación general del almacén, **sin mostrar la ruta correcta** para el producto antes de la decisión.
 
-## 6. Rondas, presión, puntuación y derrota (valores pendientes de balance)
+## 6. Oleadas, enemigos, integridad de mercancía, puntuación y derrota
 
-| Parte | Mecánica |
+**Nuevas decisiones confirmadas:**
+
+- **Incremento progresivo de llegadas:** los productos ingresan de forma continua y cada ronda acelera la frecuencia de llegada. No se pierde por el reloj de un producto individual.
+- **Derrota por saturación:** si la zona de recepción acumula demasiadas mercancías sin procesar, termina la partida. El umbral numérico se balanceará después.
+- **Enemigos durante el recorrido:** obstáculos móviles o criaturas ficticias aparecen entre la recepción y los puntos de entrega e intentan golpear o dañar la mercancía transportada.
+- **Defensa sencilla del jugador:** debe existir la posibilidad de evitar o repeler enemigos, sin un sistema complejo de combate. Propuesta para evaluar: un botón de empuje/repulsión de corto alcance, con breve enfriamiento; también se puede esquivar.
+- **Valor ligado al estado de la carga:** cada objeto tiene una **integridad** (por ejemplo, de 100 % a 0 %). Los golpes disminuyen su valor y, cuando la clasificación y entrega son correctas, reducen los puntos recibidos. El sistema informa el estado al transportar, pero nunca si la clasificación es acertada hasta depositar.
+
+| Parte | Regla prevista |
 |---|---|
-| Ronda inicial | Objetos reconocibles, tres categorías claramente distintas, ruta breve y pocos riesgos |
-| Rondas siguientes | Productos parecidos, objetos de formas similares, rutas más largas, obstáculos, pedidos simultáneos y menos margen de tiempo |
-| Puntuación | Entregas correctas, rapidez, combos y, posteriormente, manejo cuidadoso |
-| Penalizaciones | Categoría equivocada, entrega en zona incorrecta, daño simulado a mercancía, pedido vencido |
-| Derrota | Se satura la recepción o se acumulan demasiadas mercancías sin clasificar; umbral a definir |
-| Récord | Mejor puntuación acumulada local por partida |
+| Ronda inicial | Pocas mercancías, llegada lenta, categorías evidentes, uno o ningún enemigo |
+| Rondas siguientes | Menor intervalo entre llegadas, más enemigos, recorridos con obstáculos y opciones más parecidas |
+| Enemigos sugeridos | Carritos autónomos averiados, robots de almacén traviesos y drones de inspección ficticios; todos no violentos y de comportamiento sencillo |
+| Defensa | Esquivar o activar un empuje de alcance corto usando botón VR; sin combos de combate, armas complejas ni necesidad de matar enemigos |
+| Daño | Colisiones de enemigo con mercancía reducen integridad; impacto visual/sonoro moderado; sin sacudidas forzadas de cámara |
+| Puntuación | Entrega correcta × factor de integridad, más bonificación de rapidez/racha según balance. Ejemplo **ilustrativo, no definitivo**: base 100 puntos × integridad 70 % = 70 puntos |
+| Penalizaciones | Clasificación o destino incorrecto, mercancía dañada, pedidos demorados; evitar castigar dos veces el mismo golpe |
+| Derrota | Cola de mercancías sin clasificar llega al máximo permitido |
+| Récord | Mayor puntuación acumulada local de una partida |
 
-La estructura del [ArcadeCore común](00-arquitectura-y-criterios-de-museo.md) sigue siendo referencia. No añadir herramientas físicas de montacargas/diablito en el MVP VR sin demostrar que aportan a esta interacción.
+El núcleo sigue siendo **inspeccionar → elegir una de tres categorías sin conocer el acierto → transportar protegiendo el objeto → entregar → recibir resultado**. El combate es secundario a la clasificación; no se convierte en un juego de lucha.
+
+**Punto pendiente de balance:** cómo progresa el volumen de llegadas, tamaño máximo de cola, número de enemigos, potencia y enfriamiento del empuje, daño por golpe, límites de integridad y puntuación para preservar partidas breves y accesibles.
 
 ## 7. Tecnologías para la futura implementación
 
@@ -117,9 +130,10 @@ El movimiento continuo con joystick puede causar mareos por movimiento visual. *
 5. El personaje debe recorrer un sector del almacén llevando la mercancía.
 6. Hay tres zonas de entrega identificables (banda/puerta/tolva son opciones de arte por decidir).
 7. Sólo el evento de **entrega válida** evalúa categoría y destino y aplica puntuación/penalización.
-8. El sistema controla nuevas solicitudes, presión creciente, derrota y récord.
-9. El jugador puede completar la interacción principal sin mareo incapacitante en una prueba supervisada; registrar tolerancia y cambios necesarios sin prometer resultado.
-10. Se documenta el procedimiento de build, pruebas, visor usado y limitaciones.
+8. Las mercancías llegan continuamente con frecuencia creciente entre rondas; la partida termina cuando la recepción se satura, con récord por puntos.
+9. Durante el traslado aparecen enemigos sencillos que pueden reducir la integridad de la mercancía; se pueden esquivar o repeler con un control simple, y el daño reduce puntos aun cuando el objeto se clasifique correctamente.
+10. El jugador puede completar la interacción principal sin mareo incapacitante en una prueba supervisada; registrar tolerancia y cambios necesarios sin prometer resultado.
+11. Se documenta el procedimiento de build, pruebas, visor usado y limitaciones.
 
 ## 10. Por resolver antes de cerrar la especificación
 
@@ -127,7 +141,7 @@ El movimiento continuo con joystick puede causar mareos por movimiento visual. *
 - ¿Tres destinos fijos para las tres opciones de cada objeto, o varias salidas por grupos de mercancías?
 - ¿Selección previa obligatoria para poder transportar o se puede elegir sobre la marcha?
 - ¿Cómo se transportan cargas muy pesadas? ¿Excluidas del MVP?
-- Duración objetivo exacta de partida y balance de oleadas.
+- Duración objetivo exacta de partida, tasa progresiva de llegada, límite de acumulación y balance de enemigos/daño.
 - Lista de mercancías, tres opciones por cada una y justificación académica validada.
 
 **Decisión de diseño registrada:** la retroalimentación se difiere hasta la entrega para mantener incertidumbre, recorrido y consecuencias de la elección.
