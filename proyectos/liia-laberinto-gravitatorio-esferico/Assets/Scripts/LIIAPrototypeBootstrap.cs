@@ -92,16 +92,19 @@ namespace LIIA.SphereMaze
 
         private static void CreateGameplayMarker(MazeTile type, Vector2Int cell, SphericalMazeLayout layout, Color color)
         {
-            var primitive = type == MazeTile.Trap ? PrimitiveType.Cube : PrimitiveType.Cylinder;
+            var primitive = type == MazeTile.Star ? PrimitiveType.Sphere :
+                type == MazeTile.Checkpoint ? PrimitiveType.Capsule : PrimitiveType.Cube;
             var marker = GameObject.CreatePrimitive(primitive);
             marker.name = type.ToString();
             marker.transform.SetParent(layout.transform, true);
             var normal = layout.SurfaceNormal(cell.x, cell.y);
             marker.transform.position = layout.SurfacePoint(cell.x, cell.y, .16f);
             marker.transform.rotation = Quaternion.FromToRotation(Vector3.up, normal);
-            marker.transform.localScale = type == MazeTile.Trap
-                ? new Vector3(.42f, .1f, .42f)
-                : new Vector3(.28f, .13f, .28f);
+            marker.transform.localScale = type == MazeTile.Star
+                ? new Vector3(.28f, .28f, .28f)
+                : type == MazeTile.Checkpoint
+                    ? new Vector3(.18f, .34f, .18f)
+                    : new Vector3(.42f, .1f, .42f);
             Destroy(marker.GetComponent<Collider>());
             SetColor(marker, color);
             marker.AddComponent<MazeGameplayMarker>().Configure(type, cell);

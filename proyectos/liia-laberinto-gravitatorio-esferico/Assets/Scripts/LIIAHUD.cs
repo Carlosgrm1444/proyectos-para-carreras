@@ -21,7 +21,7 @@ namespace LIIA.SphereMaze
             GUI.Label(new Rect(24, 58, 700, 30), $"Flechas: mover bola   |   R: reiniciar   |   M: audio {audioState}", body);
             GUI.Label(new Rect(24, 92, 700, 30), $"Nivel {flow.LevelIndex + 1}: {flow.LevelName}   |   Vidas: {flow.Lives}   Estrellas: {flow.StarsCollected}   Puntos: {flow.Score}", body);
             GUI.Label(new Rect(24, 126, 500, 30), $"Tiempo: {flow.ElapsedTime:0.0}s   Récord: {flow.BestScore}", body);
-            GUI.Label(new Rect(24, 160, 900, 26), "Amarillo: estrella (+100)   Azul: checkpoint   Morado: trampa", body);
+            GUI.Label(new Rect(24, 160, 900, 26), "Esfera amarilla: estrella (+100)   Pilar azul: checkpoint   Bloque morado: trampa", body);
             if (flow.State == GameState.Attract)
             {
                 GUI.Box(new Rect(Screen.width / 2f - 245, Screen.height / 2f - 128, 490, 256), "LIIA · LABERINTO GRAVITATORIO");
