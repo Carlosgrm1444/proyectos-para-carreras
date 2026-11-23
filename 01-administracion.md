@@ -51,14 +51,17 @@ La carrera integra administración estratégica, operaciones, recursos humanos, 
 - **Modos:** individual contra récord o cooperación con decisiones por votación.
 - **Tecnología posible:** botones físicos o fichas RFID para asignar recursos.
 
-### 3. Almacén al límite
+### 3. Almacén al límite — concepto híbrido seleccionado para planificar
 
-- **Proceso:** inventarios y logística.
-- **Gameplay:** un personaje acomoda, surte y repone productos mientras llegan pedidos continuamente.
-- **Puntos:** pedidos exactos, velocidad y espacio bien utilizado.
-- **Dificultad:** productos parecidos, demanda variable, caducidades y capacidad limitada.
-- **Modos:** versus por carriles o cooperación entre almacenista y planificador.
-- **Tecnología posible:** cámara cenital y productos impresos en 3D.
+- **Proceso:** gestión de inventarios, distribución de almacén y optimización de recorridos.
+- **Gameplay:** un personaje controlado mediante mando convencional compra/repone y surte pedidos en un escenario con cuatro racks físicos reubicables, representados por post-its/fichas sobre una pared. La cámara reconoce su posición y orientación para que el juego actualice el mapa y las rutas.
+- **Reglas:** PEPS y UEPS exclusivamente. PEPS: reponer por detrás y retirar por delante; UEPS: priorizar la última entrada, con orientación física aún por definir.
+- **Configuración:** un tipo de mercancía por rack. El jugador redistribuye racks para aprovechar la demanda y acortar los desplazamientos.
+- **Partidas y rondas:** la demanda relativa de los productos cambia **entre partidas**, no se fija siempre igual; **cada ronda** de una partida aumenta la dificultad.
+- **Puntos y derrota:** pedidos correctos, cumplimiento de PEPS/UEPS y eficiencia generan puntaje; se pierde si hay demasiadas solicitudes atrasadas. Récord por puntos.
+- **Tecnología prevista:** videomapping + cámara y marcadores físicos + controlador normal + Unity, pendiente de prueba física.
+- **Definición pendiente:** confirmar cuáles elementos (personaje, mercancía y puntos de compra/entrega) aparecen proyectados y cuáles son físicos.
+- **Ficha de diseño:** [Almacén al límite — interacción híbrida y requisitos preliminares](11-administracion-almacen-al-limite-hibrido.md).
 
 ### 4. Caza de defectos
 
