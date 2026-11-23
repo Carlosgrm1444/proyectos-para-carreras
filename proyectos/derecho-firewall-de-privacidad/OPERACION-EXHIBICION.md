@@ -15,14 +15,13 @@
 - Start: pausa/reanuda.
 - Q durante la pausa: cierra el build de forma segura.
 - Select: muestra/oculta controles.
-- M: silencia audio; F2 muestra/oculta controles con teclado.
-- A, R o Enter después de derrota: reiniciar. Start no debe anunciarse como reinicio hasta que se implemente explícitamente.
+- A o Start después de derrota: reiniciar.
 - F11 o Alt+Enter: alternar pantalla completa en Windows/Linux de escritorio.
 
 ## Recuperación
 
 - Si queda en pausa, pulsar Start.
-- Si termina una partida, pulsar A, R o Enter para iniciar otra.
+- Si termina una partida, pulsar A o Start para iniciar otra.
 - Si el build deja de responder, cerrarlo y abrirlo desde la copia offline.
 - No borrar el récord local durante una exhibición.
 
