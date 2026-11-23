@@ -1,6 +1,6 @@
 # Administración — Almacén al límite (mecánica híbrida con videomapping)
 
-> Estado: **propuesta de diseño v0.1, pendiente de confirmar detalles**. No es un proyecto ejecutable ni autorización para Codex.  
+> Estado: **propuesta de diseño v0.2, reparto físico/digital confirmado; otros detalles pendientes**. No es un proyecto ejecutable ni autorización para Codex.  
 > Fuente del concepto: conversación de diseño del 22 de noviembre de 2026.  
 > Documento de carrera relacionado: [01-administracion.md](01-administracion.md).
 
@@ -81,22 +81,21 @@ No incorporar por defecto FEFO, caducidades o valoración monetaria: el alcance 
 - Detección de puntos de recogida/depósito según orientación válida del rack.
 - Escenario simulable en PC **sin cámara ni proyector**, mediante editor/manual de distribución, para asegurar una primera versión jugable y un respaldo en museo.
 
-### Importante: elementos proyectados vs. físicos
+### Elementos físicos y proyectados: decisión confirmada
 
-La descripción del responsable distingue `todo lo demás` de `racks, punto de compra, punto de entrega, personaje y mercancía`, pero no queda inequívoco si esta enumeración señala lo que **sí** o lo que **no** aparecerá proyectado. Por eso:
-- **Confirmado:** los racks se representan físicamente con post-its/fichas; el personaje se controla con mando.
-- **Por confirmar:** dónde se visualizarán el personaje, la mercancía, el punto de compra y el punto de entrega (proyección, soporte físico o pantalla auxiliar).
-- **No diseñar ni implementar el pipeline de renderizado** hasta resolver esta definición.
+- **Únicos elementos físicos del almacén:** los cuatro anaqueles representados con post-its/fichas que el participante puede **reubicar sobre la pared**.
+- **Elementos proyectados digitalmente:** personaje, mercancías, punto de compra, punto de entrega, recorridos, escenario y demás componentes del juego.
+- **Control:** mando convencional para el personaje; una cámara detecta la identidad, ubicación y orientación de los cuatro anaqueles físicos para actualizar el escenario proyectado.
+- La posición real de los post-its modifica rutas, accesos y colisiones virtuales. La implementación de detección/proyección **sigue sujeta a pruebas técnicas**, pero el reparto físico/digital ya quedó definido.
 
 ## Aspectos abiertos para acordar antes de pasar a Codex
 
-1. Confirmar qué se proyecta y qué es físico, en particular personaje, mercancía, compra y entrega.
-2. Definir orientación y accesos del anaquel para UEPS; para PEPS está indicado **entrada posterior y salida anterior**.
-3. Decidir si las reubicaciones físicas se permiten sólo **entre rondas** o también **en tiempo real**.
-4. Definir cantidad de unidades/lotes por anaquel, mecánica de compra/reposición y comandos del mando.
-5. Decidir si la regla PEPS/UEPS cambia por producto, ronda o partida.
-6. Determinar rangos de puntaje, umbrales de atraso y dificultad, ajustados mediante pruebas.
-7. Validar la lectura de cuatro fichas con cámara/proyector en la pared real, con distintas luces y posibles oclusiones.
+1. Definir orientación y accesos del anaquel para UEPS; para PEPS está indicado **entrada posterior y salida anterior**.
+2. Decidir si las reubicaciones físicas se permiten sólo **entre rondas** o también **en tiempo real**.
+3. Definir cantidad de unidades/lotes por anaquel, mecánica de compra/reposición y comandos del mando.
+4. Decidir si la regla PEPS/UEPS cambia por producto, ronda o partida.
+5. Determinar rangos de puntaje, umbrales de atraso y dificultad, ajustados mediante pruebas.
+6. Validar la lectura de cuatro fichas con cámara/proyector en la pared real, con distintas luces y posibles oclusiones.
 
 ## Primera evidencia que deberá producir Codex (cuando se autorice)
 
