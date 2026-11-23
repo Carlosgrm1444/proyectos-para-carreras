@@ -2,7 +2,7 @@
 
 Ejecutar en orden conforme al [plan maestro por fases](PLAN-POR-FASES.md).
 
-- [ ] Fase 0: cerrar visor, plataforma, controles, categorías y catálogo inicial.
+- [x] Fase 0: cerrar alcance, plataforma provisional, controles, categorías y catálogo inicial. Falta registrar visor/área física.
 - [ ] Fase 1: crear proyecto Unity, arquitectura, OpenXR y control de versiones.
 - [ ] Fase 2: validar graybox, locomoción continua y comodidad con visor real.
 - [ ] Fase 3: completar vertical slice con una mercancía y feedback sólo al entregar.
