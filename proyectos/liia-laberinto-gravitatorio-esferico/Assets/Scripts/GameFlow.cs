@@ -19,8 +19,8 @@ namespace LIIA.SphereMaze
         public float ElapsedTime { get; private set; }
         public GameState State { get; private set; } = GameState.Attract;
         public int StarsCollected { get; private set; }
-        public int BestScore => PlayerPrefs.GetInt("LIIA_BEST_SCORE", 0);
-        public float BestTime => PlayerPrefs.GetFloat("LIIA_BEST_TIME", 0f);
+        public int BestScore => PlayerPrefs.GetInt($"LIIA_BEST_SCORE_{LevelIndex}", 0);
+        public float BestTime => PlayerPrefs.GetFloat($"LIIA_BEST_TIME_{LevelIndex}", 0f);
         public string StatusMessage { get; private set; }
         public bool HasStatusMessage => !string.IsNullOrEmpty(StatusMessage) && Time.unscaledTime < statusMessageUntil;
         public string LevelName { get; private set; }
@@ -177,8 +177,8 @@ namespace LIIA.SphereMaze
         {
             if (Score > BestScore || (Score == BestScore && (BestTime <= 0f || ElapsedTime < BestTime)))
             {
-                PlayerPrefs.SetInt("LIIA_BEST_SCORE", Score);
-                PlayerPrefs.SetFloat("LIIA_BEST_TIME", ElapsedTime);
+                PlayerPrefs.SetInt($"LIIA_BEST_SCORE_{LevelIndex}", Score);
+                PlayerPrefs.SetFloat($"LIIA_BEST_TIME_{LevelIndex}", ElapsedTime);
                 PlayerPrefs.Save();
             }
         }
