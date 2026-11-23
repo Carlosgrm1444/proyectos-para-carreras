@@ -1,6 +1,6 @@
 # Autotransporte de Carga — Carga equilibrada VR (grúa cenital y apilamiento)
 
-> **Estado:** concepto seleccionado y ajustado en conversación; ficha de diseño para posterior Codex, **sin código**.
+> **Estado:** concepto seleccionado, con tres rondas y tres vidas acordadas; ficha de diseño para posterior Codex, **sin código**.
 > **Carrera:** Licenciado en Autotransporte de Carga.
 > **Documento de origen:** [02-autotransporte-de-carga.md](02-autotransporte-de-carga.md).
 
@@ -32,7 +32,7 @@ Al soltar, se simulan estabilidad y colisiones
          ↓
 Si permanece bien acomodada, se acredita la colocación/puntos
          ↓
-Llega la siguiente pieza, de dificultad progresivamente mayor
+Llega la siguiente pieza, de dificultad progresivamente mayor a lo largo de tres rondas
          ↓
 Se acumula puntuación y se intenta superar el récord
 ```
@@ -47,13 +47,18 @@ Se acumula puntuación y se intenta superar el récord
 
 Debe existir una forma de detectar cuándo una pieza está colocada de manera estable (p. ej., tras unos segundos de reposo y dentro del tráiler), evitando otorgar puntos por una caja que cae inmediatamente.
 
-## Puntuación y récord
+## Rondas, vidas, puntuación y récord
 
-- **Gana puntos** por cada pieza correctamente acomodada, con bonificación por peso/forma difícil, estabilidad y uso eficiente del espacio (ponderaciones pendientes).
-- **Derrumbes, daños o piezas fuera del tráiler** afectan el desempeño; sistema de castigo concreto **no acordado aún**.
-- **Récord:** mayor puntuación por partida, de acuerdo con la intención general de las estaciones arcade.
-- **Fin de partida:** pendiente de acordar entre límite de derrumbes, capacidad física del tráiler, tiempo de ronda o indicador de integridad; **no se debe inventar una condición como definitiva**.
-- La condición de victoria/supervivencia, duración y número inicial de piezas se decidirán en balance.
+- **Tres rondas** en cada partida, con complejidad ascendente. La ronda 1 introduce cajas regulares y estables; la 2 introduce diferentes pesos, tamaños y fragilidad; la 3 exige apilar piezas más difíciles en espacio más limitado. La distribución exacta se ajustará en pruebas.
+- **Tres vidas iniciales** disponibles para atravesar las tres rondas.
+- **Pérdida de vida:** una falla grave de apilamiento, como un derrumbe, consume una vida. Debe definirse con precisión qué tamaño de derrumbe cuenta como fallo y evitar pérdidas repetidas por la misma colisión.
+- **Al agotar las tres vidas**, la partida termina y **el laberinto de carga / secuencia de tres rondas se reinicia desde la ronda 1**, con tres vidas restauradas y puntuación de la nueva partida desde cero. El récord histórico se conserva.
+- **Entre pérdidas parciales de vida**, la ronda vigente no vuelve automáticamente a la ronda 1; queda por balancear si se limpia y repite esa misma ronda o se sigue con un estado controlado de la carga.
+- **Al superar la tercera ronda**, la partida se completa, se muestra puntuación total y se compara con el récord.
+- **Gana puntos** por cada pieza correctamente acomodada, con bonificaciones por peso/forma difícil, estabilidad y uso eficiente del espacio (ponderaciones pendientes).
+- **Derrumbes, daños o piezas fuera del tráiler** pueden afectar puntuación y vidas según gravedad; evitar doble penalización involuntaria.
+- **Récord:** mayor puntuación total de la partida completa, guardada localmente.
+- Los umbrales de daño, cantidad de piezas por ronda, duración y puntajes deben balancearse posteriormente.
 
 ## Tecnología prevista
 
@@ -71,13 +76,15 @@ Debe existir una forma de detectar cuándo una pieza está colocada de manera es
 4. Un apilamiento estable contabiliza puntos; una pieza inestable cae físicamente.
 5. La dificultad crece con geometría, masa y menor espacio.
 6. No existe conducción, trayecto ni extracción de cajas.
-7. El HUD muestra puntuación, nivel y récord.
+7. El HUD muestra puntuación, ronda (1 de 3), vidas restantes y récord.
+8. Hay tres rondas de dificultad creciente; un derrumbe grave consume una de tres vidas, y al agotarse se reinicia la partida desde la primera ronda y se restauran las tres vidas.
+9. Al completar la tercera ronda se muestra la puntuación acumulada y se evalúa el récord.
 8. La cámara no se desplaza automáticamente con caídas o derrumbes, evitando mareo.
 9. Se documentan visor, rendimiento y limitaciones físicas.
 
 ## Pendientes antes de desarrollar
 
-- ¿Qué termina la partida (derrumbes, integridad, tiempo o capacidad)?
+- Determinar exactamente qué fallos cuentan como derrumbe grave y consumen vida, y cómo se restaura el estado de la ronda tras perder una vida sin agotar las tres.
 - ¿Se pueden rotar cajas antes de colocarlas y con qué control?
 - ¿Hay piezas que por peso requieran mecánica de grúa diferente?
 - ¿Cómo se equilibra estabilidad, espacio libre, valor de la carga y velocidad en puntuación?
