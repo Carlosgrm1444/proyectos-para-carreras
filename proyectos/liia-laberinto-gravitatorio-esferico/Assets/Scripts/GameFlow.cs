@@ -20,10 +20,13 @@ namespace LIIA.SphereMaze
         public int StarsCollected { get; private set; }
         public int BestScore => PlayerPrefs.GetInt("LIIA_BEST_SCORE", 0);
         public float BestTime => PlayerPrefs.GetFloat("LIIA_BEST_TIME", 0f);
+        public string StatusMessage { get; private set; }
+        public bool HasStatusMessage => !string.IsNullOrEmpty(StatusMessage) && Time.unscaledTime < statusMessageUntil;
 
         private readonly HashSet<Vector2Int> collectedStars = new HashSet<Vector2Int>();
         private Vector2Int activeCheckpoint;
         private bool hasCheckpoint;
+        private float statusMessageUntil;
 
         public void Configure(MazeBallController player, int lives = 3)
         {
@@ -43,6 +46,7 @@ namespace LIIA.SphereMaze
         {
             if (State == GameState.Playing) ElapsedTime += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.R)) RestartAttempt();
+            if (!HasStatusMessage) StatusMessage = string.Empty;
         }
 
         public void ReachGoal()
@@ -61,6 +65,7 @@ namespace LIIA.SphereMaze
             if (State != GameState.Playing || !collectedStars.Add(cell)) return;
             StarsCollected++;
             Score += starPoints;
+            ShowStatus($"ESTRELLA +{starPoints}");
         }
 
         public void SetCheckpoint(Vector2Int cell)
@@ -68,12 +73,14 @@ namespace LIIA.SphereMaze
             if (State != GameState.Playing || (hasCheckpoint && activeCheckpoint == cell)) return;
             activeCheckpoint = cell;
             hasCheckpoint = true;
+            ShowStatus("CHECKPOINT ACTIVADO");
         }
 
         public void PlayerHitTrap()
         {
             if (State != GameState.Playing) return;
             Lives--;
+            ShowStatus("TRAMPA: PIERDES UNA VIDA");
             if (Lives <= 0)
             {
                 RestartAttempt();
@@ -92,6 +99,7 @@ namespace LIIA.SphereMaze
             collectedStars.Clear();
             hasCheckpoint = false;
             ball.RespawnStart();
+            ShowStatus("NUEVO INTENTO");
         }
 
         private void SaveRecord()
@@ -102,6 +110,12 @@ namespace LIIA.SphereMaze
                 PlayerPrefs.SetFloat("LIIA_BEST_TIME", ElapsedTime);
                 PlayerPrefs.Save();
             }
+        }
+
+        private void ShowStatus(string message)
+        {
+            StatusMessage = message;
+            statusMessageUntil = Time.unscaledTime + 2.2f;
         }
     }
 

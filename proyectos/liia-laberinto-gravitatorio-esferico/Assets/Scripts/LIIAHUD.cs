@@ -20,6 +20,13 @@ namespace LIIA.SphereMaze
             GUI.Label(new Rect(24, 58, 600, 30), $"Flechas: mover bola   |   R: reiniciar", body);
             GUI.Label(new Rect(24, 92, 500, 30), $"Vidas: {flow.Lives}   Estrellas: {flow.StarsCollected}   Puntos: {flow.Score}", body);
             GUI.Label(new Rect(24, 126, 500, 30), $"Tiempo: {flow.ElapsedTime:0.0}s   Récord: {flow.BestScore}", body);
+            GUI.Label(new Rect(24, 160, 900, 26), "Amarillo: estrella (+100)   Azul: checkpoint   Morado: trampa", body);
+            if (flow.HasStatusMessage && flow.State == GameState.Playing)
+            {
+                var messageStyle = new GUIStyle(title) { alignment = TextAnchor.MiddleCenter, fontSize = 20 };
+                GUI.Box(new Rect(Screen.width / 2f - 190, Screen.height - 104, 380, 48), string.Empty);
+                GUI.Label(new Rect(Screen.width / 2f - 180, Screen.height - 96, 360, 32), flow.StatusMessage, messageStyle);
+            }
             if (flow.State == GameState.Won)
             {
                 GUI.Box(new Rect(Screen.width / 2f - 220, Screen.height / 2f - 80, 440, 160), "META ALCANZADA");
