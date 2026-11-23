@@ -22,4 +22,3 @@ public sealed class MusicController : MonoBehaviour
 
     public void SetMuted(bool value) => source.mute = value;
 }
-

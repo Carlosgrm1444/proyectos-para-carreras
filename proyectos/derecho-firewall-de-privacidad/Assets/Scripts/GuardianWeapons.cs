@@ -166,4 +166,3 @@ public sealed class GuardianWeapons : MonoBehaviour
         material.renderQueue = 3000;
     }
 }
-

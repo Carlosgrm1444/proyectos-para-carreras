@@ -102,3 +102,4 @@ No incorporar por defecto FEFO, caducidades o valoración monetaria: el alcance 
 **Primero un prototipo de PC sin hardware:** 4 anaqueles reubicables en un editor, un personaje movible por mando, pedidos con demanda variable por partida, salida de lotes PEPS/UEPS, rondas, puntaje/derrota y récord local. Después, integrar cámara y videomapping si una prueba de calibración y detección demuestra que el montaje lo permite.
 
 Criterios de aceptación a fijar en la especificación final: detección correcta de 4 racks; orientación inequívoca; colisiones actualizadas al mover racks; funcionamiento correcto de PEPS/UEPS con lotes; nuevos patrones de demanda entre partidas; presión creciente entre rondas; derrota y récord reproducibles; respaldo sin cámara.
+

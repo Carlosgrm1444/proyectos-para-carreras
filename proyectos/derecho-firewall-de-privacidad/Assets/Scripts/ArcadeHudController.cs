@@ -192,4 +192,3 @@ public sealed class ArcadeHudController : MonoBehaviour
         return color;
     }
 }
-

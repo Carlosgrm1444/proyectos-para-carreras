@@ -48,4 +48,3 @@ MonoBehaviour:
   guardianHealth: 5
   dataCenterHealth: 10
   primitiveShader: {fileID: 4800000, guid: 3a9e7c1d5b2f4a6e8d0c1b3f5a7e9d20, type: 3}
-

@@ -22,4 +22,3 @@
 ## Criterio de cierre
 
 No debe haber texto importante sobre el centro del escenario, mensajes que desaparezcan sin confirmación durante tutorial, ni errores de compilación en el build de Windows.
-

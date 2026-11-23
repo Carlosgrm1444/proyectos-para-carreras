@@ -78,3 +78,4 @@ El juego **no diagnostica ni mide clínicamente la atención**, ni deduce emocio
 10. Si se pierde la detección, el juego no castiga movimientos involuntarios.
 
 **Decisión registrada:** Psicología elige **Atención bajo ataque** con MediaPipe, vida por errores, curación por combos y dificultad progresiva, conservando los puntos como sistema de récord.
+

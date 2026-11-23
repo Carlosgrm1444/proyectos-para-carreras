@@ -24,4 +24,3 @@ El script:
 - hace push únicamente a `codex/distribucion-multiplataforma`.
 
 Linux se agregará automáticamente cuando exista `Builds/Packages/DerechoFirewall-Linux-x64.zip`.
-

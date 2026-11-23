@@ -144,3 +144,4 @@ Los casos deben ser ficticios. No conviene usar tasas fiscales vigentes ni conve
 - ¿Qué anomalía puede mostrarse sin depender de legislación cambiante?
 - ¿La puntuación debe premiar más precisión, control o interpretación?
 
+

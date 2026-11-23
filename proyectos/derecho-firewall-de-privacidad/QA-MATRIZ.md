@@ -32,4 +32,3 @@ Registrar fecha, versión de Unity, mando utilizado y resultado de cada prueba.
 | QA-26 | Reinicio con mando | El botón anunciado en HUD reinicia desde game over | Falta alinear código/texto |
 | QA-27 | Sesión larga | Navegación, memoria y FPS permanecen estables durante al menos 20 minutos | Pendiente |
 | QA-28 | Contenido jurídico | Tutorial explica ARCO, consentimiento/finalidad y metáforas aprobadas | Falta implementar/validar |
-

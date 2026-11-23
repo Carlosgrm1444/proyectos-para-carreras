@@ -67,4 +67,3 @@ public sealed class CombatAudio : MonoBehaviour
         return clip;
     }
 }
-

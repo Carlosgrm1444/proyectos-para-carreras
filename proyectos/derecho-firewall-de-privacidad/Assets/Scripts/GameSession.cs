@@ -149,4 +149,3 @@ public sealed class GameSession : MonoBehaviour
         if (score > bestScore) { bestScore = score; PlayerPrefs.SetInt("DerechoBestScore", bestScore); PlayerPrefs.Save(); }
     }
 }
-

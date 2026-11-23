@@ -37,4 +37,3 @@
 - Las amenazas y solicitudes rodean obstáculos y no los atraviesan.
 - Las colisiones no dejan entidades permanentemente atrapadas.
 - Se puede perder por vida del guardián o del Centro y reiniciar sin recargar manualmente la escena.
-

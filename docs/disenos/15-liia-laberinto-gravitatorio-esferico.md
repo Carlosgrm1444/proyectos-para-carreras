@@ -108,3 +108,4 @@ Se muestra récord del laberinto y opción de reintentar
 - Datos reales de la esfera física y prueba de visualización.
 
 **Decisión registrada:** LIIA queda con el concepto **Laberinto gravitatorio esférico**, caminos sobre superficie exterior, controlador de cuatro botones, estrellas coleccionables y puntuación con récord. **Cada caída consume una de tres vidas y devuelve al último checkpoint; al perder la última vida se reinicia el laberinto completo.**
+

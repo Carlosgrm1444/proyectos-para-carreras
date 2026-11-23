@@ -123,3 +123,4 @@ Por juego: `README` con comando/acción de arranque y controles, captura de esce
 - [28 — Autotransporte de Carga](../paquetes-codex/28-codex-mvp-autotransporte.md)
 
 **Estas instrucciones habilitan planificación para Codex; todavía no son software desarrollado.**
+

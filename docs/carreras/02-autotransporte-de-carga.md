@@ -143,3 +143,4 @@ El programa incluye logística, geografía y carreteras, carga y embalaje, gesti
 - ¿Qué pesa más en la puntuación: seguridad, puntualidad, costo o sostenibilidad?
 - ¿Conviene una experiencia de conducción o una de administración logística?
 
+

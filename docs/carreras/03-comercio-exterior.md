@@ -389,3 +389,4 @@ Podemos empezar a implementar cuando confirmemos estas tres decisiones:
 
 El núcleo recomendado es Unity con C#, usando el patrón de puntuación, dificultad progresiva y récord de ProyectVR/Math Party.
 
+

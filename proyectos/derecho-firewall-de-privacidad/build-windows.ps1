@@ -28,4 +28,3 @@ if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $outputPath)) {
 }
 
 Write-Host "Build creado: $outputPath"
-

@@ -23,4 +23,3 @@ Enseñar el contexto y las reglas antes o al encontrar cada sistema. Cada modal 
 - Cada explicación se muestra una sola vez por partida.
 - El juego no continúa mientras se muestra una explicación modal.
 - El panel de ayuda permanente sigue disponible con Select.
-

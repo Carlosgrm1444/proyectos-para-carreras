@@ -6,4 +6,3 @@ New-Item -ItemType Directory -Force -Path (Split-Path $outputPath) | Out-Null
 & $UnityPath -batchmode -quit -buildTarget WebGL -projectPath $projectPath -executeMethod BuildAutomation.BuildWebGl -logFile $logPath
 if ($LASTEXITCODE -ne 0 -or -not (Test-Path $outputPath)) { Write-Error "El build WebGL falló. Revisa $logPath"; exit 1 }
 Write-Host "Build WebGL creado: $outputPath"
-

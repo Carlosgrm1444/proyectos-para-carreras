@@ -45,4 +45,3 @@ public static class GameHaptics
     public static void Pulse(float low, float high, float duration) { }
 #endif
 }
-

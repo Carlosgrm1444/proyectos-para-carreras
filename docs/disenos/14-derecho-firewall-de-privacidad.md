@@ -153,3 +153,4 @@ Unity + C# como opción coherente con el [núcleo común](../arquitectura/00-arq
 - Modo accesible, manejo offline, reinicio seguro y registro local de récord.
 
 **Decisiones registradas:** arcade infinito, muerte del guardián **o** destrucción del centro = fin, rachas aumentan sólo probabilidad de poder y también hay drops base aleatorios.
+

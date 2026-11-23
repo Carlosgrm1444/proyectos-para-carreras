@@ -215,4 +215,3 @@ El proyecto solo debe declararse listo cuando:
 3. La matriz QA tenga fecha, versión, hardware, responsable y evidencia.
 4. El build objetivo arranque desde carpeta limpia, mantenga rendimiento estable y tenga procedimiento de recuperación.
 5. La documentación, los controles mostrados y el comportamiento real coincidan.
-

@@ -29,4 +29,3 @@
 - El HUD anterior fue sustituido en `GameBootstrap` por `ArcadeHudController`.
 - Verificación visual realizada en 1920×1080 y 1280×720: paneles completos, márgenes consistentes y textos sin recortes.
 - Capturas de comprobación: `Builds/Windows/ui-validation.png` y `Builds/Windows/ui-validation-1280x720.png`.
-

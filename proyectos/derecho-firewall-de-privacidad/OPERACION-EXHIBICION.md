@@ -28,4 +28,3 @@
 ## Cierre y privacidad
 
 Cerrar el juego antes de desconectar el mando. El prototipo no solicita cuentas, nombres ni datos personales; solo guarda el récord local.
-

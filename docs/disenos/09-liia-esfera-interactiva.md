@@ -201,3 +201,4 @@ No programar un adaptador de hardware hipotético como si tuviera protocolos con
 - Completar [la plantilla de preparación para Codex](10-guia-de-planificacion-y-ejecucion-codex.md).
 
 **Este documento es de planificación, no certifica compatibilidad de la esfera ni autoriza modificar la instalación.**
+

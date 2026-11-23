@@ -30,4 +30,3 @@
 ## Limitaciones
 
 - La cuadrícula A* está pensada para la arena estática actual. Si se agregan paredes dinámicas, convendrá invalidar rutas al cambiar la geometría.
-

@@ -145,3 +145,4 @@ El movimiento continuo con joystick puede causar mareos por movimiento visual. *
 - Lista de mercancías, tres opciones por cada una y justificación académica validada.
 
 **Decisión de diseño registrada:** la retroalimentación se difiere hasta la entrega para mantener incertidumbre, recorrido y consecuencias de la elección.
+

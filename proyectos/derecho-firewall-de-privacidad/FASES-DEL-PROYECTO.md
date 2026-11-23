@@ -133,4 +133,3 @@ Objetivo: operar la estación de forma segura durante una muestra.
 3. Ejecutar QA prolongado de controles, rutas, rendimiento, derrotas y reinicio antes de invertir en arte final.
 
 No avanzar a la exhibición final sin validar controles, derrotas, reinicio, récord local y contenido jurídico dentro del juego.
-

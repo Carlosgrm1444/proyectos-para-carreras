@@ -25,4 +25,3 @@ public static class WorldCollision
 
     public static bool IsObstacle(RaycastHit hit) => hit.collider != null && hit.collider.GetComponentInParent<ObstacleMarker>() != null;
 }
-

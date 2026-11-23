@@ -19,4 +19,3 @@
 - La fuente y los scripts pueden subirse a la rama del repositorio mediante GitHub.
 - Los ejecutables de Windows, WebGL y Linux deben publicarse como artefactos/release o Git LFS; no conviene guardarlos en el historial normal por su tamaño.
 - `package-builds.ps1` genera ZIPs reproducibles para los targets existentes. Windows y WebGL están empaquetados localmente; Linux sigue pendiente.
-

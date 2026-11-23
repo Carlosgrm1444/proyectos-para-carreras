@@ -89,3 +89,4 @@
 5. Cerrar las decisiones P0 por juego antes de enviar tareas completas a Codex.
 
 **Fuentes internas:** fichas del catálogo `11`–`17`, [protocolo de planificación](../disenos/10-guia-de-planificacion-y-ejecucion-codex.md) e inventario `18`.
+

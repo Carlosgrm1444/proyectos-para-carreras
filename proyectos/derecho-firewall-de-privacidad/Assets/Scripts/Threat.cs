@@ -196,4 +196,3 @@ public sealed class Threat : MonoBehaviour
         return null;
     }
 }
-

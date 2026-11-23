@@ -57,4 +57,3 @@ public sealed class GuardianController : MonoBehaviour
     public void ApplySpeedBoost(float duration) => speedBoostTimer = Mathf.Max(speedBoostTimer, duration);
     public void ResetHealth() { health = maxHealth; invulnerabilityTimer = 0f; blockedHitPending = false; speedBoostTimer = 0f; shieldActive = false; }
 }
-

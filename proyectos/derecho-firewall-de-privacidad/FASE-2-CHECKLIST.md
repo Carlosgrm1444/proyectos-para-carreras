@@ -29,4 +29,3 @@
 - [ ] Ajustar balance de velocidades y prioridades con pruebas reales.
 - [ ] Añadir ataque remoto visible para Fuga remota.
 - [ ] Añadir señal visual clara de ventana vulnerable del Impostor blindado.
-

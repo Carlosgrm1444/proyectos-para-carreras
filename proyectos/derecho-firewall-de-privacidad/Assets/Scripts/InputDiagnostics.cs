@@ -32,4 +32,3 @@ public sealed class InputDiagnostics : MonoBehaviour
         GUI.Box(new Rect(20f, 190f, 560f, 220f), text, style);
     }
 }
-

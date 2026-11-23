@@ -18,4 +18,3 @@ public static class PrimitiveMaterial
         return material;
     }
 }
-

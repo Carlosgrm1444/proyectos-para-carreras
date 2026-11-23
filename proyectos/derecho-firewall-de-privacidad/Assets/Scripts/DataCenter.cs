@@ -13,4 +13,3 @@ public sealed class DataCenter : MonoBehaviour
     public void Heal(int amount) { health = Mathf.Min(maxHealth, health + Mathf.Max(0, amount)); }
     public void ResetHealth() => health = maxHealth;
 }
-

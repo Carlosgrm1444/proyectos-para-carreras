@@ -21,4 +21,3 @@
 - Sustituir primitivas por arte original.
 - Crear pools para proyectiles, enemigos y efectos si el conteo final lo requiere.
 - Medir FPS en la computadora objetivo y preparar build Windows.
-

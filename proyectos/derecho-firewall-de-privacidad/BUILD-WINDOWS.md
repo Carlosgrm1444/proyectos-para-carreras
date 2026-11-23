@@ -37,4 +37,3 @@ También puedes ejecutar `build-windows.ps1`; el script bloquea el intento si de
 - `OPERACION-EXHIBICION.md`.
 - Versión de Unity y fecha de build.
 - Copia sin cuentas ni datos personales.
-

@@ -4,3 +4,4 @@
 - [ ] Mantener PEPS/UEPS y la demanda como parámetros editables.
 - [ ] Añadir modo de entrada de respaldo antes de cámara/proyección.
 - [ ] Registrar controles, pruebas reales y bloqueos en la entrega.
+

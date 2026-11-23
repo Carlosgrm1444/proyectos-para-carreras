@@ -44,4 +44,3 @@ PhysicsManager:
   m_ReleaseSceneBuffers: 0
   m_LogVerbosity: 3
   m_IncrementalStaticBroadphase: 1
-

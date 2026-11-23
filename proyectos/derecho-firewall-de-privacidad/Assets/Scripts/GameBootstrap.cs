@@ -154,4 +154,3 @@ public sealed class GameBootstrap : MonoBehaviour
         signal.GetComponent<Collider>().enabled = false;
     }
 }
-

@@ -24,4 +24,3 @@
 - Pantalla de atracción separada antes de iniciar.
 - Ajuste de sensibilidad del stick derecho.
 - Soporte de resolución ultrawide y opciones de accesibilidad del mando.
-

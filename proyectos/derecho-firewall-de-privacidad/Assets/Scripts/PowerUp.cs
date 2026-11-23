@@ -45,4 +45,3 @@ public sealed class PowerUp : MonoBehaviour
         Destroy(effect, .2f);
     }
 }
-

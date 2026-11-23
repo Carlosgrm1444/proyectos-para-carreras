@@ -27,4 +27,3 @@
 - [ ] Probar en Unity con el mando físico durante una sesión completa.
 - [ ] Confirmar que las capas de colisión del proyecto no producen daño accidental entre hitboxes.
 - [x] Añadir sonido provisional de espada, impacto, bloqueo y disparo.
-

@@ -39,4 +39,3 @@ La revisión requisito por requisito se mantiene en [AUDITORIA-ESPECIFICACION.md
 ## Alcance deliberadamente excluido
 
 Arte final, balance definitivo, power-up de alcance y publicación final de builds quedan para las siguientes fases. La partida es de supervivencia infinita: no existe límite de duración como condición de victoria.
-

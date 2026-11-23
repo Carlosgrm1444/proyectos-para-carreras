@@ -90,4 +90,3 @@ public sealed class HudController : MonoBehaviour
         GUI.Label(new Rect(rect.x + 8f, rect.y + 3f, rect.width - 16f, rect.height - 4f), $"{title}: {value}/{maximum}");
     }
 }
-

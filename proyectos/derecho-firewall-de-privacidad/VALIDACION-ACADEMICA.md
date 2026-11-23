@@ -32,4 +32,3 @@ Los siguientes mensajes describen el contenido que debe aparecer en el tutorial 
 - El escudo representa consentimiento, informacion, verificacion y medidas de proteccion.
 - Los power-ups se presentan como salvaguardas simplificadas: restauracion, respuesta oportuna y proteccion reforzada.
 - El tutorial indica expresamente que las mecanicas son metaforas y no asesoria juridica.
-

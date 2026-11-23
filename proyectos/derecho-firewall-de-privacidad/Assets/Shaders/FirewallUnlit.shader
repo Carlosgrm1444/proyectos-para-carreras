@@ -27,4 +27,3 @@ Shader "Firewall/UnlitColor"
         }
     }
 }
-

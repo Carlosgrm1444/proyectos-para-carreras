@@ -18,4 +18,3 @@ Objetivo: aumentar la sensación de impacto, respuesta y claridad sin sacrificar
 - Los efectos no ocultan enemigos, solicitudes, barras ni objetivo.
 - La vibración es breve y proporcional al evento.
 - El build conserva estabilidad y no genera errores de consola.
-

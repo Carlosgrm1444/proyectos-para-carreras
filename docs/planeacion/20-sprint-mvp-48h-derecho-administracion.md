@@ -86,3 +86,4 @@ Producir dos videojuegos **jugables de principio a fin**, con reglas, pérdida, 
 ## Después de las 48 horas
 
 Priorizar calibración y fiabilidad del videomapping, mejoras de arte/control de Derecho, validación académica de metáforas y método de almacenamiento, y finalmente extracción del núcleo `ArcadeCore` reutilizable. 
+

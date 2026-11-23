@@ -45,4 +45,3 @@ public static class BuildAutomation
         if (report.summary.result != BuildResult.Succeeded) throw new System.Exception($"Build {label} fallido: {report.summary.result}");
     }
 }
-

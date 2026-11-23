@@ -33,8 +33,16 @@ if (Test-Path $packages) {
     New-Item -ItemType Directory -Force -Path $packageDestination | Out-Null
     robocopy $packages $packageDestination /E /XF *.exe *.dll *.pdb | Out-Null
 }
+$manifest = Join-Path $source "Builds\manifest.json"
+$manifestDestination = Join-Path $destination "Builds\manifest.json"
+if (Test-Path $manifest) {
+    New-Item -ItemType Directory -Force -Path (Split-Path $manifestDestination) | Out-Null
+    Copy-Item $manifest $manifestDestination -Force
+}
 
 & $git -C $cloneRoot lfs track "proyectos/**/Builds/Packages/*.zip"
+& $git -C $cloneRoot config user.name "Codex"
+& $git -C $cloneRoot config user.email "codex@users.noreply.github.com"
 & $git -C $cloneRoot add -A
 & $git -C $cloneRoot add -f "proyectos/derecho-firewall-de-privacidad/Builds/Packages/*.zip"
 if (-not (& $git -C $cloneRoot diff --cached --quiet)) {
@@ -42,4 +50,3 @@ if (-not (& $git -C $cloneRoot diff --cached --quiet)) {
 }
 & $git -C $cloneRoot push origin $Branch
 Write-Host "Publicación completada en $RepositoryUrl/tree/$Branch"
-

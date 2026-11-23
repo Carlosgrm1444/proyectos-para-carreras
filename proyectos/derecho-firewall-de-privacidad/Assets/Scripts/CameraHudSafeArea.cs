@@ -32,4 +32,3 @@ public sealed class CameraHudSafeArea : MonoBehaviour
         targetCamera.rect = new Rect(0f, bottom, 1f, Mathf.Max(.2f, 1f - top - bottom));
     }
 }
-

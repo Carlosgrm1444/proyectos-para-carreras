@@ -18,4 +18,3 @@ Hacer que el estado del juego, las prioridades defensivas y los controles se ent
 - La ayuda no tapa el objetivo ni los indicadores de vida.
 - Los modales pausan el juego y solo continúan con confirmación explícita.
 - Build sin errores de compilación y controles existentes intactos.
-

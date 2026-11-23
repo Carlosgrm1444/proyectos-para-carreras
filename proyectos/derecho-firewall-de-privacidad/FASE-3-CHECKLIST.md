@@ -36,4 +36,3 @@ La racha inicia en cero, aumenta al salvar solicitudes o derrotar amenazas y vue
 - Añadir power-up de alcance o proyectil mejorado.
 - Mantener supervivencia infinita; la salida voluntaria con Q durante pausa ya existe.
 - Extender la dificultad después de alcanzar las cadencias mínimas para evitar que la curva se estanque.
-
