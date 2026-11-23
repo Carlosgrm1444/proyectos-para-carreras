@@ -53,3 +53,7 @@ Los archivos `laberinto_01.png`, `_02.png` y `_03.png` pueden editarse con un ed
 El editor está instalado en el segundo SSD, fuera del repositorio: `/media/carlos-rodriguez/nvme0n1p1/repos/personal/Unity/Hub/Editor/2022.3.62f3/Editor/Unity`. La importación y compilación batch terminaron con salida 0; la escena ya se abrió en la interfaz gráfica y falta completar la prueba manual de Play con teclado.
 
 No se deben presentar como probadas las integraciones de ESP32, VR, proyección o esfera física.
+
+## Generar build de exposición
+
+En Unity, usar **LIIA → Build → Linux x86_64** o **Windows x86_64**. Los resultados se generan en `Builds/`, carpeta ignorada por Git. El build de Linux es el que se valida en este equipo; el de Windows requiere que el módulo de plataforma esté instalado en Unity antes de usarlo.
