@@ -1,4 +1,4 @@
-# Unity projects under prototipos/ — retain Assets, Packages, ProjectSettings and .meta
+# Unity projects under proyectos/ — retain Assets, Packages, ProjectSettings and .meta
 **/[Ll]ibrary/
 **/[Tt]emp/
 **/[Oo]bj/
