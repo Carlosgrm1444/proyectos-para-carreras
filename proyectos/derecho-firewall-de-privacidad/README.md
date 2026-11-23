@@ -13,12 +13,10 @@ Micro-vertical slice del arcade de Derecho. El jugador protege un Centro de Dato
 - Mando: stick izquierdo para mover.
 - Xbox: stick izquierdo mueve, stick derecho apunta, RB espada, gatillo derecho arco, gatillo izquierdo escudo.
 - Xbox: Start pausa/reanuda y Select muestra u oculta la ayuda.
-- Música: loop de acción CC0 integrado; `M` silencia efectos y música.
-- Teclado de respaldo: WASD o flechas.
-- Teclado: Espacio espada, E arco, Shift escudo.
+- Música: loop de acción CC0 integrado.
 
 El proyecto usa el Input Manager clásico para evitar incompatibilidades del paquete Input System con Unity 6. Los ejes del mando se configuran como `AimHorizontal`, `AimVertical`, `LeftTrigger` y `RightTrigger`.
-- Reiniciar: botón Start del mando, `R` o `Enter` después de game over.
+- Reiniciar: botón A o Start del mando después de game over.
 
 ## Cómo ejecutar
 
