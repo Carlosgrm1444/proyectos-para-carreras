@@ -7,14 +7,13 @@ namespace LIIA.SphereMaze
         private GUIStyle title;
         private GUIStyle body;
 
-        private void Awake()
-        {
-            title = new GUIStyle(GUI.skin.label) { fontSize = 24, fontStyle = FontStyle.Bold, normal = { textColor = Color.white } };
-            body = new GUIStyle(GUI.skin.label) { fontSize = 18, normal = { textColor = Color.white } };
-        }
-
         private void OnGUI()
         {
+            if (title == null)
+            {
+                title = new GUIStyle(GUI.skin.label) { fontSize = 24, fontStyle = FontStyle.Bold, normal = { textColor = Color.white } };
+                body = new GUIStyle(GUI.skin.label) { fontSize = 18, normal = { textColor = Color.white } };
+            }
             if (GameFlow.Instance == null) return;
             var flow = GameFlow.Instance;
             GUI.Label(new Rect(24, 18, 600, 40), "LIIA · LABERINTO GRAVITATORIO", title);

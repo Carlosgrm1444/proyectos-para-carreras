@@ -5,3 +5,4 @@
 - Confirmado: tres vidas, cuatro direcciones, estrellas, checkpoints y récord de puntuación; el tiempo desempata.
 - La escena se genera con primitivas en `LIIAPrototypeBootstrap`; no hay arte final ni hardware integrado.
 - Unity 2022.3.62f3 importó el proyecto y compiló los scripts en batchmode con salida 0; falta una prueba visual de Play.
+- Unity quedó abierto con el proyecto en la interfaz gráfica; el primer Play detectó y ya corrigió el acceso a `GUI.skin` desde `Awake` en `LIIAHUD`.

@@ -40,6 +40,6 @@ La entrada actual es teclado. No existe todavía comunicación con ESP32 ni inte
 
 ## Estado de verificación
 
-El editor está instalado en el segundo SSD, fuera del repositorio: `/media/carlos-rodriguez/nvme0n1p1/repos/personal/Unity/Hub/Editor/2022.3.62f3/Editor/Unity`. La importación y compilación batch ya terminaron con salida 0; todavía falta observar la escena en Play.
+El editor está instalado en el segundo SSD, fuera del repositorio: `/media/carlos-rodriguez/nvme0n1p1/repos/personal/Unity/Hub/Editor/2022.3.62f3/Editor/Unity`. La importación y compilación batch terminaron con salida 0; la escena ya se abrió en la interfaz gráfica y falta completar la prueba manual de Play con teclado.
 
 No se deben presentar como probadas las integraciones de ESP32, VR, proyección o esfera física.
