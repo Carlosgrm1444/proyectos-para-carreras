@@ -6,7 +6,7 @@
 - [x] Guardian, Centro de Datos, solicitudes y amenazas tienen colliders.
 - [x] Obstáculos sólidos con navegación lateral inicial.
 - [x] HUD sin dependencia de `UnityEngine.UI`.
-- [x] Diagnóstico de mando activable con `F1`.
+- [x] Diagnóstico de mando activable con `Select`.
 - [x] Confirmar el mapeo real del control Xbox conectado: LT = -1, RT = +1, ambos = 0.
 - [ ] Confirmar compilación sin errores en Unity 6.6.
 - [ ] Confirmar cinco minutos de juego sin excepciones.
@@ -15,7 +15,7 @@
 ## Prueba de mando
 
 1. Ejecutar `Assets/Scenes/Main.unity`.
-2. Pulsar `F1`.
+2. Pulsar `Select`.
 3. Mover stick izquierdo: deben cambiar `Horizontal` y `Vertical`.
 4. Mover stick derecho: deben cambiar `AimHorizontal` y `AimVertical`.
 5. Mantener LT y anotar el eje que cambia y su signo.
@@ -33,7 +33,7 @@
 
 - El proyecto entra en Play Mode sin errores de compilación.
 - El mando mueve, apunta, ataca y bloquea de forma repetible.
-- El teclado sigue funcionando como respaldo.
+- La experiencia requiere mando Xbox conectado.
 - Las amenazas y solicitudes rodean obstáculos y no los atraviesan.
 - Las colisiones no dejan entidades permanentemente atrapadas.
 - Se puede perder por vida del guardián o del Centro y reiniciar sin recargar manualmente la escena.
