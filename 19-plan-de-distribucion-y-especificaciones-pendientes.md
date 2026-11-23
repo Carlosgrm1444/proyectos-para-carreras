@@ -1,4 +1,6 @@
-# Plan provisional de desarrollo en dos equipos y decisiones pendientes
+# Plan histórico de distribución y decisiones pendientes
+
+> **ATENCIÓN — Alcance actualizado:** la estimación de varias semanas más abajo corresponde a siete **estaciones terminadas para exhibición**, no al nuevo objetivo de **siete prototipos funcionales en 48 horas**. Para trabajo inmediato usar [21-sprint-48h-siete-videojuegos.md](21-sprint-48h-siete-videojuegos.md) y las tareas [22–28](AGENTS.md).
 
 > Fecha: 22 de noviembre de 2026. Estado: **planificación, no asignación definitiva, ni autorización para implementar**.
 > Repositorio: `Carlosgrm1444/proyectos-para-carreras`.
