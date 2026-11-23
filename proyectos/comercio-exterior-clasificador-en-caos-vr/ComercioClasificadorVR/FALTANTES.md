@@ -20,11 +20,13 @@ Este documento registra elementos que no pueden cerrarse sin el visor y sus cont
 - [x] Preparar suelo con colision y seis obstaculos de prueba.
 - [x] Agregar `XR Interaction Manager` a `Comercio.unity`.
 - [x] Agregar un cubo de carga de prueba con collider, Rigidbody y `XR Grab Interactable`.
+- [x] Preparar dos objetos de controlador con interactor directo para izquierda y derecha.
 - [x] Desactivar la camara duplicada de la plantilla.
 - [x] Configurar Build Settings con `Bootstrap.unity` como escena 0 y `Comercio.unity` como escena 1.
 - [ ] Conectar el boton de inicio de Bootstrap con la carga de `Comercio.unity`.
 - [ ] Probar locomocion, giro y recentrado con controles reales.
-- [ ] Agregar controladores/interactors izquierdo y derecho con acciones XRI verificadas.
+- [ ] Enlazar acciones XRI modernas a los interactors; la clase `XRController` usada por la plantilla aparece obsoleta en XRI 3.7.
+- [ ] Agregar/probar interactor de rayo para interacciones lejanas.
 - [ ] Probar agarrar, soltar y lanzar el cubo con ambos mandos.
 - [ ] Confirmar mapeo final y ajustar velocidad/angulo tras la prueba de comodidad.
 
