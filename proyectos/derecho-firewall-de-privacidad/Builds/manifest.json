@@ -1,16 +1,16 @@
 {
   "generatedAt": "2026-11-23",
-  "engine": "Unity 6.6.0f1",
+  "engine": "Unity 6000.6.10f1",
   "artifacts": [
     {
       "name": "DerechoFirewall-Windows-x64.zip",
-      "bytes": 40872254,
-      "sha256": "64FEDDD9617E96FE9F157C6178194930E5F13D85CEEBD6F287C84EAF1747EDBF"
+      "bytes": 40874299,
+      "sha256": "2150E37E32140D2FFE54997E039D3EDBA16C16016C90AEF82B5C211C1ED97ACF"
     },
     {
       "name": "DerechoFirewall-WebGL.zip",
-      "bytes": 8136819,
-      "sha256": "3C7D5932CFC44366183C3172CE7C3FB6ADB41C2D356D49594685AA13466BB241"
+      "bytes": 8138777,
+      "sha256": "3AA985C825D90A3D03438516F7A81FB61981E80C5BE22749971D319FE91E08CB"
     }
   ],
   "linux": {
@@ -18,3 +18,4 @@
     "reason": "Unity Linux Build Support is not installed on the build machine"
   }
 }
+
