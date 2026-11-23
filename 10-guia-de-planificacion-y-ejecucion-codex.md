@@ -24,7 +24,7 @@
 | CON | Contador Público | [04](04-contador-publico.md) | Banco de 8 conceptos | Elegir candidatos con docentes |
 | DER | Derecho | [05](05-derecho.md) | Banco de 8 conceptos | Elegir candidatos con docentes |
 | PSI | Psicología | [06](06-psicologia.md) | Banco de 8 conceptos | Elegir candidatos con docentes |
-| LIIA | Informática e Inteligencia Artificial | [07](07-informatica-e-inteligencia-artificial.md) | Banco de 8 conceptos y [estación esférica candidata](09-liia-esfera-interactiva.md) | Elegir el juego y verificar factibilidad de la esfera |
+| LIIA | Informática e Inteligencia Artificial | [07](07-informatica-e-inteligencia-artificial.md) | Banco de 8 conceptos; [Laberinto gravitatorio esférico seleccionado](15-liia-laberinto-gravitatorio-esferico.md) | Validar físicas, control electrónico y factibilidad de visualización de la esfera |
 
 **No duplicar carrera:** la estación esférica pertenece a LIIA (Licenciatura en Informática e Inteligencia Artificial) y no se contará como otra carrera. Comercio Exterior y Aduanas permanece como referencia histórica fuera del alcance según el README vigente.
 
