@@ -1,5 +1,17 @@
 # Banco de minijuegos para presentar las carreras de la FCACS Nuevo Laredo
 
+## Ejecución inmediata con Codex — sprint de 48 horas
+
+**Objetivo actual:** los **siete** juegos deben tener un primer prototipo jugable en dos días. No se incluye arte final; sólo efectos sonoros básicos, reglas esenciales y controles de respaldo. Las integraciones AR/VR/cámara/electrónica sólo se consideran realizadas si se prueban con hardware real.
+
+- [**Plan maestro: siete MVPs en 48 horas**](21-sprint-48h-siete-videojuegos.md)
+- [**Instrucciones automáticas de Codex para ambas computadoras**](AGENTS.md)
+- [Derecho — paquete Codex 22](22-codex-mvp-derecho.md) · [Administración — 23](23-codex-mvp-administracion.md)
+- [Contador Público — 24](24-codex-mvp-contador.md) · [Psicología — 25](25-codex-mvp-psicologia.md) · [LIIA — 26](26-codex-mvp-liia.md)
+- [Comercio Exterior — 27](27-codex-mvp-comercio.md) · [Autotransporte — 28](28-codex-mvp-autotransporte.md)
+
+Dos proyectos Unity separados: `prototipos/equipo-a/` (4 escenas) y `prototipos/equipo-b/` (3 escenas). Una rama por equipo, sin compartir archivos activos.
+
 ## Enfoque del proyecto
 
 Este espacio reúne las ideas originales y las **fichas de diseño de siete videojuegos seleccionados, uno por carrera**, con la filosofía de Math Party y `ProyectVR`. **Son proyectos planificados, todavía no juegos programados:**
