@@ -4,9 +4,9 @@ namespace LIIA.SphereMaze
 {
     public sealed class MazeBallController : MonoBehaviour
     {
-        [SerializeField] private float accelerationCellsPerSecond = 18f;
-        [SerializeField] private float maxSpeedCellsPerSecond = 3.7f;
-        [SerializeField] private float rollingResistance = 5.5f;
+        [SerializeField] private float accelerationCellsPerSecond = 32f;
+        [SerializeField] private float maxSpeedCellsPerSecond = 4.6f;
+        [SerializeField] private float rollingResistance = 8.5f;
         [SerializeField] private float radiusInCells = .27f;
         [SerializeField] private float ballSurfaceOffset = .28f;
         [SerializeField] private float visualRadius = .22f;
