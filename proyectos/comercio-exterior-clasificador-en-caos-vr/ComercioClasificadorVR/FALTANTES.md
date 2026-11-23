@@ -18,8 +18,14 @@ Este documento registra elementos que no pueden cerrarse sin el visor y sus cont
 - [x] Crear XR Origin con camara, offset y seguimiento de pose.
 - [x] Anadir locomocion continua y giro por intervalos al XR Origin.
 - [x] Preparar suelo con colision y seis obstaculos de prueba.
+- [x] Agregar `XR Interaction Manager` a `Comercio.unity`.
+- [x] Agregar un cubo de carga de prueba con collider, Rigidbody y `XR Grab Interactable`.
 - [x] Desactivar la camara duplicada de la plantilla.
+- [x] Configurar Build Settings con `Bootstrap.unity` como escena 0 y `Comercio.unity` como escena 1.
+- [ ] Conectar el boton de inicio de Bootstrap con la carga de `Comercio.unity`.
 - [ ] Probar locomocion, giro y recentrado con controles reales.
+- [ ] Agregar controladores/interactors izquierdo y derecho con acciones XRI verificadas.
+- [ ] Probar agarrar, soltar y lanzar el cubo con ambos mandos.
 - [ ] Confirmar mapeo final y ajustar velocidad/angulo tras la prueba de comodidad.
 
 ## Base creada en Fase 1
@@ -40,6 +46,8 @@ Este documento registra elementos que no pueden cerrarse sin el visor y sus cont
 La compilacion de scripts termino sin errores (`compilationFailed: false`). Unity conserva un error de importacion de un shader interno de Probe Volume de URP (`TraceVirtualOffset.urtshader`); no bloquea la compilacion ni la configuracion del escenario, pero debe revisarse antes de la primera build.
 
 La escena contiene `LocomotionMediator`, `ContinuousMoveProvider` y `SnapTurnProvider`. La validacion automatica confirma que estan guardados; no puede confirmar comodidad, tracking ni botones sin el visor conectado.
+
+Tambien contiene `XR Interaction Manager` y un objeto `Cube` interactivo para validar el primer flujo de agarre. Todavia no se marcaran los interactors ni el mapeo de acciones como completos hasta probarlos con el visor.
 
 ## Criterio de cierre
 
