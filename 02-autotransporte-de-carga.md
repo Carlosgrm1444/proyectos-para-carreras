@@ -50,7 +50,7 @@ El programa incluye logística, geografía y carreteras, carga y embalaje, gesti
 - **Puntos:** cajas colocadas de manera estable, balance, aprovechamiento de espacio y riesgo/fragilidad, con ponderación pendiente.
 - **Dificultad:** piezas de formas, tamaños y masas diferentes; menos espacio libre, pilas más altas y centros de masa difíciles.
 - **Descartado de la versión elegida:** conducción, pruebas de carretera, extracción de piezas, sujeción con correas y montaje físico con básculas.
-- **Derrota/fin:** condición por determinar (p. ej., derrumbe o límite de integridad); no fijada todavía.
+- **Tres rondas y tres vidas:** cada ronda exige apilar cargas progresivamente más difíciles. Un derrumbe grave consume vida (umbral exacto por balancear). **Al perder las tres vidas, la partida se reinicia desde la primera ronda** con tres vidas nuevas. Si completa la tercera ronda, muestra puntuación final y récord.
 - **Ficha ampliada para futura implementación:** [Carga equilibrada VR — grúa cenital y apilamiento](17-autotransporte-carga-equilibrada-grua-vr.md).
 
 ### 3. Ruta bajo presión
