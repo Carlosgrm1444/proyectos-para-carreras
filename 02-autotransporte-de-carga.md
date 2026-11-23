@@ -42,14 +42,16 @@ El programa incluye logística, geografía y carreteras, carga y embalaje, gesti
 - **Modos:** individual contra récord o relevo de dos inspectores.
 - **Tecnología posible:** VR, AR sobre maqueta o cámara que reconoce herramientas.
 
-### 2. Carga equilibrada
+### 2. Carga equilibrada — concepto seleccionado en VR
 
-- **Proceso:** distribución de peso, embalaje y sujeción.
-- **Gameplay:** se acomodan paquetes en un remolque; después el camión atraviesa curvas, frenadas y pendientes.
-- **Puntos:** estabilidad, espacio aprovechado y mercancía intacta.
-- **Dificultad:** cargas frágiles, incompatibles, urgentes y con centros de masa distintos.
-- **Modos:** versus con el mismo pedido o cooperación entre cargador y conductor.
-- **Tecnología posible:** piezas impresas, básculas con celdas de carga y remolque físico.
+- **Proceso:** distribución del peso, aprovechamiento del espacio y estabilidad de mercancía dentro de un remolque.
+- **Gameplay:** vista **desde arriba como operador de una grúa**; tomar piezas del suelo, elevarlas y **acomodarlas dentro de la caja abierta del tráiler**, apilándolas con físicas simuladas al estilo de un Jenga de mercancías, **sin retirar piezas**.
+- **Control:** visor VR y mandos para manipular una grúa/garra virtual; el jugador no camina en el interior del tráiler.
+- **Puntos:** cajas colocadas de manera estable, balance, aprovechamiento de espacio y riesgo/fragilidad, con ponderación pendiente.
+- **Dificultad:** piezas de formas, tamaños y masas diferentes; menos espacio libre, pilas más altas y centros de masa difíciles.
+- **Descartado de la versión elegida:** conducción, pruebas de carretera, extracción de piezas, sujeción con correas y montaje físico con básculas.
+- **Derrota/fin:** condición por determinar (p. ej., derrumbe o límite de integridad); no fijada todavía.
+- **Ficha ampliada para futura implementación:** [Carga equilibrada VR — grúa cenital y apilamiento](17-autotransporte-carga-equilibrada-grua-vr.md).
 
 ### 3. Ruta bajo presión
 
