@@ -11,7 +11,7 @@ Registrar fecha, versión de Unity, mando utilizado y resultado de cada prueba.
 | QA-05 | LT | Escudo activo, transparente, bloquea y se rompe tras 1.5 s | Pendiente |
 | QA-06 | Cooldown de escudo | No puede reactivarse durante 2 s | Pendiente |
 | QA-07 | Select | Muestra/oculta ayuda | Pendiente |
-| QA-08 | Start/Escape | Pausa y reanuda sin avance de entidades | Pendiente |
+| QA-08 | Start | Pausa y reanuda sin avance de entidades | Pendiente |
 | QA-09 | M | Silencia y reactiva sonidos | Pendiente |
 | QA-10 | Solicitud verde | Llegar al Centro suma puntos y racha | Pendiente |
 | QA-11 | Interceptador naranja | Prioriza y puede perder solicitudes | Pendiente |
