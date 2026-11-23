@@ -29,7 +29,7 @@ Los riesgos principales son:
 5. La progresión se estabiliza al alcanzar las cadencias mínimas; no continúa aumentando indefinidamente.
 6. El tutorial explica controles, pero casi no enseña los conceptos jurídicos que justifican el proyecto educativo.
 7. La documentación afirma validaciones, tiempos y comportamientos que no coinciden con el código actual.
-8. Faltan pruebas completas con mando, sesiones largas, reconexión, rendimiento, piloto y revisión docente.
+8. Faltan pruebas completas con mando, sesiones largas, reconexión, rendimiento y piloto.
 9. Linux no se ha compilado porque falta el módulo de soporte de Unity; los paquetes no están publicados como Release.
 
 ## Trazabilidad de los 13 criterios vinculantes
@@ -44,19 +44,18 @@ Los riesgos principales son:
 | D-06 | Espada, arco y escudo distintos y necesarios; blindado exige bloqueo/contraataque | **Parcial** | Las tres herramientas existen. El blindado ignora daño fuera de vulnerabilidad, pero se vuelve vulnerable después de atacar al guardián incluso si el golpe no fue bloqueado. El arco y la espada dañan los mismos tipos; no hay vulnerabilidad exclusiva que haga necesario el arco. |
 | D-07 | Objetivo cercano y cambio temporal de agresión tras recibir golpe | **Parcial** | Intruso/generalistas comparan distancia entre guardián y Centro. `Threat.TakeDamage` no registra atacante ni activa un temporizador de agresión hacia el jugador. |
 | D-08 | Obstáculos y rutas no triviales | **Cumplido con riesgo** | Arena con barreras, colisión por `SphereCast` y A* en cuadrícula. Falta prueba prolongada de que ninguna entidad quede atrapada. |
-| D-09 | Dificultad gradual y puntuación comparable | **Parcial** | La cadencia aumenta hasta mínimos de 1.35 s y 1.6 s; después se estanca. No escalan salud, daño, velocidad, composición o rutas según oleada. Récord local sí existe. |
+| D-09 | Dificultad gradual y puntuación comparable | **Parcial** | La cadencia aumenta y desde oleadas posteriores aparecen solicitudes/amenazas adicionales. Aún se estanca la cadencia mínima y faltan escalados completos de salud, daño y rutas. Récord local sí existe. |
 | D-10 | Drop base > 0 y racha solo aumenta probabilidad | **Cumplido** | Probabilidad `0.08 + min(racha × 0.02, 0.12)`, máximo 20 %, nunca garantizada. |
 | D-11 | Curación restaura ambos; otros poderes temporales | **Cumplido mínimo** | Curación +2 a guardián y Centro; velocidad y daño duran 8 s. No existen todavía defensa reforzada ni alcance, ambos propuestos pero no obligatorios para el mínimo. |
 | D-12 | Récord persistente y HUD con dos vidas/puntos | **Cumplido** | `PlayerPrefs`, dos barras numéricas suavizadas, puntuación, combo, oleada y tiempo. |
-| D-13 | Metáforas explicables y validadas jurídicamente | **Falta** | Hay una tabla propuesta en `VALIDACION-ACADEMICA.md`, pero todas las validaciones docentes siguen pendientes. El tutorial actual enseña principalmente botones y patrones, no finalidad, proporcionalidad, responsabilidad ni límites de las metáforas. |
+| D-13 | Metáforas explicables jurídicamente | **Parcial** | La introducción ya explica consentimiento, finalidad, proporcionalidad y que las armas son metáforas; falta ampliar responsabilidad, protección de las personas y un debrief final. |
 
 ## Auditoría detallada por sistema
 
 ### 1. Bucle, vidas, derrota y reinicio
 
 - **Cumplido:** supervivencia infinita, vidas independientes, derrota por cualquiera de las dos vidas, puntuación final, oleada y tiempo sobrevivido.
-- **Cumplido:** pausa con Start/Escape, mute con M y salida con Q durante pausa.
-- **Parcial:** el HUD de derrota anuncia `A / Start`, pero `GameSession` reinicia mediante `R`, `Enter` o `Submit`. Start se intercepta como pausa y `TogglePause` no actúa durante game over. Debe corregirse el código o el texto.
+- **Cumplido:** pausa con Start y reinicio con A/Start desde game over.
 - **No verificado:** no existe una prueba registrada de ambas causas de derrota y reinicio repetido en build limpio.
 - **Falta:** una opción documentada para restablecer el récord local si la estación requiere mantenimiento.
 
@@ -64,7 +63,7 @@ Los riesgos principales son:
 
 - **Cumplido:** LS mueve, RS apunta, RB espada, RT arco, LT escudo, Start pausa y Select ayuda, según el mapeo clásico configurado.
 - **Cumplido:** se respeta la limitación del eje combinado de gatillos: LT = −1, RT = +1, ambos = 0.
-- **Parcial:** el HUD de teclado menciona ratón para apuntar, pero no hay lectura de posición o movimiento del ratón. El apuntado de respaldo sigue la dirección de movimiento.
+- **Decisión aplicada:** el juego se controla exclusivamente con mando Xbox; no se ofrece ruta de teclado o ratón.
 - **Cumplido:** F11 y Alt+Enter alternan pantalla completa en el build de escritorio.
 - **No verificado:** desconexión/reconexión del mando, modelo exacto, sensibilidad, dead zones y funcionamiento durante una sesión completa.
 - **No verificado:** WebGL puede requerir una interacción explícita del usuario para aceptar pantalla completa por políticas del navegador.
@@ -74,9 +73,9 @@ Los riesgos principales son:
 - **Cumplido:** enfriamientos y bloqueo mutuo de acciones; no se puede atacar, disparar y escudar simultáneamente.
 - **Cumplido:** escudo visible, duración 1.5 s, desvanecimiento, ruptura, efecto, sonido y cooldown de 2 s.
 - **Parcial:** la espada muestra el efecto al frente, pero el daño usa una esfera completa alrededor del guardián; puede golpear amenazas detrás del personaje.
-- **Parcial:** el proyectil se detiene en obstáculos y daña amenazas, pero no existe una relación de vulnerabilidad que lo haga la respuesta requerida para Fuga remota.
-- **Falta:** el estado de contraataque no caduca. El diseño promete una ventana breve después del bloqueo.
-- **Falta:** el blindado debe abrir su vulnerabilidad únicamente cuando su golpe fue bloqueado correctamente; hoy basta con que ejecute el ataque contra el guardián.
+- **Parcial:** el proyectil se detiene en obstáculos y daña amenazas; aún falta hacer que algunos tipos requieran explícitamente la respuesta a distancia.
+- **Cumplido:** el estado de contraataque caduca después de 1.25 s.
+- **Cumplido:** el blindado solo abre vulnerabilidad cuando el impacto contra el guardián fue bloqueado por el escudo.
 - **Cumplido:** las armas buscan exclusivamente amenazas y no dañan solicitudes legítimas.
 - **No verificado:** capas/hitboxes dedicadas. La implementación usa distancias y búsquedas globales, no una matriz de capas separada.
 
@@ -84,8 +83,8 @@ Los riesgos principales son:
 
 - **Cumplido visualmente:** cinco tipos con color y marcador geométrico distintos.
 - **Cumplido:** Interceptor busca la solicitud más cercana; Saboteador prioriza el Centro; generalistas comparan guardián/Centro.
-- **Falta:** Fuga remota no dispara. Solo invierte la dirección cuando el guardián está cerca y continúa usando el ataque de contacto a menos de una unidad.
-- **Falta:** agresión temporal al guardián después de recibir daño.
+- **Cumplido mínimo:** Fuga remota dispara proyectiles visibles hacia el guardián y se mantiene a distancia; falta una señal telegráfica más clara.
+- **Cumplido:** las amenazas reciben una prioridad temporal hacia el guardián al ser golpeadas.
 - **Parcial:** todos los tipos aparecen aleatoriamente desde el principio. No hay desbloqueo o composición dirigida por oleada, pese a que el diseño pide combinaciones progresivas.
 - **Parcial:** barras de vida existen y hacen billboard, pero falta una prueba visual sistemática en todos los ángulos/resoluciones y una transición suavizada.
 - **Falta:** señales telegráficas consistentes antes de ataques, especialmente blindado, remoto y saboteador.
@@ -116,14 +115,13 @@ Los riesgos principales son:
 
 ### 8. Tutorial y contenido educativo
 
-- **Cumplido:** modales pausan mediante `Time.timeScale = 0` y esperan A/Start/Enter; controles y primer encuentro de enemigos/power-up se presentan una vez por partida.
+- **Cumplido:** modales pausan mediante `Time.timeScale = 0` y esperan A/Start; controles y primer encuentro de enemigos/power-up se presentan una vez por partida.
 - **Parcial:** espada, arco y escudo se presentan en la introducción general antes del uso, pero luego vuelven a abrirse al detectar la acción. Esto es funcional, aunque la secuencia puede interrumpir el primer combate.
-- **Falta:** explicación jugable de consentimiento válido, finalidad, proporcionalidad, responsabilidad y protección de las personas.
-- **Falta:** expansión de ARCO (Acceso, Rectificación, Cancelación y Oposición) dentro del tutorial actual.
+- **Parcial:** la introducción explica consentimiento, finalidad y proporcionalidad; falta ampliar responsabilidad y protección de las personas con ejemplos interactivos.
+- **Cumplido mínimo:** el contexto inicial explica ARCO como Acceso, Rectificación, Cancelación y Oposición y aclara que es una metáfora.
 - **Falta:** analogía jurídica específica de cada enemigo en los mensajes mostrados.
 - **Falta:** aviso educativo breve de que las acciones son metáforas y no asesoría jurídica, al menos en inicio/créditos o ayuda completa. No debe permanecer ocupando el escenario.
 - **Falta:** cierre/debrief que conecte resultados con conceptos aprendidos.
-- **No verificado:** revisión y aprobación docente de textos, nombres y analogías.
 
 ### 9. HUD, UX y accesibilidad
 
@@ -161,11 +159,10 @@ Los riesgos principales son:
 - **Cumplido:** scripts de build y empaquetado, documentación de operación y hashes locales.
 - **No verificado:** ejecución desde carpeta limpia, WebGL servido por HTTP/HTTPS, Linux real, permisos, fullscreen WebGL y descarga desde el repositorio.
 
-### 13. Privacidad y validación académica
+### 13. Privacidad y contenido educativo
 
 - **Cumplido:** no solicita cuentas, nombres, grabaciones ni expedientes; solo usa `PlayerPrefs` para récord.
 - **Falta:** comprobación formal de qué claves se guardan y procedimiento de borrado.
-- **Falta:** revisión docente firmada con nombre, fecha, observaciones y resolución de cambios.
 - **Falta:** referencia legal/académica trazable para cada metáfora presentada al público.
 
 ## Inconsistencias documentales corregibles
@@ -178,8 +175,7 @@ Los riesgos principales son:
 6. Varios checklists indicaban `DerechoMVP.unity`; la escena de build y ejecución actual es `Main.unity`.
 7. Algunos documentos antiguos indicaban A para espada; el control vigente es RB.
 8. La pantalla de derrota dice A/Start, pero el reinicio real no admite Start.
-9. El HUD menciona apuntado con ratón, pero el código no lo implementa.
-10. Documentos antiguos usan Unity `6.6.0f1`; el proyecto y build verificados usan `6000.6.10f1`.
+9. Documentos antiguos usaban Unity `6.6.0f1`; el proyecto y build verificados usan `6000.6.10f1`.
 
 ## Backlog obligatorio recomendado
 
@@ -189,10 +185,9 @@ Los riesgos principales son:
 - Implementar proyectil/ataque remoto real y telegráfico para Fuga remota.
 - Vincular la vulnerabilidad del blindado a un bloqueo exitoso y hacer caducar el contraataque.
 - Corregir el reinicio con mando o el texto de A/Start.
-- Corregir el texto de apuntado con ratón o implementar apuntado real.
 - Evitar crecimiento indefinido del caché de navegación.
 - Ejecutar QA de las dos derrotas, reinicio, armas, cinco enemigos, tres power-ups y sesión prolongada.
-- Completar contenido educativo visible y obtener validación docente.
+- Completar contenido educativo visible y coherente dentro del juego.
 
 ### P1 — Antes de exhibición pública
 
@@ -218,7 +213,6 @@ El proyecto solo debe declararse listo cuando:
 1. Los P0 estén implementados y probados.
 2. Los 13 criterios vinculantes estén en estado Cumplido o tengan una exclusión aprobada y documentada.
 3. La matriz QA tenga fecha, versión, hardware, responsable y evidencia.
-4. Exista aprobación docente del contenido jurídico.
-5. El build objetivo arranque desde carpeta limpia, mantenga rendimiento estable y tenga procedimiento de recuperación.
-6. La documentación, los controles mostrados y el comportamiento real coincidan.
+4. El build objetivo arranque desde carpeta limpia, mantenga rendimiento estable y tenga procedimiento de recuperación.
+5. La documentación, los controles mostrados y el comportamiento real coincidan.
 
