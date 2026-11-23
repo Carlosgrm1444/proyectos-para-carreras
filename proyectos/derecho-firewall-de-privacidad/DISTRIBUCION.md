@@ -1,25 +1,22 @@
-# Distribución multiplataforma
+# Plan de distribución multiplataforma
 
-Proyecto Unity 6.6: Firewall de Privacidad.
+## Targets
 
-## Artefactos verificados
+1. Windows 64-bit: `build-windows.ps1` → `Builds/Windows/DerechoFirewall.exe`.
+2. WebGL: `build-webgl.ps1` → `Builds/WebGL/index.html` y sus archivos auxiliares.
+3. Linux 64-bit: `build-linux.ps1` → `Builds/Linux/DerechoFirewall.x86_64`.
 
-- Windows 64-bit: generado localmente en `Builds/Windows/DerechoFirewall.exe`.
-- WebGL: generado localmente en `Builds/WebGL/index.html` con sus carpetas `Build` y `TemplateData`.
-- Linux 64-bit: preparado mediante `build-linux.ps1`, pero requiere instalar el módulo **Linux Build Support** de Unity Hub.
+## Verificación
 
-## Compilar
-
-Desde la carpeta del proyecto:
-
-```powershell
-.uild-windows.ps1
-.uild-webgl.ps1
-.uild-linux.ps1
-```
-
-Los scripts usan `Assets/Scenes/Main.unity` y escriben el log dentro de `Builds/<plataforma>/build.log`.
+- Cada build usa `Assets/Scenes/Main.unity`.
+- El target se fija desde la línea de comandos y también desde `BuildAutomation`.
+- Windows fue generado correctamente.
+- WebGL fue generado correctamente; existe `Builds/WebGL/index.html` con sus archivos auxiliares.
+- Linux requiere instalar `Linux Build Support` para Unity 6.6.
 
 ## Publicación
 
-Los builds deben distribuirse como artefactos de Release o Git LFS. No conviene guardarlos en el historial normal del repositorio por su tamaño. El código fuente y los scripts de compilación sí están en esta rama.
+- La fuente y los scripts pueden subirse a la rama del repositorio mediante GitHub.
+- Los ejecutables de Windows, WebGL y Linux deben publicarse como artefactos/release o Git LFS; no conviene guardarlos en el historial normal por su tamaño.
+- `package-builds.ps1` genera ZIPs reproducibles para los targets existentes. Windows y WebGL están empaquetados localmente; Linux sigue pendiente.
+
