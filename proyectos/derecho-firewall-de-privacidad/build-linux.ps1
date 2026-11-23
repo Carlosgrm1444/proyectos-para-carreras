@@ -6,3 +6,4 @@ New-Item -ItemType Directory -Force -Path (Split-Path $outputPath) | Out-Null
 & $UnityPath -batchmode -quit -buildTarget StandaloneLinux64 -projectPath $projectPath -executeMethod BuildAutomation.BuildLinux -logFile $logPath
 if ($LASTEXITCODE -ne 0 -or -not (Test-Path $outputPath)) { Write-Error "El build Linux falló. Revisa $logPath"; exit 1 }
 Write-Host "Build Linux creado: $outputPath"
+
