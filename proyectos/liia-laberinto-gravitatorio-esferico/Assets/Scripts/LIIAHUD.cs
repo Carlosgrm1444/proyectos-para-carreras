@@ -17,10 +17,17 @@ namespace LIIA.SphereMaze
             if (GameFlow.Instance == null) return;
             var flow = GameFlow.Instance;
             GUI.Label(new Rect(24, 18, 600, 40), "LIIA · LABERINTO GRAVITATORIO", title);
-            GUI.Label(new Rect(24, 58, 600, 30), $"Flechas: mover bola   |   R: reiniciar", body);
+            GUI.Label(new Rect(24, 58, 600, 30), "Flechas: mover bola   |   R: reiniciar", body);
             GUI.Label(new Rect(24, 92, 500, 30), $"Vidas: {flow.Lives}   Estrellas: {flow.StarsCollected}   Puntos: {flow.Score}", body);
             GUI.Label(new Rect(24, 126, 500, 30), $"Tiempo: {flow.ElapsedTime:0.0}s   Récord: {flow.BestScore}", body);
             GUI.Label(new Rect(24, 160, 900, 26), "Amarillo: estrella (+100)   Azul: checkpoint   Morado: trampa", body);
+            if (flow.State == GameState.Attract)
+            {
+                GUI.Box(new Rect(Screen.width / 2f - 245, Screen.height / 2f - 108, 490, 216), "LIIA · LABERINTO GRAVITATORIO");
+                GUI.Label(new Rect(Screen.width / 2f - 210, Screen.height / 2f - 50, 420, 30), "Llega a la meta, toma riesgos y supera el récord.", body);
+                GUI.Label(new Rect(Screen.width / 2f - 210, Screen.height / 2f - 4, 420, 30), "PULSA ENTER, ESPACIO O UNA FLECHA PARA JUGAR", body);
+                GUI.Label(new Rect(Screen.width / 2f - 210, Screen.height / 2f + 44, 420, 30), $"RÉCORD ACTUAL: {flow.BestScore}", body);
+            }
             if (flow.HasStatusMessage && flow.State == GameState.Playing)
             {
                 var messageStyle = new GUIStyle(title) { alignment = TextAnchor.MiddleCenter, fontSize = 20 };

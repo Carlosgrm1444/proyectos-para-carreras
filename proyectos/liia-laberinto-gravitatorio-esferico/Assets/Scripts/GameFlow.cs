@@ -16,7 +16,7 @@ namespace LIIA.SphereMaze
         public int Lives { get; private set; }
         public int Score { get; private set; }
         public float ElapsedTime { get; private set; }
-        public GameState State { get; private set; } = GameState.Playing;
+        public GameState State { get; private set; } = GameState.Attract;
         public int StarsCollected { get; private set; }
         public int BestScore => PlayerPrefs.GetInt("LIIA_BEST_SCORE", 0);
         public float BestTime => PlayerPrefs.GetFloat("LIIA_BEST_TIME", 0f);
@@ -27,12 +27,13 @@ namespace LIIA.SphereMaze
         private Vector2Int activeCheckpoint;
         private bool hasCheckpoint;
         private float statusMessageUntil;
+        private float stateChangedAt;
 
         public void Configure(MazeBallController player, int lives = 3)
         {
             ball = player;
             startingLives = lives;
-            Lives = startingLives;
+            EnterAttractMode();
         }
 
         private void Awake()
@@ -40,12 +41,27 @@ namespace LIIA.SphereMaze
             if (Instance != null && Instance != this) { Destroy(gameObject); return; }
             Instance = this;
             Lives = startingLives;
+            stateChangedAt = Time.unscaledTime;
         }
 
         private void Update()
         {
-            if (State == GameState.Playing) ElapsedTime += Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.R)) RestartAttempt();
+            if (State == GameState.Attract)
+            {
+                if (StartInputPressed()) StartAttempt();
+                return;
+            }
+
+            if (State == GameState.Playing)
+            {
+                ElapsedTime += Time.deltaTime;
+                if (Input.GetKeyDown(KeyCode.R)) RestartAttempt();
+            }
+            else if (State == GameState.Won)
+            {
+                if (Input.GetKeyDown(KeyCode.R)) RestartAttempt();
+                else if (Time.unscaledTime - stateChangedAt > 10f) EnterAttractMode();
+            }
             if (!HasStatusMessage) StatusMessage = string.Empty;
         }
 
@@ -55,6 +71,7 @@ namespace LIIA.SphereMaze
             Score += goalPoints;
             Score += Mathf.Clamp(maxSpeedBonus - Mathf.RoundToInt(ElapsedTime), 0, maxSpeedBonus);
             State = GameState.Won;
+            stateChangedAt = Time.unscaledTime;
             SaveRecord();
         }
 
@@ -91,6 +108,11 @@ namespace LIIA.SphereMaze
 
         public void RestartAttempt()
         {
+            StartAttempt();
+        }
+
+        private void StartAttempt()
+        {
             Lives = startingLives;
             Score = 0;
             StarsCollected = 0;
@@ -99,7 +121,32 @@ namespace LIIA.SphereMaze
             collectedStars.Clear();
             hasCheckpoint = false;
             ball.RespawnStart();
-            ShowStatus("NUEVO INTENTO");
+            State = GameState.Playing;
+            stateChangedAt = Time.unscaledTime;
+            ShowStatus("¡A JUGAR!");
+        }
+
+        private void EnterAttractMode()
+        {
+            Lives = startingLives;
+            Score = 0;
+            StarsCollected = 0;
+            ElapsedTime = 0f;
+            collectedStars.Clear();
+            hasCheckpoint = false;
+            State = GameState.Attract;
+            stateChangedAt = Time.unscaledTime;
+            if (ball != null) ball.RespawnStart();
+            StatusMessage = string.Empty;
+        }
+
+        private static bool StartInputPressed()
+        {
+            return Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) ||
+                   Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) ||
+                   Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow) ||
+                   Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
+                   Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D);
         }
 
         private void SaveRecord()
@@ -119,5 +166,5 @@ namespace LIIA.SphereMaze
         }
     }
 
-    public enum GameState { Playing, Won }
+    public enum GameState { Attract, Playing, Won }
 }
