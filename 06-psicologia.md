@@ -44,15 +44,16 @@ La experiencia no debe diagnosticar, medir personalidad ni inferir emociones por
 - **Modos:** cooperativo por roles o individual contra récord.
 - **Tecnología posible:** VR, proyección corporal y cerebro impreso con LEDs.
 
-### 2. Atención bajo ataque
+### 2. Atención bajo ataque — videojuego seleccionado
 
-- **Proceso:** atención selectiva y control inhibitorio.
-- **Gameplay:** estímulos rodean al personaje; debe recoger objetivos y evitar distractores siguiendo una regla que cambia por oleada.
-- **Puntos:** objetivos correctos, racha y falsos movimientos evitados.
-- **Dificultad:** más distractores, reglas dobles y cambios de contexto.
-- **Modos:** individual, versus o cooperación con información repartida.
-- **Tecnología posible:** controles, seguimiento de manos o pose.
-- **Cuidado:** es una demostración de procesos, no una prueba clínica.
+- **Proceso:** atención selectiva y control inhibitorio; demostración educativa, no prueba clínica.
+- **Tecnología:** MediaPipe Pose / cámara para controlar un avatar o manos virtuales moviendo el cuerpo; sin VR ni mandos tradicionales.
+- **Gameplay:** tocar estímulos objetivo y evitar distractores según la regla que cambia entre oleadas.
+- **Vida:** **los errores y golpes de distractores/obstáculos restan vida, no puntuación**.
+- **Combos:** acumular aciertos consecutivos **recupera vida** hasta el máximo; el umbral y cantidad de curación están por equilibrar.
+- **Puntos y récord:** objetivos correctos suman puntos y hay récord por **mayor puntuación**; derrota cuando la vida llega a cero.
+- **Dificultad:** progresión sostenida de velocidad, cantidad de estímulos, similitud de distractores y reglas; formato supervivencia por oleadas, sin final predeterminado como planteamiento inicial.
+- **Ficha de diseño elegida:** [Atención bajo ataque — MediaPipe y supervivencia](16-psicologia-atencion-bajo-ataque-mediapipe.md).
 
 ### 3. Memoria en cadena
 
