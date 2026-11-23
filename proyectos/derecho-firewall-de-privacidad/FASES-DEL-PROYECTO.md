@@ -1,6 +1,6 @@
 # Ruta de desarrollo — Firewall de privacidad
 
-Este documento organiza el trabajo restante desde el prototipo actual hasta una versión lista para una exhibición local. La fuente funcional es [el diseño del juego](../../docs/disenos/14-derecho-firewall-de-privacidad.md); las metáforas jurídicas deberán validarse con docentes antes de presentarse como contenido académico final. La evidencia detallada y los faltantes reales están en [AUDITORIA-ESPECIFICACION.md](AUDITORIA-ESPECIFICACION.md).
+Este documento organiza el trabajo restante desde el prototipo actual hasta una versión lista para una exhibición local. La fuente funcional es [el diseño del juego](../../docs/disenos/14-derecho-firewall-de-privacidad.md). La evidencia detallada y los faltantes reales están en [AUDITORIA-ESPECIFICACION.md](AUDITORIA-ESPECIFICACION.md).
 
 ## Estado actual
 
@@ -58,7 +58,7 @@ Objetivo: transformar la prueba técnica en una partida infinita comparable.
 - [x] Powerups temporales de velocidad y daño; alcance queda pendiente para una iteración posterior.
 - [x] Récord local persistente; mostrar récord antes y después de cada partida.
 - [x] Supervivencia infinita sin victoria por temporizador y salida voluntaria con Q durante pausa.
-- [ ] Alinear reinicio con mando: el HUD anuncia A/Start, pero el código vigente solo confirma A mediante `Submit`, R o Enter; Start no reinicia durante game over.
+- [x] Reinicio con mando: A o Start reinician después de game over.
 
 **Salida de fase:** implementada técnicamente; falta validarla en una partida real de dos a cinco minutos con el mando conectado.
 
@@ -70,8 +70,8 @@ Objetivo: que una persona nueva pueda jugar sin explicación extensa.
 - [x] Tutorial práctico: mover, espada, arco y escudo descritos en pantalla.
 - [x] HUD legible a distancia: ambas vidas, puntaje, racha, oleada y pausa.
 - [x] Indicadores visuales con texto, barras y contraste alto, no solo color.
-- [x] Modo de teclado como respaldo; la sensibilidad de sticks queda pendiente.
-- [x] Pausa con Start/Escape y mute con M; reinicio seguro tras game over.
+- [x] La experiencia usa exclusivamente mando Xbox; sensibilidad de sticks queda pendiente.
+- [x] Pausa con Start y reinicio seguro con A/Start tras game over.
 
 **Salida de fase:** implementada técnicamente; falta validar con una persona que no conozca el proyecto.
 
@@ -98,7 +98,7 @@ Objetivo: asegurar que el juego comunique protección de datos sin presentarse c
 - [ ] Confirmar que solicitudes legítimas y amenazas son distinguibles mediante pistas jugables claras.
 - [ ] Revisar lenguaje de pantalla, tutorial y créditos con la facultad.
 
-**Salida de fase:** aprobación documentada del contenido educativo y de sus límites.
+**Salida de fase:** contenido educativo visible, coherente y con límites claros dentro del juego.
 
 ## Fase 7 — QA, build y piloto
 
@@ -106,7 +106,7 @@ Objetivo: entregar un ejecutable repetible y resistente para una prueba real.
 
 - [x] Matriz de pruebas creada para cada condición de derrota, armas, enemigos, power-ups y controles.
 - [ ] Pruebas de todas las armas, enemigos, powerups, rutas, oleadas, guardado y reinicio.
-- [ ] Prueba de desconexión/reconexión de mando y fallback de teclado.
+- [ ] Prueba de desconexión/reconexión del mando y comportamiento seguro sin dispositivo.
 - [ ] Build Windows desde Unity 6 y prueba en una carpeta limpia sin Unity Editor.
 - [ ] Registrar versión, hash/commit, controles, dependencias y procedimiento de arranque.
 - [ ] Piloto con al menos cinco jugadores; registrar solo observaciones anónimas de usabilidad.
@@ -129,8 +129,8 @@ Objetivo: operar la estación de forma segura durante una muestra.
 ## Prioridad inmediata
 
 1. Corregir los P0 de `AUDITORIA-ESPECIFICACION.md`: agresión tras golpe, Fuga remota, blindado/contraataque y reinicio con mando.
-2. Incorporar contenido jurídico visible y obtener validación docente.
+2. Incorporar contenido jurídico visible y coherente dentro del juego.
 3. Ejecutar QA prolongado de controles, rutas, rendimiento, derrotas y reinicio antes de invertir en arte final.
 
-No avanzar a la exhibición final sin validar controles, derrotas, reinicio, récord local y contenido jurídico con docentes.
+No avanzar a la exhibición final sin validar controles, derrotas, reinicio, récord local y contenido jurídico dentro del juego.
 
