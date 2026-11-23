@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LIIA.SphereMaze
@@ -19,6 +20,10 @@ namespace LIIA.SphereMaze
         public int StarsCollected { get; private set; }
         public int BestScore => PlayerPrefs.GetInt("LIIA_BEST_SCORE", 0);
         public float BestTime => PlayerPrefs.GetFloat("LIIA_BEST_TIME", 0f);
+
+        private readonly HashSet<Vector2Int> collectedStars = new HashSet<Vector2Int>();
+        private Vector2Int activeCheckpoint;
+        private bool hasCheckpoint;
 
         public void Configure(MazeBallController player, int lives = 3)
         {
@@ -49,6 +54,34 @@ namespace LIIA.SphereMaze
             SaveRecord();
         }
 
+        public bool IsStarCollected(Vector2Int cell) => collectedStars.Contains(cell);
+
+        public void CollectStar(Vector2Int cell)
+        {
+            if (State != GameState.Playing || !collectedStars.Add(cell)) return;
+            StarsCollected++;
+            Score += starPoints;
+        }
+
+        public void SetCheckpoint(Vector2Int cell)
+        {
+            if (State != GameState.Playing || (hasCheckpoint && activeCheckpoint == cell)) return;
+            activeCheckpoint = cell;
+            hasCheckpoint = true;
+        }
+
+        public void PlayerHitTrap()
+        {
+            if (State != GameState.Playing) return;
+            Lives--;
+            if (Lives <= 0)
+            {
+                RestartAttempt();
+                return;
+            }
+            ball.RespawnAt(hasCheckpoint ? activeCheckpoint : ball.StartCell);
+        }
+
         public void RestartAttempt()
         {
             Lives = startingLives;
@@ -56,6 +89,8 @@ namespace LIIA.SphereMaze
             StarsCollected = 0;
             ElapsedTime = 0f;
             State = GameState.Playing;
+            collectedStars.Clear();
+            hasCheckpoint = false;
             ball.RespawnStart();
         }
 

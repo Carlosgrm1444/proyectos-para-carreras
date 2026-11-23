@@ -21,6 +21,7 @@ namespace LIIA.SphereMaze
         public Vector2 GridPosition => position;
         public Vector2 Velocity => velocity;
         public float Speed => velocity.magnitude;
+        public Vector2Int StartCell => Vector2Int.RoundToInt(startPosition);
 
         public void Configure(SphericalMazeLayout maze, MonoBehaviour inputSource, Transform visual)
         {
@@ -51,16 +52,40 @@ namespace LIIA.SphereMaze
             SnapToSurface(previousPosition);
 
             var cell = new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y));
-            if (cell == layout.GoalCell && Vector2.Distance(position, layout.GoalCell) < .32f)
-                GameFlow.Instance.ReachGoal();
+            if (Vector2.Distance(position, cell) < .32f)
+                ProcessCell(cell);
         }
 
         public void RespawnStart()
         {
-            position = startPosition;
+            RespawnAt(StartCell);
+        }
+
+        public void RespawnAt(Vector2Int cell)
+        {
+            position = cell;
             velocity = Vector2.zero;
             if (ballVisual != null) ballVisual.localRotation = Quaternion.identity;
             SnapToSurface(position);
+        }
+
+        private void ProcessCell(Vector2Int cell)
+        {
+            switch (layout.TileAt(cell.x, cell.y))
+            {
+                case MazeTile.Goal:
+                    GameFlow.Instance.ReachGoal();
+                    break;
+                case MazeTile.Star:
+                    GameFlow.Instance.CollectStar(cell);
+                    break;
+                case MazeTile.Checkpoint:
+                    GameFlow.Instance.SetCheckpoint(cell);
+                    break;
+                case MazeTile.Trap:
+                    GameFlow.Instance.PlayerHitTrap();
+                    break;
+            }
         }
 
         private void MoveWithCollision(Vector2 amount)

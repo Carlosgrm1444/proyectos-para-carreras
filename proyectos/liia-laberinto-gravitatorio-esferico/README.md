@@ -22,11 +22,11 @@ La entrada actual es teclado. No existe todavía comunicación con ESP32 ni inte
 ## Loop implementado
 
 - `Assets/Resources/Maps/laberinto_01.png` es la fuente de verdad del mapa.
-- Los píxeles oscuros son muros; blanco es piso; verde es inicio y rojo es meta.
+- Los píxeles oscuros son muros; blanco es piso; verde es inicio; rojo es meta; amarillo es estrella; azul es checkpoint y morado es trampa.
 - El nivel transforma los muros del PNG en un único mesh curvo extruido, con `MeshCollider` estático.
 - La bola se mueve por celdas transitables y se posiciona matemáticamente sobre la superficie: no puede caer ni despegarse.
 - La cámara permanece sobre la bola siguiendo el arco exterior de la esfera; el planeta no rota durante la partida.
-- Puntuación, cronómetro, récord local y pantalla de victoria.
+- Estrellas de puntuación, checkpoint, trampa, tres vidas, cronómetro, récord local y pantalla de victoria.
 
 ## Estructura principal
 

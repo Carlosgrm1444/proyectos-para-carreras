@@ -17,6 +17,9 @@ namespace LIIA.SphereMaze
             Vector2Int? goal = null;
             var startCount = 0;
             var goalCount = 0;
+            var starCount = 0;
+            var checkpointCount = 0;
+            var trapCount = 0;
             for (var y = 0; y < map.height; y++)
             for (var x = 0; x < map.width; x++)
             {
@@ -40,6 +43,15 @@ namespace LIIA.SphereMaze
                         }
                         goal = new Vector2Int(x, y);
                         break;
+                    case MazeTile.Star:
+                        starCount++;
+                        break;
+                    case MazeTile.Checkpoint:
+                        checkpointCount++;
+                        break;
+                    case MazeTile.Trap:
+                        trapCount++;
+                        break;
                 }
             }
 
@@ -59,7 +71,7 @@ namespace LIIA.SphereMaze
                 var cell = pending.Dequeue();
                 if (cell == goal.Value)
                 {
-                    message = $"Mapa válido: {map.width}×{map.height}, inicio y meta conectados.";
+                    message = $"Mapa válido: {map.width}×{map.height}, inicio y meta conectados; estrellas={starCount}, checkpoints={checkpointCount}, trampas={trapCount}.";
                     return true;
                 }
 

@@ -14,9 +14,9 @@ namespace LIIA.SphereMaze.Editor
             var rows = new[]
             {
                 "#####################",
-                "#S....#.............#",
+                "#S.*.C#.............#",
                 "#.###.#.###########.#",
-                "#...#.#.....#.....#.#",
+                "#..X#.#.....#.....#.#",
                 "###.#.#####.#.###.#.#",
                 "#...#.....#.#.#...#.#",
                 "#.#######.#.#.#.###.#",
@@ -70,6 +70,9 @@ namespace LIIA.SphereMaze.Editor
                 case '#': return new Color(.03f, .06f, .1f, 1f);
                 case 'S': return new Color(.1f, .9f, .4f, 1f);
                 case 'G': return new Color(.95f, .15f, .28f, 1f);
+                case '*': return Color.yellow;
+                case 'C': return new Color(.15f, .55f, 1f, 1f);
+                case 'X': return new Color(.85f, .1f, .9f, 1f);
                 default: return new Color(.85f, .95f, 1f, 1f);
             }
         }

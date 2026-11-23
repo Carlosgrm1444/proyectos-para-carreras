@@ -65,6 +65,12 @@ namespace LIIA.SphereMaze
             diagnostics.Configure(ball, layout);
             CreateMarker("Start", layout.StartCell, layout, new Color(.12f, .95f, .4f));
             CreateMarker("Goal", layout.GoalCell, layout, new Color(.98f, .18f, .32f));
+            foreach (var cell in layout.StarCells)
+                CreateGameplayMarker(MazeTile.Star, cell, layout, new Color(1f, .75f, .08f));
+            foreach (var cell in layout.CheckpointCells)
+                CreateGameplayMarker(MazeTile.Checkpoint, cell, layout, new Color(.2f, .6f, 1f));
+            foreach (var cell in layout.TrapCells)
+                CreateGameplayMarker(MazeTile.Trap, cell, layout, new Color(.9f, .15f, .95f));
             CreateCamera(ballObject.transform, root.transform);
             CreateLight();
         }
@@ -80,6 +86,23 @@ namespace LIIA.SphereMaze
             marker.transform.localScale = new Vector3(.35f, .08f, .35f);
             Destroy(marker.GetComponent<Collider>());
             SetColor(marker, color);
+        }
+
+        private static void CreateGameplayMarker(MazeTile type, Vector2Int cell, SphericalMazeLayout layout, Color color)
+        {
+            var primitive = type == MazeTile.Trap ? PrimitiveType.Cube : PrimitiveType.Cylinder;
+            var marker = GameObject.CreatePrimitive(primitive);
+            marker.name = type.ToString();
+            marker.transform.SetParent(layout.transform, true);
+            var normal = layout.SurfaceNormal(cell.x, cell.y);
+            marker.transform.position = layout.SurfacePoint(cell.x, cell.y, .16f);
+            marker.transform.rotation = Quaternion.FromToRotation(Vector3.up, normal);
+            marker.transform.localScale = type == MazeTile.Trap
+                ? new Vector3(.42f, .1f, .42f)
+                : new Vector3(.28f, .13f, .28f);
+            Destroy(marker.GetComponent<Collider>());
+            SetColor(marker, color);
+            marker.AddComponent<MazeGameplayMarker>().Configure(type, cell);
         }
 
         private GameObject NewObject(string objectName)
