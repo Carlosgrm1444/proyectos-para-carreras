@@ -1,7 +1,7 @@
 # Protocolo de planificación de minijuegos y entrega a Codex
 
 > Estado: marco de trabajo documental, 22 de noviembre de 2026. No inicia programación.  
-> Alcance: todas las carreras del [banco de ideas](README.md) y la estación adicional de [LTI con esfera](09-lti-esfera-interactiva.md).  
+> Alcance: todas las carreras del [banco de ideas](README.md), incluida la posible estación esférica de [LIIA — Informática e Inteligencia Artificial](09-liia-esfera-interactiva.md).  
 > El repositorio actual es un banco de conceptos: no confundir los 49 conceptos con 49 desarrollos comprometidos.
 
 ## Principios
@@ -24,10 +24,9 @@
 | CON | Contador Público | [04](04-contador-publico.md) | Banco de 8 conceptos | Elegir candidatos con docentes |
 | DER | Derecho | [05](05-derecho.md) | Banco de 8 conceptos | Elegir candidatos con docentes |
 | PSI | Psicología | [06](06-psicologia.md) | Banco de 8 conceptos | Elegir candidatos con docentes |
-| IIA | Informática e Inteligencia Artificial | [07](07-informatica-e-inteligencia-artificial.md) | Banco de 8 conceptos | Elegir candidatos con docentes |
-| LTI-ESF | LTI, estación esférica adicional | [09](09-lti-esfera-interactiva.md) | Concepto exploratorio y factibilidad pendiente | Identificar esfera y elegir mecánica |
+| LIIA | Informática e Inteligencia Artificial | [07](07-informatica-e-inteligencia-artificial.md) | Banco de 8 conceptos y [estación esférica candidata](09-liia-esfera-interactiva.md) | Elegir el juego y verificar factibilidad de la esfera |
 
-**No duplicar carrera:** LTI e IIA aparecen aquí por su denominación y alcance de planificación; confirmar con responsables si se tratarán como una misma estación curricular o dos experiencias distintas. Comercio Exterior y Aduanas permanece como referencia histórica fuera del alcance según el README vigente.
+**No duplicar carrera:** la estación esférica pertenece a LIIA (Licenciatura en Informática e Inteligencia Artificial) y no se contará como otra carrera. Comercio Exterior y Aduanas permanece como referencia histórica fuera del alcance según el README vigente.
 
 ## Etapas de cada proyecto
 
@@ -129,7 +128,7 @@ El resultado orienta la selección, **no** sustituye la validación docente ni u
 
 | ID | Fecha | Proyecto | Decisión | Evidencia | Alternativas | Responsable validador | Consecuencias |
 |---|---|---|---|---|---|---|---|
-| DEC-001 | 2026-11-22 | LTI-ESF | Considerar esfera como elemento físico central, sujeto a factibilidad | Video de referencia | Pantalla auxiliar, esfera simulada | Pendiente | No programar adaptador hasta confirmar equipo |
+| DEC-001 | 2026-11-22 | LIIA-ESF | Considerar esfera como elemento físico central de LIIA, sujeto a factibilidad | Video de referencia | Pantalla auxiliar, esfera simulada | Pendiente | No programar adaptador hasta confirmar equipo |
 
 ## Política de cambios
 
