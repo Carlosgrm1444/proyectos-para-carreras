@@ -65,13 +65,8 @@ namespace LIIA.SphereMaze
             mesh.RecalculateNormals();
             mesh.RecalculateBounds();
             result.AddComponent<MeshFilter>().sharedMesh = mesh;
-            var material = new Material(Shader.Find("Standard")) { color = color };
-            if (emission > 0f)
-            {
-                material.EnableKeyword("_EMISSION");
-                material.SetColor("_EmissionColor", color * emission);
-            }
-            result.AddComponent<MeshRenderer>().sharedMaterial = material;
+            var material = LIIAMaterialFactory.Create(color, emission);
+            if (material != null) result.AddComponent<MeshRenderer>().sharedMaterial = material;
             return result;
         }
 

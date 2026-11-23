@@ -145,7 +145,8 @@ namespace LIIA.SphereMaze
         {
             var renderer = target.GetComponent<Renderer>();
             if (renderer == null) return;
-            renderer.material = new Material(Shader.Find("Standard")) { color = color };
+            var material = LIIAMaterialFactory.Create(color);
+            if (material != null) renderer.material = material;
         }
     }
 }
