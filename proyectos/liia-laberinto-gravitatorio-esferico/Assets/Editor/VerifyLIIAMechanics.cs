@@ -11,16 +11,38 @@ namespace LIIA.SphereMaze.Editor
         {
             VerifyMaps();
             VerifyGameplayLoop();
-            Debug.Log("VERIFICACIÓN LIIA APROBADA: mapas, ciclo de juego, puntuación y récord correctos.");
+            Debug.Log("VERIFICACIÓN LIIA APROBADA: cinco niveles 360°, costura, ciclo de juego, puntuación y récord correctos.");
         }
 
         private static void VerifyMaps()
         {
-            foreach (var mapName in new[] { "laberinto_01", "laberinto_02", "laberinto_03" })
+            for (var index = 0; index < MazeLevelCatalog.Count; index++)
             {
-                var map = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Resources/Maps/{mapName}.png");
-                Require(map != null, $"No se encontró {mapName}.png.");
-                Require(SphericalMazeValidator.TryValidate(map, out var message), $"{mapName}: {message}");
+                var level = MazeLevelCatalog.Get(index);
+                var map = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Resources/Maps/{level.ResourceName}.png");
+                Require(map != null, $"No se encontró {level.ResourceName}.png.");
+                Require(SphericalMazeValidator.TryValidate(map, out var message, out var safePathLength, level.WrapHorizontally),
+                    $"{level.ResourceName}: {message}");
+                Require(map.width == 32 && map.height == 21,
+                    $"{level.ResourceName} debe usar la resolución final 32×21.");
+
+                var root = new GameObject($"VerifyMap{index + 1}");
+                var layout = root.AddComponent<SphericalMazeLayout>();
+                layout.Configure(map, 5.08f, level.LongitudeSpan, level.LatitudeSpan, level.WrapHorizontally);
+                Require(layout.StarCells.Count == level.ExpectedStars,
+                    $"{level.ResourceName} debe tener {level.ExpectedStars} estrellas.");
+                Require(layout.CheckpointCells.Count == level.ExpectedCheckpoints,
+                    $"{level.ResourceName} debe tener {level.ExpectedCheckpoints} checkpoints.");
+                Require(layout.TrapCells.Count == level.ExpectedTraps,
+                    $"{level.ResourceName} debe tener {level.ExpectedTraps} trampas.");
+                Require(safePathLength >= level.MinimumSafePathLength,
+                    $"{level.ResourceName} necesita al menos {level.MinimumSafePathLength} celdas de ruta segura; tiene {safePathLength}.");
+                Require(Vector3.Distance(layout.SurfacePoint(-.5f, 10f), layout.SurfacePoint(map.width - .5f, 10f)) < .001f,
+                    $"{level.ResourceName} no cierra correctamente la costura de 360°.");
+                Require(Mathf.Approximately(layout.NormalizeGridPosition(new Vector2(-.6f, 10f)).x, map.width - .6f),
+                    $"{level.ResourceName} no normaliza el cruce de la costura.");
+                UnityEngine.Object.DestroyImmediate(root);
+                Debug.Log($"Nivel final {index + 1}: {message}");
             }
         }
 

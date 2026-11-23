@@ -3,7 +3,7 @@
 ## Alcance de la entrega actual
 
 - [x] Juego de teclado: bola restringida a la superficie, laberintos PNG, movimiento con inercia, colisión, cámara local y giro visual.
-- [x] Loop arcade: tres niveles, estrellas, checkpoint, trampas, tres vidas, reinicio, meta, puntuación, bono de rapidez y récord por nivel.
+- [x] Loop arcade: cinco niveles finales de 360°, estrellas, checkpoint, trampas, tres vidas, reinicio, meta, puntuación, bono de rapidez y récord por nivel.
 - [x] Presentación de software: pantalla inicial, selector de nivel, HUD, minimapa, formas además de color, efectos sonoros originales y retorno al modo de atracción.
 - [x] Verificación automática de mapas, vidas, checkpoint, puntuación, victoria y récord; build Linux construido y probado en modo de humo.
 

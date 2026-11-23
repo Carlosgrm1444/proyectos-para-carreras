@@ -20,6 +20,8 @@ namespace LIIA.SphereMaze
         public float ElapsedTime { get; private set; }
         public GameState State { get; private set; } = GameState.Attract;
         public int StarsCollected { get; private set; }
+        public int TotalStars { get; private set; }
+        public int LastTimeBonus { get; private set; }
         public int BestScore => PlayerPrefs.GetInt($"LIIA_BEST_SCORE_{LevelIndex}", 0);
         public float BestTime => PlayerPrefs.GetFloat($"LIIA_BEST_TIME_{LevelIndex}", 0f);
         public string StatusMessage { get; private set; }
@@ -33,13 +35,16 @@ namespace LIIA.SphereMaze
         private float statusMessageUntil;
         private float stateChangedAt;
         private float lastInputAt;
+        private float parTimeSeconds = 60f;
 
-        public void Configure(MazeBallController player, MazeLevelInfo level, int lives = 3)
+        public void Configure(MazeBallController player, MazeLevelInfo level, int lives = 3, int totalStars = 0)
         {
             ball = player;
             startingLives = lives;
             LevelName = level.DisplayName;
             LevelIndex = MazeLevelCatalog.SelectedIndex;
+            parTimeSeconds = level.ParTimeSeconds;
+            TotalStars = totalStars > 0 ? totalStars : level.ExpectedStars;
             EnterAttractMode();
         }
 
@@ -58,6 +63,8 @@ namespace LIIA.SphereMaze
                 if (Input.GetKeyDown(KeyCode.Alpha1)) { ChangeLevel(0); return; }
                 if (Input.GetKeyDown(KeyCode.Alpha2)) { ChangeLevel(1); return; }
                 if (Input.GetKeyDown(KeyCode.Alpha3)) { ChangeLevel(2); return; }
+                if (Input.GetKeyDown(KeyCode.Alpha4)) { ChangeLevel(3); return; }
+                if (Input.GetKeyDown(KeyCode.Alpha5)) { ChangeLevel(4); return; }
                 if (StartInputPressed()) StartAttempt();
                 return;
             }
@@ -72,6 +79,8 @@ namespace LIIA.SphereMaze
             else if (State == GameState.Won)
             {
                 if (Input.GetKeyDown(KeyCode.R)) RestartAttempt();
+                else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.N))
+                    ChangeLevel((LevelIndex + 1) % MazeLevelCatalog.Count);
                 else if (Time.unscaledTime - stateChangedAt > 10f) EnterAttractMode();
             }
             if (!HasStatusMessage) StatusMessage = string.Empty;
@@ -81,7 +90,8 @@ namespace LIIA.SphereMaze
         {
             if (State != GameState.Playing) return;
             Score += goalPoints;
-            Score += Mathf.Clamp(maxSpeedBonus - Mathf.RoundToInt(ElapsedTime), 0, maxSpeedBonus);
+            LastTimeBonus = Mathf.RoundToInt(maxSpeedBonus * Mathf.Clamp01(1f - ElapsedTime / parTimeSeconds));
+            Score += LastTimeBonus;
             State = GameState.Won;
             stateChangedAt = Time.unscaledTime;
             LIIAAudioFeedback.Instance?.Play(GameAudioCue.Goal);
@@ -132,6 +142,7 @@ namespace LIIA.SphereMaze
             Lives = startingLives;
             Score = 0;
             StarsCollected = 0;
+            LastTimeBonus = 0;
             ElapsedTime = 0f;
             State = GameState.Playing;
             collectedStars.Clear();
@@ -149,6 +160,7 @@ namespace LIIA.SphereMaze
             Lives = startingLives;
             Score = 0;
             StarsCollected = 0;
+            LastTimeBonus = 0;
             ElapsedTime = 0f;
             collectedStars.Clear();
             hasCheckpoint = false;

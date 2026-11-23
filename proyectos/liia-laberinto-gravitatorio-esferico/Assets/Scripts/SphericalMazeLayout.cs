@@ -5,18 +5,22 @@ namespace LIIA.SphereMaze
 {
     public enum MazeTile { Wall, Floor, Start, Goal, Star, Checkpoint, Trap }
 
-    /// <summary>Interpreta el PNG de mapa y lo proyecta sobre una banda de la esfera.</summary>
+    /// <summary>Interpreta el PNG y lo proyecta sobre una superficie esférica continua.</summary>
     public sealed class SphericalMazeLayout : MonoBehaviour
     {
         [SerializeField] private Texture2D source;
         [SerializeField] private float radius = 5.08f;
-        [SerializeField] private float longitudeSpan = 145f;
-        [SerializeField] private float latitudeSpan = 72f;
+        [SerializeField] private float longitudeSpan = 360f;
+        [SerializeField] private float latitudeSpan = 140f;
+        [SerializeField] private bool wrapHorizontally = true;
 
         private MazeTile[,] tiles;
         public int Width { get; private set; }
         public int Height { get; private set; }
         public float Radius => radius;
+        public float LongitudeSpan => longitudeSpan;
+        public float LatitudeSpan => latitudeSpan;
+        public bool WrapHorizontally => wrapHorizontally;
         public Texture2D SourceTexture => source;
         public Vector2Int StartCell { get; private set; }
         public Vector2Int GoalCell { get; private set; }
@@ -24,10 +28,18 @@ namespace LIIA.SphereMaze
         public List<Vector2Int> CheckpointCells { get; } = new List<Vector2Int>();
         public List<Vector2Int> TrapCells { get; } = new List<Vector2Int>();
 
-        public void Configure(Texture2D texture, float surfaceRadius)
+        public void Configure(
+            Texture2D texture,
+            float surfaceRadius,
+            float horizontalSpan = 360f,
+            float verticalSpan = 140f,
+            bool horizontalWrap = true)
         {
             source = texture;
             radius = surfaceRadius;
+            longitudeSpan = Mathf.Clamp(horizontalSpan, 10f, 360f);
+            latitudeSpan = Mathf.Clamp(verticalSpan, 10f, 170f);
+            wrapHorizontally = horizontalWrap;
             Width = source.width;
             Height = source.height;
             tiles = new MazeTile[Width, Height];
@@ -51,7 +63,9 @@ namespace LIIA.SphereMaze
 
         public MazeTile TileAt(int x, int y)
         {
-            if (tiles == null || x < 0 || y < 0 || x >= Width || y >= Height) return MazeTile.Wall;
+            if (tiles == null || y < 0 || y >= Height) return MazeTile.Wall;
+            if (wrapHorizontally) x = WrapColumn(x);
+            else if (x < 0 || x >= Width) return MazeTile.Wall;
             return tiles[x, y];
         }
 
@@ -74,10 +88,30 @@ namespace LIIA.SphereMaze
             return true;
         }
 
+        public Vector2 NormalizeGridPosition(Vector2 position)
+        {
+            if (!wrapHorizontally || Width <= 0) return position;
+            var minimum = -.5f;
+            var maximum = Width - .5f;
+            while (position.x < minimum) position.x += Width;
+            while (position.x >= maximum) position.x -= Width;
+            return position;
+        }
+
+        public Vector2Int NormalizeCell(Vector2Int cell)
+        {
+            if (wrapHorizontally) cell.x = WrapColumn(cell.x);
+            return cell;
+        }
+
         public Vector3 SurfacePoint(float gridX, float gridY, float radialOffset = 0f)
         {
-            var longitude = Mathf.Lerp(-longitudeSpan * 0.5f, longitudeSpan * 0.5f, gridX / (Width - 1f)) * Mathf.Deg2Rad;
-            var latitude = Mathf.Lerp(-latitudeSpan * 0.5f, latitudeSpan * 0.5f, gridY / (Height - 1f)) * Mathf.Deg2Rad;
+            var longitudeT = wrapHorizontally
+                ? (gridX + .5f) / Width
+                : gridX / Mathf.Max(1f, Width - 1f);
+            var latitudeT = (gridY + .5f) / Height;
+            var longitude = Mathf.Lerp(-longitudeSpan * .5f, longitudeSpan * .5f, longitudeT) * Mathf.Deg2Rad;
+            var latitude = Mathf.Lerp(-latitudeSpan * .5f, latitudeSpan * .5f, latitudeT) * Mathf.Deg2Rad;
             var normal = new Vector3(
                 Mathf.Cos(latitude) * Mathf.Sin(longitude),
                 Mathf.Sin(latitude),
@@ -87,6 +121,12 @@ namespace LIIA.SphereMaze
 
         public Vector3 SurfaceNormal(float gridX, float gridY) =>
             (SurfacePoint(gridX, gridY) - transform.position).normalized;
+
+        private int WrapColumn(int column)
+        {
+            column %= Width;
+            return column < 0 ? column + Width : column;
+        }
 
         public static MazeTile DecodeTile(Color pixel)
         {

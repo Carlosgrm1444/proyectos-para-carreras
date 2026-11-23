@@ -9,7 +9,7 @@
 | Movimiento | Aceleración, velocidad máxima, resistencia y giro visual de bola. | Compilación Unity; requiere sensación final de prueba manual. |
 | Restricción esférica | La bola se coloca matemáticamente sobre la superficie y no usa caída libre. | Revisada en juego durante iteración. |
 | Colisiones | Las celdas de muro bloquean sólo el eje de movimiento correspondiente. | Incluida en controlador de bola. |
-| Tres niveles | PNG `laberinto_01`, `_02`, `_03`; selector 1/2/3. | Validador confirmó ruta, inicio y meta de los tres. |
+| Cinco niveles finales | PNG `laberinto_01` a `_05`; selector 1–5 y avance desde victoria. | Validador confirmó ruta segura, progresión y costura de 360° en los cinco. |
 | Estrellas | +100 puntos; no se pueden recoger dos veces por intento. | Implementada mediante conjunto de celdas recolectadas. |
 | Checkpoint | Guarda la celda azul más reciente. | Implementado. |
 | Trampa / vidas | El bloque morado resta vida y reaparece en checkpoint/inicio; tres pérdidas reinician intento. | Implementado. |
@@ -32,11 +32,15 @@
 | Azul | Checkpoint |
 | Morado | Trampa |
 
-Cada mapa se valida automáticamente: exactamente un inicio, una meta y una ruta transitable entre ambos. La validación actual confirmó:
+Cada mapa se valida automáticamente: exactamente un inicio, una meta, marcadores alcanzables y una ruta segura que no exige atravesar trampas. La validación actual confirmó:
 
-- Nivel 1: 1 estrella, 1 checkpoint, 1 trampa.
-- Nivel 2: 2 estrellas, 1 checkpoint, 1 trampa.
-- Nivel 3: 3 estrellas, 2 checkpoints, 3 trampas.
+- Nivel 1: ruta mínima 46; 3 estrellas, 1 checkpoint y 1 trampa.
+- Nivel 2: ruta mínima 80; 4 estrellas, 2 checkpoints y 2 trampas.
+- Nivel 3: ruta mínima 110; 5 estrellas, 2 checkpoints y 3 trampas.
+- Nivel 4: ruta mínima 120; 6 estrellas, 3 checkpoints y 4 trampas.
+- Nivel 5: ruta mínima 146; 7 estrellas, 3 checkpoints y 5 trampas.
+
+Todos usan una costura horizontal continua de 360°. La cobertura vertical crece de 132° a 150° para utilizar progresivamente casi toda la superficie sin colapsar la cuadrícula en los polos exactos.
 
 ## Cierre de mecánicas
 
@@ -55,7 +59,7 @@ No se añadirá hardware, ESP32, VR/AR ni pantalla/proyección de esfera a esta 
 
 El verificador de proyecto **LIIA → Verificar mecánicas en batch** se ejecutó correctamente el 23 de noviembre de 2026. Comprueba:
 
-- Los tres PNG: inicio y meta únicos, ruta conectada y cantidades esperadas de marcadores.
+- Los cinco PNG: inicio y meta únicos, ruta segura, marcadores alcanzables, costura continua y dificultad mínima esperada.
 - Inicio en modo de atracción y comienzo limpio con tres vidas.
 - Restricción radial de la bola a la superficie esférica.
 - Una sola puntuación por estrella.

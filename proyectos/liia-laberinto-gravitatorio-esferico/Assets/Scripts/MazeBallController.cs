@@ -55,7 +55,7 @@ namespace LIIA.SphereMaze
             MoveWithCollision(velocity * Time.deltaTime);
             SnapToSurface(previousPosition);
 
-            var cell = new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y));
+            var cell = layout.NormalizeCell(new Vector2Int(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y)));
             if (Vector2.Distance(position, cell) < .32f)
                 ProcessCell(cell);
         }
@@ -68,6 +68,7 @@ namespace LIIA.SphereMaze
         public void RespawnAt(Vector2Int cell)
         {
             position = cell;
+            position = layout.NormalizeGridPosition(position);
             velocity = Vector2.zero;
             if (ballVisual != null) ballVisual.localRotation = Quaternion.identity;
             SnapToSurface(position);
@@ -100,11 +101,11 @@ namespace LIIA.SphereMaze
             for (var i = 0; i < steps; i++)
             {
                 var horizontal = position + new Vector2(step.x, 0f);
-                if (layout.CanOccupy(horizontal, radiusInCells)) position = horizontal;
+                if (layout.CanOccupy(horizontal, radiusInCells)) position = layout.NormalizeGridPosition(horizontal);
                 else velocity.x = 0f;
 
                 var vertical = position + new Vector2(0f, step.y);
-                if (layout.CanOccupy(vertical, radiusInCells)) position = vertical;
+                if (layout.CanOccupy(vertical, radiusInCells)) position = layout.NormalizeGridPosition(vertical);
                 else velocity.y = 0f;
             }
         }

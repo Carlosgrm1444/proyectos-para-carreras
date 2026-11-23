@@ -25,10 +25,10 @@ namespace LIIA.SphereMaze
             var map = Resources.Load<Texture2D>($"Maps/{level.ResourceName}");
             if (map == null)
             {
-                Debug.LogError($"No se encontró Resources/Maps/{level.ResourceName}.png. Ejecuta LIIA > Generar mapas PNG de ejemplo.");
+                Debug.LogError($"No se encontró Resources/Maps/{level.ResourceName}.png. Ejecuta LIIA > Generar mapas PNG finales.");
                 return;
             }
-            if (!SphericalMazeValidator.TryValidate(map, out var mapValidation))
+            if (!SphericalMazeValidator.TryValidate(map, out var mapValidation, level.WrapHorizontally))
             {
                 Debug.LogError($"Mapa LIIA inválido: {mapValidation}");
                 return;
@@ -44,7 +44,12 @@ namespace LIIA.SphereMaze
             SetColor(planet, new Color(.015f, .045f, .08f));
 
             var layout = root.AddComponent<SphericalMazeLayout>();
-            layout.Configure(map, mazeSurfaceRadius);
+            layout.Configure(
+                map,
+                mazeSurfaceRadius,
+                level.LongitudeSpan,
+                level.LatitudeSpan,
+                level.WrapHorizontally);
             SphericalMazeMeshBuilder.Build(layout, root.transform);
 
             var input = root.AddComponent<KeyboardSphereTiltInput>();
@@ -61,7 +66,7 @@ namespace LIIA.SphereMaze
             ball.Configure(layout, input, ballVisual.transform);
 
             var flow = NewObject("GameFlow").AddComponent<GameFlow>();
-            flow.Configure(ball, level);
+            flow.Configure(ball, level, 3, layout.StarCells.Count);
             NewObject("HUD").AddComponent<LIIAHUD>();
             var diagnostics = NewObject("Diagnostics").AddComponent<LIIADevDiagnostics>();
             diagnostics.Configure(ball, layout);
