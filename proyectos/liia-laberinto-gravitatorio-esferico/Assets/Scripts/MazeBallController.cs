@@ -37,6 +37,10 @@ namespace LIIA.SphereMaze
         {
             if (layout == null || GameFlow.Instance == null || GameFlow.Instance.State != GameState.Playing) return;
             var direction = input == null ? Vector2.zero : input.ReadTilt();
+            // El PNG usa Y creciente desde su borde inferior; invertimos la
+            // entrada vertical para que la flecha arriba avance hacia arriba
+            // en la lectura visual del laberinto.
+            direction.y = -direction.y;
             if (direction.sqrMagnitude > .001f)
             {
                 var targetVelocity = direction * maxSpeedCellsPerSecond;
