@@ -53,14 +53,15 @@ Los casos deben ser ficticios. No conviene usar tasas fiscales vigentes ni conve
 - **Modos:** investigación cooperativa o dos auditores con el mismo caso.
 - **Tecnología posible:** AR para revelar datos, mesa de conexiones o documentos físicos.
 
-### 3. Flujo de caja superviviente
+### 3. Flujo de caja superviviente — versión AR con targets físicos seleccionada
 
-- **Proceso:** entradas, salidas y liquidez.
-- **Gameplay:** el jugador abre válvulas y mueve recursos por tuberías para pagar a tiempo sin quedarse sin efectivo.
-- **Puntos:** segundos con liquidez, pagos atendidos y reserva conservada.
-- **Dificultad:** cobros tardíos, gastos sorpresa, estacionalidad y oportunidades de inversión.
-- **Modos:** supervivencia contra récord o tesorero y cobranzas cooperando.
-- **Tecnología posible:** pantalla, controles, botones y tuberías iluminadas.
+- **Proceso:** liquidez y priorización de pagos para mantener una empresa operativa.
+- **Gameplay:** el mapa 3D se carga por realidad aumentada sobre un target central de una hoja grande. El jugador mueve al personaje mediante un target móvil colocado sobre una cruz física de cuatro direcciones; rota otro target para operar válvulas virtuales que redistribuyen flujos de efectivo.
+- **Enemigos:** distintos patrones de persecución/bloqueo; no se puede atacar, sólo evitar y huir.
+- **Victoria:** terminar los objetivos del escenario; **récord por menor tiempo** en condiciones equivalentes (no por puntuación).
+- **Targets:** cuatro previstos; las funciones de mapa, movimiento y válvula ya están planteadas. La función del cuarto sigue pendiente.
+- **Tecnología:** AR con seguimiento simultáneo de marcadores, reconocimiento de su posición y rotación, juego y récord locales. Factibilidad por probar.
+- **Ficha detallada para posterior Codex:** [Flujo de caja superviviente — AR con cuatro targets](13-contador-publico-flujo-caja-ar.md).
 
 ### 4. Fábrica de costos
 
