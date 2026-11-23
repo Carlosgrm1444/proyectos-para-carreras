@@ -21,3 +21,4 @@ function Package-Directory([string]$source, [string]$name) {
 Package-Directory 'Builds\Windows' 'DerechoFirewall-Windows-x64'
 Package-Directory 'Builds\WebGL' 'DerechoFirewall-WebGL'
 Package-Directory 'Builds\Linux' 'DerechoFirewall-Linux-x64'
+
