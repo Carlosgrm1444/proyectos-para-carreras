@@ -158,3 +158,10 @@ Una idea merece prototipo si cumple al menos cinco condiciones:
 - Funciona sin Internet.
 - Posee un modo de respaldo si falla cámara, sensor o visor.
 - Puede terminarse con el tiempo y equipo disponibles.
+
+## Planificación nueva: estación LIIA y ejecución futura con Codex
+
+- [Estación LIIA con esfera — observaciones del video, factibilidad, propuestas de juego y compuertas de validación](09-liia-esfera-interactiva.md).
+- [Protocolo para definir, evaluar y documentar proyectos antes de entregar tareas a Codex](10-guia-de-planificacion-y-ejecucion-codex.md).
+
+La estación esférica de **LIIA (Informática e Inteligencia Artificial)** tiene como videojuego seleccionado **[Laberinto gravitatorio esférico](15-liia-laberinto-gravitatorio-esferico.md)**: bolita por pistas exteriores, giro mediante cuatro botones electrónicos y estrellas de puntuación. Es una demostración lúdica de programación, electrónica y simulación, **no un tema curricular directo**; no constituye carrera adicional. Sigue sin demostrarse que la esfera real sea una pantalla. La esfera del video aparenta ser reflectante; **su capacidad para reproducir contenido digital no está comprobada**. Antes de desarrollar una integración, deberá identificarse el equipo y aprobarse una prueba técnica. Las fichas y tareas de Codex son planificación, no software implementado.
