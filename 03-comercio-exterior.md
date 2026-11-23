@@ -2,7 +2,9 @@
 
 ## Estado
 
-Esta es la única idea activa para Comercio Exterior. Las demás propuestas de esta carrera se descartan por ahora para concentrarnos en convertir este minijuego en un prototipo jugable.
+**Concepto activo: Clasificador en caos, ahora planteado como videojuego VR en primera persona.** La especificación prioritaria está en [Clasificador en caos VR — movimiento con joystick, tres opciones, entrega diferida](12-comercio-exterior-clasificador-en-caos-vr.md). Esta sigue siendo la única idea activa para Comercio Exterior; las alternativas iniciales se descartan por ahora.
+
+**Nota de versión:** las secciones tradicionales de esta ficha (banda, herramientas, RFID, cámara cenital, proyección sobre mesa) se conservan como antecedentes y banco de mecánicas, **no como requisitos aprobados para la versión VR**. En caso de contradicción, prevalece el documento VR.
 
 ## Base académica
 
@@ -330,7 +332,7 @@ Lector valida zona + juego da puntos, combo o penalización
 | Modelos 3D | Blender y piezas impresas en PLA/PETG; duplicados para desgaste |
 | Proyección | Proyector de tiro corto si la iluminación del museo permite calibrarlo |
 
-No recomiendo arrancar con VR como núcleo: reduce el flujo de visitantes, complica higiene y deja al público sin ver la interacción. Puede añadirse más adelante como una experiencia separada de inspección, no como sustituto de la estación física.
+**Recomendación histórica superada:** se proponía no iniciar con VR por el flujo de visitantes y la higiene. El diseño actual del responsable elige **VR en primera persona como modalidad principal**; se deben mitigar explícitamente esos riesgos según [la ficha VR](12-comercio-exterior-clasificador-en-caos-vr.md).
 
 ## Cómo implementar visión artificial sin volver frágil la estación
 
@@ -383,7 +385,7 @@ Podemos empezar a implementar cuando confirmemos estas tres decisiones:
 
 1. Las cuatro categorías iniciales.
 2. Las cuatro mercancías del MVP.
-3. Si el primer prototipo será para teclado/control o directamente para VR.
+3. ~~Si el primer prototipo será para teclado/control o directamente para VR.~~ **Se ha seleccionado VR en primera persona con locomoción por joystick**; resta confirmar visor, espacio y controles concretos.
 
 El núcleo recomendado es Unity con C#, usando el patrón de puntuación, dificultad progresiva y récord de ProyectVR/Math Party.
 
