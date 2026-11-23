@@ -50,7 +50,7 @@ Los archivos `laberinto_01.png`, `_02.png` y `_03.png` pueden editarse con un ed
 
 ## Estado de verificación
 
-El editor está instalado en el segundo SSD, fuera del repositorio: `/media/carlos-rodriguez/nvme0n1p1/repos/personal/Unity/Hub/Editor/2022.3.62f3/Editor/Unity`. La importación y compilación batch terminaron con salida 0; la escena ya se abrió en la interfaz gráfica y falta completar la prueba manual de Play con teclado.
+El editor está instalado en el segundo SSD, fuera del repositorio: `/media/carlos-rodriguez/nvme0n1p1/repos/personal/Unity/Hub/Editor/2022.3.62f3/Editor/Unity`. El verificador en batch comprueba los tres mapas, el ciclo de estrella/checkpoint/trampa, el reinicio, la victoria, la puntuación y el récord. También se construyó y arrancó en modo de humo el ejecutable Linux. Antes de una exposición debe hacerse una pasada en Play con teclado, monitor y audio para comprobar sensaciones, minimapa y sonido.
 
 No se deben presentar como probadas las integraciones de ESP32, VR, proyección o esfera física.
 

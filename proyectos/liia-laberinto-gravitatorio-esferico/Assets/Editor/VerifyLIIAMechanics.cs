@@ -11,7 +11,7 @@ namespace LIIA.SphereMaze.Editor
         {
             VerifyMaps();
             VerifyGameplayLoop();
-            Debug.Log("VERIFICACIÓN LIIA APROBADA: mapas y loop central correctos.");
+            Debug.Log("VERIFICACIÓN LIIA APROBADA: mapas, ciclo de juego, puntuación y récord correctos.");
         }
 
         private static void VerifyMaps()
@@ -39,7 +39,14 @@ namespace LIIA.SphereMaze.Editor
             var flowObject = new GameObject("VerifyFlow");
             var flow = flowObject.AddComponent<GameFlow>();
             flow.Configure(ball, MazeLevelCatalog.Get(0));
+
+            Require(flow.State == GameState.Attract, "El juego debe comenzar en modo de atracción.");
+            Require(ball.GridPosition == (Vector2)layout.StartCell, "El modo de atracción debe ubicar la bola en el inicio.");
             flow.RestartAttempt();
+            Require(flow.State == GameState.Playing && flow.Lives == 3 && flow.Score == 0,
+                "Un intento nuevo debe iniciar con tres vidas y cero puntos.");
+            Require(Mathf.Abs(Vector3.Distance(ball.transform.position, layout.transform.position) - 5.36f) < .001f,
+                "La bola debe mantenerse sobre la superficie de la esfera.");
 
             var starCell = new Vector2Int(2, 1);
             flow.CollectStar(starCell);
@@ -56,6 +63,37 @@ namespace LIIA.SphereMaze.Editor
             flow.PlayerHitTrap();
             Require(flow.Lives == 3 && flow.StarsCollected == 0 && flow.Score == 0,
                 "Tras la tercera trampa debe reiniciarse el intento completo.");
+
+            var scoreKey = $"LIIA_BEST_SCORE_{flow.LevelIndex}";
+            var timeKey = $"LIIA_BEST_TIME_{flow.LevelIndex}";
+            var hadScore = PlayerPrefs.HasKey(scoreKey);
+            var hadTime = PlayerPrefs.HasKey(timeKey);
+            var previousScore = PlayerPrefs.GetInt(scoreKey);
+            var previousTime = PlayerPrefs.GetFloat(timeKey);
+            try
+            {
+                PlayerPrefs.DeleteKey(scoreKey);
+                PlayerPrefs.DeleteKey(timeKey);
+                flow.CollectStar(starCell);
+                flow.ReachGoal();
+                Require(flow.State == GameState.Won, "Al llegar a la meta el intento debe terminar.");
+                Require(flow.Score == 400, "Estrella, meta y bono máximo deben sumar 400 puntos.");
+                Require(flow.BestScore == 400 && Mathf.Approximately(flow.BestTime, 0f),
+                    "La victoria debe registrar un récord por nivel.");
+
+                flow.CollectStar(new Vector2Int(1, 1));
+                flow.PlayerHitTrap();
+                Require(flow.Score == 400 && flow.Lives == 3,
+                    "Después de la meta ya no deben alterar el intento los marcadores.");
+            }
+            finally
+            {
+                if (hadScore) PlayerPrefs.SetInt(scoreKey, previousScore);
+                else PlayerPrefs.DeleteKey(scoreKey);
+                if (hadTime) PlayerPrefs.SetFloat(timeKey, previousTime);
+                else PlayerPrefs.DeleteKey(timeKey);
+                PlayerPrefs.Save();
+            }
 
             UnityEngine.Object.DestroyImmediate(flowObject);
             UnityEngine.Object.DestroyImmediate(ballObject);

@@ -40,7 +40,7 @@ Cada mapa se valida automáticamente: exactamente un inicio, una meta y una ruta
 
 ## Cierre de mecánicas
 
-Para considerar esta etapa terminada sólo falta una prueba manual breve en el build actualizado:
+La lógica de estas mecánicas queda comprobada automáticamente. Antes de instalar la estación se requiere una pasada manual breve en un monitor con audio para confirmar la presentación física:
 
 1. Abrir cada nivel desde la pantalla inicial.
 2. Confirmar que una estrella desaparece y suma 100.
@@ -53,5 +53,16 @@ No se añadirá hardware, ESP32, VR/AR ni pantalla/proyección de esfera a esta 
 
 ## Evidencia automatizada
 
-El verificador de proyecto **LIIA → Verificar mecánicas en batch** se ejecutó correctamente el 23 de noviembre de 2026. Comprueba los tres PNG, la unicidad de la estrella, retorno a checkpoint tras trampa y reinicio total al agotar las tres vidas.
+El verificador de proyecto **LIIA → Verificar mecánicas en batch** se ejecutó correctamente el 23 de noviembre de 2026. Comprueba:
+
+- Los tres PNG: inicio y meta únicos, ruta conectada y cantidades esperadas de marcadores.
+- Inicio en modo de atracción y comienzo limpio con tres vidas.
+- Restricción radial de la bola a la superficie esférica.
+- Una sola puntuación por estrella.
+- Retorno al último checkpoint después de una trampa.
+- Reinicio integral al agotar las tres vidas.
+- Victoria, puntuación de estrella/meta/bono y guardado del récord individual.
+- Inmutabilidad del intento después de alcanzar la meta.
+
+Además, se construyó el ejecutable Linux actualizado y permaneció activo durante una prueba de humo de 12 segundos sin excepciones fatales. La comprobación visual y auditiva no se falsea con una ejecución sin GPU: se realiza en el monitor final de la estación.
 
