@@ -1,5 +1,6 @@
 # Memoria de trabajo
 
-- Estado inicial: sin proyecto Unity; la rama de implementación se creará después de integrar esta reorganización.
+- Estado actual: vertical slice de monitor implementada como proyecto Unity generado por código; falta validar en el editor.
 - La esfera física aparente es reflectante y no está confirmada como pantalla.
 - Confirmado: tres vidas, cuatro direcciones, estrellas, checkpoints y récord de puntuación; el tiempo desempata.
+- La escena se genera con primitivas en `LIIAPrototypeBootstrap`; no hay arte final ni hardware integrado.
